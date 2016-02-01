@@ -1,0 +1,2727 @@
+﻿html, body, div, span,   
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,  
+a, abbr, acronym, address, big, cite, code,  
+img, ins, kbd, q, s, samp,  
+small, strike, strong,   
+dl, dt, dd, ol, ul, li,  
+fieldset, form, label, legend,  
+caption, tbody, tfoot, thead{
+    margin: 0;  
+    padding: 0;  
+    border: 0;  
+    outline: 0;  
+    font-size: 100%;  
+    vertical-align: baseline;  
+    background: transparent;
+}  
+body {  
+    line-height: 1;
+    margin:0;padding:0;
+}  
+ol, ul {  
+    list-style: none;  
+}  
+blockquote, q {  
+    quotes: none;  
+}  
+blockquote:before, blockquote:after,  
+q:before, q:after {  
+    content: '';  
+    content: none;  
+}
+*:focus {outline: none;}
+
+
+
+
+
+
+
+/*
+----------------------------------------------界面的头信息的css
+margin: 1% 5%;
+    width: 90%;
+*/
+.body_panel
+{
+    margin: 10px auto 0px;
+    width: 1001px;
+}
+
+.logo_shop
+{
+    background: url("../images/nav_icon.png") no-repeat scroll 0 0;
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-top: 9px;
+    margin-right: 2px;
+}
+
+.logo_bill
+{
+    background: url("../images/nav_icon.png") no-repeat scroll -16px 0;
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-top: 9px;
+    margin-right: 2px;
+}
+
+.logo_wifigw
+{
+    background: url("../images/nav_icon.png") no-repeat scroll -32px 0;
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-top: 9px;
+    margin-right: 2px;
+}
+
+.logo_tuan
+{
+    background: url("../images/nav_icon.png") no-repeat scroll -48px 0;
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-top: 9px;
+    margin-right: 2px;
+}
+
+.logo_top_left
+{
+    float: left;
+    margin-top: 12px;
+    margin-left: 13px;
+}
+
+.logo_top_right
+{
+    float: right;
+    margin: 32px 10px 0 0;
+}
+
+.logo_top_right div
+{
+    float: left;
+    margin-left: 2px;
+    margin-right: 4px;
+}
+
+.logo_top_right span
+{
+    font: 14px/14px Verdana,​sans-serif;
+    color: #888;
+}
+
+.logo_top_right img
+{
+    margin-bottom: -1px;
+}
+
+.logo_top
+{
+    border: 0 solid #000000;
+    box-shadow: 0 0 3px #000000;
+    height: 56px;
+    margin-bottom: 10px;
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0;
+}
+
+
+.navigation
+{
+    width:80%;
+    height:36px;    
+}
+
+.navigation_left {
+    float: left;
+}
+.navigation_left_head {
+    background: url("../images/shops/navigation1.png") no-repeat scroll 0 0;
+    float: left;
+    height: 36px;
+    width: 40px;
+}
+.navigation_left_middle
+{
+    background: url("../images/shops/navigation4.png") repeat-x scroll 0 0;
+    float: left;
+    height: 36px;
+    font-weight: bold;
+}
+
+.navigation_left_middle span
+{
+    float: left;
+    margin-left: 2px;
+    margin-top: 8px;
+    font: 14px/18px simsun,arial,sans-serif;
+    color: #888;
+    text-shadow: 0.1em 0.1em 0.1em #FFFFFF;
+
+}
+.navigation_left_center
+{
+    background: url("../images/shops/navigation2.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    float: left;
+    height: 36px;
+    width: 26px;
+}
+.navigation_left_end
+{
+    background: url("../images/shops/navigation3.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    float: left;
+    height: 36px;
+    width: 19px;
+}
+
+.navigation_center
+{
+    float: right;
+    width: 243px;
+    height: 36px;
+    margin-right:0px;
+}
+.navigation_center input {
+    background: url("../images/shops/search-input.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-top:2px;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    color: #555;
+    height: 31px;
+    line-height: 20px;
+    text-indent: 5px;
+    vertical-align: middle;
+    width: 227px;
+    float: right;
+}
+.navigation_center_search_cancle
+{
+    cursor:pointer;
+    background: url("../images/shops/searchCnacle.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    float: right;
+    height: 16px;
+    margin-right: -220px;
+    margin-top: 10px;
+    width: 16px; 
+}
+.navigation_center_search
+{
+    cursor:pointer;
+    background: url("../images/shops/search.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    float: right;
+    height: 16px;
+    margin-right: -220px;
+    margin-top: 10px;
+    width: 16px; 
+}
+.navigation_time
+{
+    float:right;
+    width: 127px;
+    height: 36px;
+    background: url("../images/shops/bg-time.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.navigation_time_content {
+    float: left;
+    font-size: 16px;
+    margin-left: 9px;
+    margin-top: 9px;
+}
+.navigation_time_button {
+    background: url("../images/shops/arrows-bottom.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    float: right;
+    height: 10px;
+    margin-right: 10px;
+    margin-top: 11px;
+    width: 16px;
+}
+
+.navigation_right
+{
+    float:right;
+    height: 36px;
+}
+
+.right_tab {
+    float: right;
+    width: 19%;
+}
+
+.right_tab div {
+    cursor: pointer;
+    height: 120px;
+    width: 100%;
+    color: #FFFFFF;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+
+}
+.right_tab span
+{
+    margin-left:20px;    
+}
+
+.right_tab_shop 
+{
+    width: 190px;
+    height: 120px;
+    background: url("/res/images/tab_button.png") no-repeat scroll 0 0;
+}
+.right_tab_shop:hover
+{
+    background-position: 0 -120px;
+}
+.right_tab_shop:active
+{
+    background-position: 0 -240px;
+}
+
+.right_tab_menu
+{
+    width: 190px;
+    height: 120px;
+    background: url("/res/images/tab_button.png") no-repeat scroll -190px 0;
+}
+.right_tab_menu:hover
+{
+    background-position: -190px -120px;
+}
+.right_tab_menu:active
+{
+    background-position: -190px -240px;
+}
+
+.right_tab_tuan
+{
+    width: 190px;
+    height: 120px;
+    background: url("/res/images/tab_button.png") no-repeat scroll -380px 0;
+}
+.right_tab_tuan:hover
+{
+    background-position: -380px -120px;
+}
+.right_tab_tuan:active
+{
+    background-position: -380px -240px;
+}
+
+.right_tab_auth
+{
+    width: 190px;
+    height: 120px;
+    background: url("/res/images/tab_button.png") no-repeat scroll -570px 0;
+}
+.right_tab_auth:hover
+{
+    background-position: -570px -120px;
+}
+.right_tab_auth:active
+{
+    background-position: -570px -240px;
+}
+
+.right_tab_chat
+{
+    width: 190px;
+    height: 120px;
+    background: url("/res/images/tab_button.png") no-repeat scroll -950px 0;
+}
+.right_tab_chat:hover
+{
+    background-position: -950px -120px;
+}
+.right_tab_chat:active
+{
+    background-position: -950px -240px;
+}
+.right_tab_tab
+{
+    width: 190px;
+    height: 120px;
+    background: url("/res/images/tab_button.png") no-repeat scroll -760px 0;
+}
+.right_tab_tab:hover
+{
+    background-position: -760px -120px;
+}
+.right_tab_tab:active
+{
+    background-position: -760px -240px;
+}
+.right_tab_dish
+{
+    background-color: #33B5E5;
+}
+.right_tab .right_tab_font
+{
+    color: #000000;
+    height: 60px;
+    font-size: 40px;
+    padding-top: 60px;
+    text-align: right;
+    width: 93%;    
+}
+.right_tab .tab_font_shop
+{
+    color:#99CC00;    
+}
+.right_tab .tab_font_menu
+{
+    color:#FFBB33;
+}
+.right_tab .tab_font_tuan
+{
+    color:#AA66CC;    
+}
+.right_tab .tab_font_auth
+{
+    color:#FF4444;    
+}
+.right_tab .tab_font_chat
+{
+    color:#8AB93B;    
+}
+.right_tab .tab_font_tab
+{
+    color:#CA4639;    
+}
+.right_tab .tab_font_shop:hover
+{
+    color:#FFFFFF;    
+}
+.right_tab .tab_font_menu:hover
+{
+    color:#FFFFFF;
+}
+.right_tab .tab_font_tuan:hover
+{
+    color:#FFFFFF;    
+}
+.right_tab .tab_font_auth:hover
+{
+    color:#FFFFFF;    
+}
+.right_tab .tab_font_chat:hover
+{
+    color:#FFFFFF;    
+}
+.right_tab .tab_font_tab:hover
+{
+    color:#FFFFFF;    
+}
+/*
+----------------------------------------------------------分页标签 Pagination
+*/
+.pagination
+{
+    float: left;
+    margin-top: 10px;
+    width: 80%;
+}
+#Pagination
+{
+    float: right;
+}
+#Pagination a
+{ 
+    text-decoration: none;
+    color: Blue;
+}
+
+#Pagination .page.prev_page
+{
+    background: url("/res/images/shops/button-page.png") no-repeat scroll 0 -108px;
+    float: left;
+    height: 36px;
+    width: 79px;
+}
+#Pagination a.page.prev_page
+{
+    background: url("/res/images/shops/button-page.png") no-repeat scroll 0 0;
+}
+#Pagination a.page.prev_page:hover
+{
+    background: url("/res/images/shops/button-page.png") no-repeat scroll 0 -36px;
+}
+#Pagination a.page.prev_page:active
+{
+    background:background: url("/res/images/shops/button-page.png") no-repeat scroll 0 -72px;
+}
+        
+#Pagination .page.next_page
+{
+    background: url("/res/images/shops/button-page.png") no-repeat scroll -79px -108px;
+    float: left;
+    height: 36px;
+    width: 79px;
+}
+#Pagination a.page.next_page
+{
+    background: url("/res/images/shops/button-page.png") no-repeat scroll -79px 0;
+}
+#Pagination a.page.next_page:hover
+{
+    background: url("/res/images/shops/button-page.png") no-repeat scroll -79px -36px;
+}
+#Pagination a.page.next_page:active
+{
+    background: url("/res/images/shops/button-page.png") no-repeat scroll -79px -72px;
+}
+        
+#Pagination .page
+{
+    background: url("/res/images/shops/button-omit.png") no-repeat scroll -34px -108px;
+    float: left;
+    margin-left:4px;
+    height: 36px;
+    width: 34px;
+    color: #b8b8b8;
+}
+#Pagination a.page
+{
+    background: url("/res/images/shops/button-omit.png") no-repeat scroll -34px 0;
+    color: #43b4dd;
+}
+#Pagination a.page:hover
+{
+    background: url("/res/images/shops/button-omit.png") no-repeat scroll -34px -36px;
+    color: #FFFFFF;
+}
+#Pagination a.page:active
+{
+    background: url("/res/images/shops/button-omit.png") no-repeat scroll -34px -72px;
+     color: #FFFFFF;
+}
+        
+#Pagination .page span
+{
+    line-height: 32px;
+    padding-left: 12px;
+}
+
+#Pagination .prev_ellipse
+{
+    background: url("/res/images/shops/button-omit.png") no-repeat scroll 0 -108px;
+    float: left;
+    margin-left:4px;
+    height: 36px;
+    width: 34px;
+}
+#Pagination .prev_ellipse:hover
+{
+    background-position: 0 0;
+            
+}
+#Pagination .prev_ellipse:active
+{
+    background-position: 0 -36px;
+}
+
+#Pagination .next_ellipse
+{
+    background: url("/res/images/shops/button-omit.png") no-repeat scroll 0 -108px;
+    float: left;
+    margin-left:4px;
+    height: 36px;
+    width: 34px;
+}
+#Pagination .next_ellipse:hover
+{
+    background-position: 0 0;
+            
+}
+#Pagination .next_ellipse:active
+{
+    background-position: 0 -36px;
+}
+
+/*
+----------------------------------------------------------商家新增界面的css
+*/
+.shop_register
+{
+    background-color: #FFFFFF;
+    float:left;
+    margin-top: 10px;
+    width:80%;    
+}
+.shop_register_title
+{  
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 solid #000000;
+    box-shadow: 0 0 3px #000000;
+    height: 32px;
+}
+.shop_register_title div
+{
+    color: #3AB1DB;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 15px;
+    padding-top: 8px;   
+}
+.shop_register_must {
+    box-shadow: 0 0 3px #000000;
+    height: 250px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    text-align: center;
+}
+.shop_register_wifi
+{
+    box-shadow: 0 0 3px #000000;
+    height:160px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    text-align: center;
+}
+.register_wifi_add
+{
+    width:72px;
+    height:44px;
+    cursor:pointer;
+    background: url("../images/shops/wifi-add.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);    
+}
+.register_wifi_add:hover
+{
+    background-position:0 -44px;  
+}
+.register_wifi_update {
+    width: 90px;
+    text-align: center;
+    margin-right: 20px;
+}
+.register_wifi_update_list
+{
+    background: url("../images/shops/wifi-list.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 44px;
+    margin-top: -5px;
+    width: 48px;
+    
+}
+.register_wifi_update_list:hover
+{
+    /*background-position:0 -44px;*/ 
+}
+.register_wifi_update .register_wifi_update_list
+{
+    float: none;
+    margin-bottom: 12px;
+    margin-left: 20px;    
+}
+.register_wifi_list
+{
+    width:48px;
+    height:44px;
+    cursor:pointer;
+    margin: 5px;
+    background: url("../images/shops/wifi-list.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);    
+}
+.register_wifi_list:hover
+{
+    background-position:0 -44px; 
+}
+
+.shop_register_div {
+    height: 50px;
+    margin: 0 auto;
+    width: 710px;
+}
+.register_wifi_num
+{
+    color: #444;
+    font-size: 12px;
+    margin-top: -23px;
+   
+}
+.shop_register_wifi_list
+{
+     
+}
+.shop_register_div div {
+    float: left;
+}
+.shop_register_div .div_span
+{
+    color: #FF0000;
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 10px;
+    display: none;
+}
+.shop_register_font
+{
+    color: #3AB1DB;
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 9px;
+    width: 100px;
+}
+.shop_register input
+{
+    background: url("../images/shops/search-input.png") no-repeat scroll 0 0;
+    border: medium none;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    height: 34px;
+    line-height: 20px;
+    margin-top: 2px;
+    text-indent: 5px;
+    vertical-align: middle;
+    width: 227px;
+}
+.shop_register select
+{
+    font: 18px/24px "Microsoft YaHei";
+    background: url("../images/shops/search-input.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    float: left;
+    height: 32px;
+    vertical-align: middle;
+    width: 227px;
+}
+.shop_register_non_must
+{
+    box-shadow: 0 0 3px #000000;
+    height: 155px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.shop_register_non_must_div
+{
+    margin-left:50px;
+}
+.shop_register_button {
+    box-shadow: 0 0 3px #000000;
+    height: 40px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    text-align: center;
+}
+.shop_register_button_context {
+    height: 32px;
+    margin: 0 auto;
+    width: 705px;
+}
+.shop_register_button_context div
+{
+    width:68px;
+    height:32px;
+    float:left;  
+    
+}
+
+.shop_register_button_save_disable
+{
+    cursor: default;
+    margin-right: 50px;
+    background: url("../images/shops/save-cancel-button.png") no-repeat scroll 0 0;
+}
+
+.shop_register_button_save
+{
+    cursor: pointer;
+    margin-right: 50px;
+    background: url("../images/shops/save-cancel-button.png") no-repeat scroll 0 -32px;
+}
+.shop_register_button_save:hover
+{
+    background-position: 0 -64px;
+}
+.shop_register_button_save:active
+{
+    background-position: 0 -96px;
+}
+
+.shop_register_button_cancle
+{
+    cursor: pointer;
+    background: url("../images/shops/save-cancel-button.png") no-repeat scroll -68px -32px;
+}
+
+.shop_register_button_cancle:hover
+{
+    background-position: -68px -64px;
+}
+
+.shop_register_button_cancle:active
+{
+    background-position: -68px -96px;
+}
+.shop_update_button_pwd
+{
+    cursor: pointer;
+    height: 32px;
+    width: 68px;
+    margin: 4px 50px;
+    background: url("../images/updatepwd_button.png") no-repeat scroll 0 0;    
+}
+.shop_update_button_pwd:hover
+{
+    background-position: 0 -32px;
+}
+.shop_update_button_pwd:active
+{
+    background-position: 0 -64px;
+}
+
+.shop_register_div .shop_register_prevent {
+    float: right;
+    width: 200px;
+}
+.shop_register_div .shop_update_button_prevent
+{
+    background: url("../images/prevent_button.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 32px;
+    margin: 4px 0 4px 10px;
+    width: 68px; 
+    float:right;   
+}
+.shop_update_button_prevent:hover
+{
+    background-position: 0 -32px;
+}
+.shop_update_button_prevent:active
+{
+    background-position: 0 -64px;
+}
+.shop_register_div .shop_update_button_tab
+{
+    background: url("../images/taboption_button.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 32px;
+    margin: 4px 0 4px 10px;
+    width: 68px;   
+    float:right; 
+}
+.shop_update_button_tab:hover
+{
+    background-position: 0 -32px;
+}
+.shop_update_button_tab:active
+{
+    background-position: 0 -64px;
+}
+.shop_register_div .shop_video_button
+{
+    background: url("../images/video-music-button.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 32px;
+    margin: 4px 0 4px 10px;
+    width: 68px;   
+    float:right; 
+}
+.shop_video_button:hover
+{
+    background-position: 0 -32px;
+}
+.shop_video_button:active
+{
+    background-position: 0 -64px;
+}
+.shop_register_div .shop_music_button
+{
+    background: url("../images/video-music-button.png") no-repeat scroll -68px 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 32px;
+    margin: 4px 0 4px 10px;
+    width: 68px;   
+    float:right;     
+}
+.shop_music_button:hover
+{
+    background-position: -68px -32px;
+}
+.shop_music_button:active
+{
+    background-position: -68px -64px;
+}
+.shop_video_button a,.shop_music_button a,.shop_call_button a
+{
+    float:left;
+    width:100%;
+    height:100%;    
+}
+
+.shop_register_div .shop_call_button
+{
+    background: url("../images/call-button.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 32px;
+    margin: 4px 0 4px 10px;
+    width: 68px;   
+    float:right; 
+}
+.shop_call_button:hover
+{
+    background-position: 0 -32px;
+}
+.shop_call_button:active
+{
+    background-position: 0 -64px;
+}
+
+#Mask_Background { 
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background-color:#666;
+    filter:alpha(opacity=40);
+    opacity:.4;
+}
+ 
+.shop_update_pwd
+{ 
+    z-index: 9999999;
+    background-color: #FFFFFF;
+    display: none;
+    position: absolute;
+    border: solid 1px #6e8bde;
+    width: 390px;
+    height: 180px;
+    padding: 10px 20px;
+}
+
+.shop_update_pwd .update_pwd_row
+{
+    width: 500px;
+    height: 50px;
+    margin: 0 auto;
+    float: left;
+}
+
+.shop_update_pwd .update_pwd_font
+{
+    color: #3AB1DB;
+    width: 80px;
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 12px;
+    float: left;
+}
+.shop_update_pwd .update_pwd_confirm
+{
+    width:68px;
+    height:32px;
+    float: right;
+    margin-right: 12px;
+    cursor: pointer;
+    background: url("../images/shops/save-cancel-button.png") no-repeat scroll 0 -32px;
+}
+.shop_update_pwd .update_pwd_confirm:hover
+{
+    background-position: 0 -64px;
+}
+.shop_update_pwd .update_pwd_confirm:active
+{
+    background-position: 0 -96px;
+}
+
+.shop_update_pwd .update_pwd_cancel
+{
+    width:68px;
+    height:32px;
+    float:right;
+    cursor: pointer;
+    background: url("../images/shops/save-cancel-button.png") no-repeat scroll -68px -32px;
+}
+.shop_update_pwd .update_pwd_cancel:hover
+{
+    background-position: -68px -64px;
+}
+.shop_update_pwd .update_pwd_cancel:active
+{
+    background-position: -68px -96px;
+}
+
+
+/*
+-------------------------------------------商家下单界面
+*/
+.shopsorderslist
+{
+    float:left;
+    margin-top: 10px;
+    width:80%;
+    box-shadow: 0 0 3px #000000;
+}
+.shopsorderslist_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+}
+.shopsorderslist_td
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    border-top: 1px solid #cfcece;
+}
+.shopsorderslist_th div
+{
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-top: 8px;
+}
+.shopsorderslist_td div
+{
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    padding-top: 8px;
+    color: #5a5a5a;
+}
+.shopsorderslist_th_1,.shopsorderslist_td_1
+{
+    width:30%;
+}
+.shopsorderslist_th_2,.shopsorderslist_td_2
+{
+    width:35%;
+}
+.shopsorderslist_td_2
+{
+    color:Red;    
+}
+.shopsorderslist_th_3,.shopsorderslist_td_3
+{
+    width:20%;
+}
+.shopsorderslist_th_4,.shopsorderslist_td_4
+{
+    width:30%;
+}
+.shopsorderslist_td .shopsorderslist_td_5
+{
+    float:right;   
+    width:28px;
+    height:22px;
+    margin-top:3px;
+    cursor:pointer;
+    background: url("../images/shops/arrow-button.png") no-repeat scroll -28px 0;
+}
+.shopsorderslist_td .shopsorderslist_td_5:hover
+{
+    background: url("../images/shops/arrow-hover-button.png") no-repeat scroll -28px 0;
+}
+
+
+/*
+-------------------------------------------商家团购界面
+*/
+.shoptuanlist
+{
+    float:left;
+    margin-top: 10px;
+    width:80%;
+    box-shadow: 0 0 3px #000000;
+}
+
+.shoptuanlist_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+}
+.shoptuanlist_td
+{
+    border-top: 1px solid #CFCECE;
+    height: 32px;
+    position: relative;
+    text-align: center;
+}
+.shoptuanlist_th div
+{
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-top: 8px;
+}
+.shoptuanlist_td div
+{
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    padding-top: 8px;
+    color: #5a5a5a;
+}
+
+.shoptuanlist_th_1,.shoptuanlist_td_1
+{
+    width:30%;
+}
+.shoptuanlist_th_2,.shoptuanlist_td_2
+{
+    width:35%;
+}
+.shoptuanlist_td_2
+{
+    color:Red;    
+}
+.shoptuanlist_th_3,.shoptuanlist_td_3
+{
+    width:20%;
+}
+.shoptuanlist_th_4,.shoptuanlist_td_4
+{
+    width:30%;
+}
+.shoptuanlist_td .shoptuanlist_td_5
+{
+    float:right;   
+    width:28px;
+    height:22px;
+    margin-top:3px;
+    cursor:pointer;
+    background: url("../images/shops/arrow-button.png") no-repeat scroll -56px 0;
+}
+.shoptuanlist_td .shoptuanlist_td_5:hover
+{
+    background: url("../images/shops/arrow-hover-button.png") no-repeat scroll -56px 0;
+}
+
+.shoptuanlist_td .shoptuanlist_td_block
+{
+    background: url("../images/arrow_button.png") no-repeat scroll -56px -44px;
+    float: right;
+    height: 22px;
+    margin-top: 3px;
+    width: 28px;
+}
+
+.shoptuanlist_td .shoptablist_td_5
+{
+    float:right;   
+    width:28px;
+    height:22px;
+    margin-top:3px;
+    cursor:pointer;
+    background: url("../images/shops/arrow-button.png") no-repeat scroll -84px 0;
+}
+.shoptuanlist_td .shoptablist_td_5:hover
+{
+    background: url("../images/shops/arrow-hover-button.png") no-repeat scroll -84px 0;
+}
+
+.shoptuanlist_td .shopwebchatlist_td_5
+{
+    float:right;   
+    width:28px;
+    height:22px;
+    margin-top:3px;
+    cursor:pointer;
+    background: url("../images/shops/arrow-button.png") no-repeat scroll -112px 0;
+}
+.shoptuanlist_td .shopwebchatlist_td_5:hover
+{
+    background: url("../images/shops/arrow-hover-button.png") no-repeat scroll -112px 0;
+}
+/*
+----------------------------------------------------WifiGWShopList.html-----------
+*/
+.gwwifilist
+{
+    float:left;
+    margin-top: 10px;
+    width:80%;
+    box-shadow: 0 0 3px #000000;    
+}
+.gwwifilist_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);    
+}
+.gwwifilist_td
+{
+    height: 26px;
+    position: relative;
+    text-align:center; 
+    border-top: 1px solid #cfcece; 
+}
+.gwwifilist_th div
+{
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-top: 8px;
+}
+.gwwifilist_td div
+{
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    height: 32px;
+    color: #5a5a5a;
+}
+.gwwifilist_td a
+{
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    height: 32px;
+    color: #0099cc;
+    text-decoration: none;
+}
+.gwwifilist_td_right_content div
+{
+    padding-top:8px;
+}
+.gwwifilist_th_1
+{
+    width:25%;    
+}
+.gwwifilist_th_2
+{
+    width:20%;    
+}
+.gwwifilist_th_3,.gwwifilist_th_4,.gwwifilist_th_5
+{
+    width:12%;    
+}
+.gwwifilist_th_6
+{
+    width:13%;    
+}
+.gwwifilist_td_left
+{
+    width:25%; 
+    text-align:center; 
+    position: relative;  
+    
+}
+.gwwifilist_td_1
+{
+    width:100%;  
+    height:66px;
+    padding-top: 8px;
+}
+.gwwifilist_td_right
+{
+    width:75%;  
+    text-align:center;  
+}
+.gwwifilist_td_right_content
+{
+    width:100%; 
+    border-bottom: 1px solid #cfcece;   
+}
+.gwwifilist_td_2
+{
+    width:26%;    
+}
+.gwwifilist_td_3
+{
+    width:16%;   
+}
+.gwwifilist_td_4
+{
+    width:18%; 
+}
+.gwwifilist_td_5
+{
+    width:14%;  
+}
+.gwwifilist_td_6
+{
+    width:19%; 
+}
+.gwwifilist_td .gwwifilist_td_7
+{ 
+    background: url("../images/shops/arrow-button.png") no-repeat scroll 0 0;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: right;
+    height: 22px;
+    margin-top: 4px;
+    width: 28px;  
+}
+.gwwifilist_td .gwwifilist_td_7:hover
+{
+    background: url("../images/shops/arrow-hover-button.png") no-repeat scroll 0 0;
+}
+/*
+------------------------------------------商家热点列表界面
+*/
+.shopswifilist
+{
+    float:left;
+    margin-top: 10px;
+    width:80%;
+    box-shadow: 0 0 3px #000000;
+}
+.shopswifilist_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+}
+.shopswifilist_td
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    border-top: 1px solid #cfcece;
+}
+.shopswifilist_th div
+{
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-top: 8px;
+}
+.shopswifilist_td div
+{
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    padding-top: 8px;
+    color: #5a5a5a;
+}
+.shopswifilist_th_1,.shopswifilist_td_1
+{
+    width:30%;
+}
+.shopswifilist_th_2,.shopswifilist_td_2
+{
+    width:20%;
+}
+
+.shopswifilist_th_3,.shopswifilist_td_3
+{
+    width:10%;
+}
+.shopswifilist_th_4,.shopswifilist_td_4
+{
+    width:15%;
+}
+.shopswifilist_td .shopswifilist_td_5
+{
+    background: url("../images/shops/arrow-button.png") no-repeat scroll 0 0;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: right;
+    height: 22px;
+    margin-top: 3px;
+    width: 28px;
+}
+.shopswifilist_td .shopswifilist_td_5:hover
+{
+    background: url("../images/shops/arrow-hover-button.png") no-repeat scroll 0 0;
+}
+
+
+/*
+--------------------------------------------商家认证界面
+*/
+.wifiauthlist
+{
+    float:left;
+    margin-top: 10px;
+    width:80%;
+    box-shadow: 0 0 3px #000000;
+}
+.wifiauthlist_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+}
+.wifiauthlist_td
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    border-top: 1px solid #cfcece;
+}
+.wifiauthlist_th div
+{
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-top: 8px;
+}
+.wifiauthlist_td div
+{
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    padding-top: 8px;
+    color: #5a5a5a;
+}
+.wifiauthlist_th_1,.wifiauthlist_td_1
+{
+    width:18%;
+}
+.wifiauthlist_th_2,.wifiauthlist_td_2
+{
+    width:25%;
+}
+
+.wifiauthlist_th_3,.wifiauthlist_td_3
+{
+    width:35%;
+}
+.wifiauthlist_th_4,.wifiauthlist_td_4
+{
+    width:15%;
+}
+.wifiauthlist_td .wifiauthlist_td_5
+{
+    float:right;   
+    width:38px;
+    height:22px;
+    margin-top:0px;
+    cursor:pointer;
+    background:url("../images/shops/option-setting.png") no-repeat scroll 0 0 #AA66CC;
+}
+.wifiauthlist_td .wifiauthlist_td_5:hover
+{
+    background:url("../images/shops/option-setting.png") no-repeat scroll 0 -64px #AA66CC;
+}
+.wifiauthlist_td .wifiauthlist_td_5:active
+{
+    background:url("../images/shops/option-setting.png") no-repeat scroll 0 -96px #AA66CC;
+}
+.wifiauthlist_td .wifiauthlist_td_block
+{
+    background: url("../images/arrow_button.png") no-repeat scroll 0 -44px;
+    float: right;
+    height: 22px;
+    margin-top: 3px;
+    width: 28px;
+}
+
+/*
+----------------------------------------------商家菜单界面
+*/
+.shopsmenuslist
+{
+    float:left;
+    margin-top: 10px;
+    width:80%;
+    box-shadow: 0 0 3px #000000;     
+}
+.shopsmenuslist_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+}
+.shopsmenuslist_td
+{
+    height: 26px;
+    position: relative;
+    text-align:center;
+    border-top: 1px solid #cfcece;
+}
+.shopsmenuslist_th div {
+    color: #3AB1DB;
+    float: left;
+    font-family: Microsoft YaHei;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+.shopsmenuslist_td div
+{
+    border-right: 1px solid #808080;
+    float: left;
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    font-weight: bold;
+    height: 22px;
+    padding-top: 4px;
+}
+.shopsmenuslist_th_1,.shopsmenuslist_td_1
+{
+    width:15%;     
+}
+.shopsmenuslist_th_2,.shopsmenuslist_td_2
+{
+    width:14%;    
+}
+.shopsmenuslist_th_3,.shopsmenuslist_td_3
+{
+    width:17%;    
+}
+.shopsmenuslist_th_4,.shopsmenuslist_td_4
+{
+    width:26%;    
+}
+.shopsmenuslist_th_5,.shopsmenuslist_td_5
+{
+    width:10%;    
+}
+.shopsmenuslist_th_6,.shopsmenuslist_td_6
+{
+    width:12%;    
+}
+.shopsmenuslist_td .shopsmenuslist_td_7
+{
+    float:right;   
+    width:38px;
+    height:25px;
+    margin-top:0px;
+    cursor:pointer;
+    background:url("../images/shops/option-setting.png") no-repeat scroll 0 0 #FFBB33;
+}
+.shopsmenuslist_td .shopsmenuslist_td_7:hover
+{
+    background:url("../images/shops/option-setting.png") no-repeat scroll 0 -32px #FFBB33;
+}
+.shopsmenuslist_td .shopsmenuslist_td_7:active
+{
+    background:url("../images/shops/option-setting.png") no-repeat scroll 0 -96px #FFBB33;
+}
+/*
+----------------------------------------------商家订单界面
+*/
+.billslist
+{
+    float:left;
+    margin-top: 10px;
+    width:80%;
+    box-shadow: 0 0 3px #000000;
+}
+.billslist_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+}
+.billslist_td
+{
+    border-top: 1px solid #CFCECE;
+    height: 32px;
+    position: relative;
+    text-align: center;
+}
+.billslist_th div {
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.billslist_td div
+{
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    color: #5a5a5a;
+    padding-top: 8px;
+}
+.billslist_th_1,.billslist_td_1
+{
+    width:30%;     
+}
+.billslist_th_2,.billslist_td_2
+{
+    width:15%;    
+}
+.billslist_th_3,.billslist_td_3
+{
+    width:15%;    
+}
+.billslist_th_4,.billslist_td_4
+{
+    width:15%;    
+}
+.billslist_th_5,.billslist_td_5
+{
+    width:20%;    
+}
+.billslist_td .billslist_td_6
+{
+    background: url("../images/shops/arrow-button.png") no-repeat scroll -28px 0;
+    cursor: pointer;
+    float: right;
+    height: 22px;
+    margin-top: 3px;
+    width: 28px;
+}
+.billslist_td .billslist_td_6:hover
+{
+    background: url("../images/shops/arrow-hover-button.png") no-repeat scroll -28px 0;
+}
+
+.billinfo
+{
+    display: none;
+    float: left;
+    height: 78%;
+    margin-left: 1%;
+    padding-top: 8%;
+    position: absolute;
+    text-align: center;
+    width: 98%;
+    z-index: 2;
+}
+.billsrecord
+{
+    background-color: #FFFFFF;
+    box-shadow: 0 0 3px #000000;
+    margin: 0 auto;
+    width: 700px;  
+    text-align:left;
+    padding: 20px;
+}
+
+.billsrecord_top {
+    border-bottom: 1px solid #808080;
+    height:40px;
+}
+.billsrecord_top div
+{
+    float:left;    
+}
+.tablenumber {
+    color: #808080;
+    font-size: 22px;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 20%;    
+}
+.billsrecord_top .billsdate
+{
+    color:#33B5E5;
+    float:right;   
+    font-size: 16px;
+    margin-right: 20px;
+    margin-top: 16px;
+}
+
+.billsrecord_top .shopname
+{
+    font-size: 20px;
+    float:right;
+    text-align:right;
+    margin-right: 30px;
+    margin-top: 15px;  
+    color:red;  
+    width:30%;
+}
+
+.billsrecord_content
+{
+    border-bottom: 1px solid #808080;
+}
+.dishinfo
+{
+    margin-top:10px;
+    height:20px; 
+}
+.dishinfo div
+{
+    float:left; 
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    color:#808080;
+}
+.dishinfo_number
+{
+    margin-left:2%;    
+    width:10%; 
+}
+.dishinfo_name
+{
+    width:20%;
+}
+.dishinfo_count
+{
+    width:8%;
+}
+.dishinfo_price
+{
+    width:10%;    
+}
+.billsrecord_footer
+{
+    height:40px;   
+    font-size:16px;
+    color: #808080;  
+    font-family: Microsoft YaHei;
+}
+.billsrecord_footer .BID
+{
+    float:left;
+    margin-left: 10px;
+    margin-top: 17px; 
+}
+.billsrecord_footer .price
+{
+    float: right;
+    font-size: 18px;
+    margin-right: 10px;
+    margin-top: 13px;
+    color:#FF4444;
+}
+.billsrecord_footer .dishcount
+{
+    float:right;
+    margin-right: 30px;
+    margin-top: 15px;
+}
+
+.billsrecord_btn {
+    height: 30px;
+}
+.billsrecord_btn .closebutton 
+{
+    cursor:pointer;
+    background: url("../images/shops/save-cancel-button.png") no-repeat scroll -136px -32px rgba(0, 0, 0, 0);
+    float: right;
+    height: 32px;
+    margin-right: 10px;
+    margin-top: 5px;
+    width: 68px;
+}
+.closebutton:hover
+{
+    background-position:-136px -64px;
+}
+.closebutton:active
+{
+    background-position:-136px -96px;
+}
+/*
+    -------------------------------------------商家列表
+*/
+.shopslist
+{
+    float:left;
+    margin-top:10px;
+    width:80%;    
+}
+
+.shopslist_content
+{
+    box-shadow:0 0 3px #000000;
+    border:1px solid #FFFFFF;
+    font-family: Microsoft YaHei;
+    height: 100px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.shopslist_out
+{
+    box-shadow:0 0 3px #000000;
+    border:1px solid #c8c8c8;
+}
+
+.shopslist_over
+{
+    box-shadow:1px 1px 6px #111111;
+    border:1px solid #080808;
+}
+
+.shopslist_content_1 {
+    float: left;
+    width:30%;
+    margin-left:10px;
+}
+.shopslist_content_1 div,
+.shopslist_content_2 div
+{
+    margin-top:11px;
+    margin-bottom:12px;    
+}
+.shopslist_title_font
+{
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    color: #3AB1DB;
+    margin-right: 10px;  
+}
+
+.shopslist_content_font
+{
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    color: #5a5a5a;
+}
+
+.shopslist_content_shopname
+{
+    font-family: "Microsoft YaHei";
+    font-size: 20px;
+    color: #FF4444;
+}
+
+.shopslist_content_span
+{
+    font-size: 16px;
+    color: #5a5a5a;
+    margin-left: 2px;
+}
+
+.shopslist_content_2 {
+    float: left;
+    width: 24%;
+}
+.shopslist_content_3 {
+    float: left;
+    margin-top: 11px;
+    width: 15%;
+}
+.shopslist_content_6
+{
+    float: right;
+    width: 20.5%;
+    text-align: center;
+}
+.content_6_top
+{
+    width:160px;    
+}
+.content_6_bottom
+{
+    width:170px;    
+}
+.content_6_div
+{
+    height:44px;    
+    margin:4px auto;
+}
+.content_6_top div
+{
+    cursor:pointer;
+    width:72px;
+    height:44px;
+    float:left;
+    margin-right:8px;
+    background: url("../images/shops/shops-button-top.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.content_6_bottom div
+{
+    cursor:pointer;
+    width:48px;
+    height:44px;
+    float:left;
+    margin-right:8px;
+    background: url("../images/shops/shops-button-bottom.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.content_6_top .content_6_top_1
+{
+    background-position:0 0;         
+}
+.content_6_top .content_6_top_1:hover
+{
+    background-position:0 -44px;    
+}
+.content_6_top_1 > a {
+    float: left;
+    height: 100%;
+    width: 100%;
+}
+.content_6_top .content_6_top_2
+{
+    background-position:-72px 0;         
+}
+.content_6_top .content_6_top_2:hover
+{
+    background-position:-72px -44px;    
+}
+.content_6_bottom .content_6_bottom_1
+{
+    background-position:0 0;         
+}
+.content_6_bottom .content_6_bottom_1:hover
+{
+    background-position:0 -44px;    
+}
+.content_6_bottom .content_6_bottom_2
+{
+    background-position:-48px 0;         
+}
+.content_6_bottom .content_6_bottom_2:hover
+{
+    background-position:-48px -44px;    
+}
+.content_6_bottom .content_6_bottom_3
+{
+    background-position:-96px 0;         
+}
+.content_6_bottom .content_6_bottom_3:hover
+{
+    background-position:-96px -44px;    
+}
+.shopslist_content_4 {
+    float: left;
+    width: 220px;
+}
+.shopslist_content_using
+{
+    float: left;
+    height: 28px;    
+}
+.shopslist_content_4_top
+{
+    height:28px; 
+    margin-top: 12px;   
+}
+.shopslist_content_4_middle
+{
+    margin-bottom:12px;
+}
+
+.shopslist_content_5 {
+    float: right;
+    width:38px;
+}
+.shopslist_content_5_setting
+{
+    width:38px;
+    height:78px;
+    margin-top: 10px;
+    background-color:#99CC00;
+}
+.shopslist_content_5_setting div
+{
+    float: left;
+    height: 32px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 38px;
+    background: url("../images/shops/option-setting.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); 
+}
+.shopslist_content_5_setting div:hover
+{
+    background: url("../images/shops/option-setting.png") no-repeat scroll 0 -32px rgba(0, 0, 0, 0);
+}
+.shopslist_content_5_setting div:active
+{
+    background: url("../images/shops/option-setting.png") no-repeat scroll 0 -64px rgba(0, 0, 0, 0);
+}
+.shopslist_content_switch
+{
+    height:28px;
+    width:67px;
+    margin-top: -6px;
+    float: left;
+    cursor:pointer;   
+    background: url("../images/shops/switch.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option
+{
+    bottom: -7px;
+    height: 32px;
+    position: absolute;
+    display: none;
+    right: -13px;
+    width: 252px;   
+}
+.shopslist_content_option div
+{
+    width:63px;
+    height:32px;
+    cursor:pointer;
+    float:left;    
+}
+.shopslist_content_option_menu
+{
+    background: url("../images/shops/shop-option.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option_manager{
+    background: url("../images/shops/shop-option.png") no-repeat scroll -63px 0 rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option_order{
+    background: url("../images/shops/shop-option.png") no-repeat scroll -126px 0 rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option_auth{
+    background: url("../images/shops/shop-option.png") no-repeat scroll -189px 0 rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option_menu:hover
+{
+    background: url("../images/shops/shop-option.png") no-repeat scroll 0 -32px rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option_manager:hover{
+    background: url("../images/shops/shop-option.png") no-repeat scroll -63px -32px rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option_order:hover{
+    background: url("../images/shops/shop-option.png") no-repeat scroll -126px -32px rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option_auth:hover{
+    background: url("../images/shops/shop-option.png") no-repeat scroll -189px -32px rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option_menu:active
+{
+    background: url("../images/shops/shop-option.png") no-repeat scroll 0 -64px rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option_manager:active{
+    background: url("../images/shops/shop-option.png") no-repeat scroll -63px -64px rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option_order:active{
+    background: url("../images/shops/shop-option.png") no-repeat scroll -126px -64px rgba(0, 0, 0, 0); 
+}
+.shopslist_content_option_auth:active{
+    background: url("../images/shops/shop-option.png") no-repeat scroll -189px -64px rgba(0, 0, 0, 0); 
+}
+/*
+------------------------------------------------------------用户流量控制
+*/
+.shop_prevent_top
+{
+    float: left;
+    height: 40px;
+    margin-top: 1px;
+    width: 80%;   
+}
+.shop_prevent_top_font
+{
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-left: 20px;
+    margin-top: 12px;  
+}
+.shop_prevent_top_input
+{
+    float: left;
+    margin-top: 2px;  
+}
+.shop_prevent_top_input input
+{
+    background: url("../images/shops/search-input.png") no-repeat scroll 0 0;
+    border: medium none;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    height: 34px;
+    line-height: 20px;
+    margin-top: 2px;
+    text-indent: 5px;
+    vertical-align: middle;
+    width: 227px;
+}
+.shop_prevent_top_button {
+    background: url("../images/shops/save-cancel-button.png") no-repeat scroll 0 -32px rgba(0, 0, 0, 0);
+    cursor: pointer;
+    float: left;
+    height: 32px;
+    margin-left: 20px;
+    margin-top: 5px;
+    width: 68px;
+}
+.shop_prevent_top_button:hover
+{
+    background-position: 0 -64px;
+}
+.shop_prevent_top_button:active
+{
+    background-position: 0 -96px;
+}
+.shop_prevent_tab
+{
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    border-left: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-top: 1px solid #808080;
+    float: left;
+    height: 32px;
+    margin-top: 3px;
+    text-align: center;
+    width: 80%;  
+}
+.shop_prevent_tab_auth
+{ 
+    background-color: #FFFFFF;
+    border-left: 1px solid #D5D5D5;
+    border-right: 1px solid #D5D5D5;
+    color: #3AB1DB;
+    cursor: pointer;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    padding: 8px 10px; 
+}
+.shop_prevent_tab_prevent
+{  
+    color: #3AB1DB;
+    cursor: pointer;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    padding: 8px 10px;
+}
+
+.shop_prevent_auth_list
+{
+    float: left;
+    width: 80%;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #808080;
+}
+.prevent_auth_list_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    border-bottom: 1px solid #D5D5D5;
+    
+}
+.prevent_auth_list_td
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    border-bottom: 1px solid #cfcece;
+}
+.prevent_auth_list_th div
+{
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-top: 8px;
+}
+.prevent_auth_list_td div
+{
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    padding-top: 8px;
+    color: #5a5a5a;
+}
+.prevent_auth_list_th_1,.prevent_auth_list_td_1
+{
+    width:50%;
+}
+.prevent_auth_list_th_2,.prevent_auth_list_td_2
+{
+    width:10%;
+}
+
+.prevent_auth_list_th_3,.prevent_auth_list_td_3
+{
+    width:30%;
+}
+
+.prevent_auth_list_th_4,.prevent_auth_list_td_4
+{
+    width:10%;
+}
+.prevent_auth_list_td .prevent_auth_list_td_4
+{
+    float:right;   
+    width:68px;
+    height:25px;
+    margin-top:0px;
+    margin-right: 10px;
+    cursor:pointer;
+    background:url("../images/prevent_state_button.png") no-repeat scroll 0 0 transparent;
+}
+
+.shop_prevent_prevent_list
+{
+    display:none;
+    float: left;
+    width: 80%;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #808080;
+}
+.prevent_prevent_list_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    border-bottom: 1px solid #D5D5D5;
+    
+}
+.prevent_prevent_list_td
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    border-bottom: 1px solid #cfcece;
+}
+.prevent_prevent_list_th div
+{
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-top: 8px;
+}
+.prevent_prevent_list_td div
+{
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    padding-top: 8px;
+    color: #5a5a5a;
+}
+.prevent_prevent_list_th_1,.prevent_prevent_list_td_1
+{
+    width:80%;
+}
+.prevent_prevent_list_th_2,.prevent_prevent_list_td_2
+{
+    width:20%;
+}
+.prevent_prevent_list_td .prevent_prevent_list_td_2
+{
+    cursor: pointer;
+    float: right;
+    height: 25px;
+    margin-right: 45px;
+    margin-top: 0;
+    width: 68px;
+    background:url("../images/prevent_state_button.png") no-repeat scroll 0 0 transparent;
+}
+/*
+------------------------------------------------------------商家标签新增
+*/
+.logo_chat
+{
+    background: url("../images/nav_icon.png") no-repeat scroll -96px 0 rgba(0, 0, 0, 0);
+    float: left;
+    height: 16px;
+    margin-right: 2px;
+    margin-top: 9px;
+    width: 16px; 
+}
+.logo_tab
+{
+    background: url("../images/nav_icon.png") no-repeat scroll -80px 0 rgba(0, 0, 0, 0);
+    float: left;
+    height: 16px;
+    margin-right: 2px;
+    margin-top: 9px;
+    width: 16px;    
+}
+.shoptablist
+{
+    float:left;
+    margin-top: 10px;
+    width:80%;
+    box-shadow: 0 0 3px #000000;
+}
+
+.shoptablist_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+}
+.shoptablist_td
+{
+    border-top: 1px solid #CFCECE;
+    height: 32px;
+    position: relative;
+    text-align: center;
+}
+.shoptablist_th div
+{
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-top: 8px;
+}
+.shoptablist_td div
+{
+    color: #5A5A5A;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    
+}
+
+.shoptablist_th_1,.shoptablist_td_1
+{
+    width:30%;
+}
+.shoptablist_td_1,.shoptablist_td_2
+{
+    padding-top:8px;  
+     
+}
+.shoptablist_th_2,.shoptablist_td_2
+{
+    width:30%;
+}
+.shoptablist_th_3,.shoptablist_td_3
+{
+     width:40%; 
+    
+}
+.shoptablist_td .shoptablist_td_3
+{
+      height: 30px;
+}
+.shoptablist_td_delete
+{
+    cursor:pointer;
+    float:left;
+    width: 68px;
+    height: 30px;
+    padding-top: 0;
+    background: url("../images/menu-delete.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);       
+}
+.shoptablist_td_delete:hover
+{
+    background-position:0 -32px;
+}
+.shoptablist_td_delete:active
+{
+    background-position:0 -64px;
+}
+.shoptablist_td_update
+{
+    cursor:pointer;
+    float:left;
+    width: 68px;
+    height: 30px;
+    margin-left: 85px;
+    padding-top: 0;
+    margin-right: 20px;
+    background: url("../images/shop-update-button.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);   
+}
+.shoptablist_td_update:hover
+{
+    background-position:0 -32px;
+}
+.shoptablist_td_update:active
+{
+    background-position:0 -64px;
+}
+ 
+.shop_update_tab
+{ 
+    z-index: 9999999;
+    background-color: #FFFFFF;
+    display: none;
+    position: absolute;
+    border: solid 1px #6e8bde;
+    width: 390px;
+    height: 80px;
+    padding: 10px 20px;
+}
+
+.shop_update_tab .update_tab_row
+{
+    width: 500px;
+    height: 50px;
+    margin: 0 auto;
+    float: left;
+}
+
+.shop_update_tab .update_tab_font
+{
+    color: #3AB1DB;
+    width: 80px;
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 12px;
+    float: left;
+}
+.shop_update_tab input
+{
+    background: url("../images/shops/search-input.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    height: 34px;
+    line-height: 20px;
+    margin-top: 2px;
+    text-indent: 5px;
+    vertical-align: middle;
+    width: 227px;    
+}
+.shop_update_tab .update_tab_confirm
+{
+    width:68px;
+    height:32px;
+    float: right;
+    margin-right: 12px;
+    cursor: pointer;
+    background: url("../images/shops/save-cancel-button.png") no-repeat scroll 0 -32px;
+}
+.shop_update_tab .update_tab_confirm:hover
+{
+    background-position: 0 -64px;
+}
+.shop_update_tab .update_tab_confirm:active
+{
+    background-position: 0 -96px;
+}
+
+.shop_update_tab .update_tab_cancel
+{
+    width:68px;
+    height:32px;
+    float:right;
+    cursor: pointer;
+    background: url("../images/shops/save-cancel-button.png") no-repeat scroll -68px -32px;
+}
+.shop_update_tab .update_tab_cancel:hover
+{
+    background-position: -68px -64px;
+}
+.shop_update_tab .update_tab_cancel:active
+{
+    background-position: -68px -96px;
+}
+
+.shop_tab_tab
+{
+    background: url("../images/shops/top-line.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    border-left: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-top: 1px solid #808080;
+    float: left;
+    height: 32px;
+    margin-top: 3px;
+    text-align: center;
+    width: 80%;  
+}
+.shop_tab_tab_auth
+{ 
+    background-color: #FFFFFF;
+    border-left: 1px solid #D5D5D5;
+    border-right: 1px solid #D5D5D5;
+    color: #3AB1DB;
+    cursor: pointer;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    padding: 8px 10px; 
+}
+.shop_tab_tab_prevent
+{  
+    color: #3AB1DB;
+    cursor: pointer;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    padding: 8px 10px;
+}
+
+.shop_tab_auth_list
+{
+    float: left;
+    width: 80%;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #808080;
+}
+.tab_auth_list_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    border-bottom: 1px solid #D5D5D5;
+    
+}
+.tab_auth_list_td
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    border-bottom: 1px solid #cfcece;
+}
+.tab_auth_list_th div
+{
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-top: 8px;
+}
+.tab_auth_list_td div
+{
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    padding-top: 8px;
+    color: #5a5a5a;
+}
+.tab_auth_list_th_1,.tab_auth_list_td_1
+{
+    width:50%;
+}
+.tab_auth_list_th_2,.tab_auth_list_td_2
+{
+    width:10%;
+}
+
+.tab_auth_list_th_3,.tab_auth_list_td_3
+{
+    width:30%;
+}
+
+.tab_auth_list_th_4,.tab_auth_list_td_4
+{
+    width:10%;
+}
+.tab_auth_list_td .tab_auth_list_td_4
+{
+    float:right;   
+    width:68px;
+    height:25px;
+    margin-top:0px;
+    margin-right: 10px;
+    cursor:pointer;
+    background:url("../images/prevent_state_button.png") no-repeat scroll 0 0 transparent;
+}
+
+.shop_tab_tab_list
+{
+    display:none;
+    float: left;
+    width: 80%;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #808080;
+}
+.tab_tab_list_th
+{
+    height: 32px;
+    position: relative;
+    text-align:center;
+    border-bottom: 1px solid #D5D5D5;
+    
+}
+.tab_tab_list_td
+{
+    height: 90px;
+    position: relative;
+    text-align:left;
+    border-bottom: 1px solid #cfcece;
+}
+.tab_tab_list_th div
+{
+    color: #3AB1DB;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    margin-top: 8px;
+}
+.tab_tab_list_td div
+{
+    color: #5A5A5A;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    height: 80px;
+    overflow: auto;
+    padding-top: 8px;
+    
+    word-break: normal;
+    word-wrap: break-word;
+}
+.tab_tab_list_th_1,.tab_tab_list_td_1
+{
+    width:80%;
+}
+.tab_tab_list_th_2,.tab_tab_list_td_2
+{
+    width:20%;
+}
+.tab_tab_list_td .tab_tab_list_td_2
+{
+    cursor: pointer;
+    float: right;
+    height: 25px;
+    margin-right: 45px;
+    margin-top: 28px;
+    width: 70px;
+    text-indent: 0em;
+}
+
+/*
+----------------------------------------------------------商家操作，分页显示
+*/
+
+.option {
+    float: left;
+    margin-top: 10px;
+    width: 80%;
+}
+.option_context {
+    float: right;
+}
+.option_context div
+{
+    margin-left:10px;    
+}
+.option_add
+{
+    width:90px;
+    height:36px;
+    float:left;  
+    cursor:pointer;
+    background: url("../images/shops/button-shopadd.png") no-repeat scroll 0 -36px;
+}
+.option_add:hover
+{
+    background-position: 0 -72px;
+}
+.option_add:active
+{
+    background-position: 0 -108px;
+}
+.option_add_menu
+{
+    width:90px;
+    height:36px;
+    float:left;  
+    cursor:pointer;
+    background: url("../images/shops/buttong-add.png") no-repeat scroll -90px 0 rgba(0, 0, 0, 0);    
+}
+.option_add_menu:hover
+{
+    background: url("../images/shops/buttong-add.png") no-repeat scroll -90px -36px rgba(0, 0, 0, 0);
+}
+.option_add_menu:active
+{
+    background: url("../images/shops/buttong-add.png") no-repeat scroll -90px -72px rgba(0, 0, 0, 0);
+}
+.option_add_wifigw
+{
+    width:90px;
+    height:36px;
+    float:left;  
+    cursor:pointer;
+    background: url("../images/shops/buttong-add.png") no-repeat scroll -180px 0 rgba(0, 0, 0, 0);    
+}
+.option_add_wifigw:hover
+{
+    background: url("../images/shops/buttong-add.png") no-repeat scroll -180px -36px rgba(0, 0, 0, 0);
+}
+.option_add_wifigw:active
+{
+    background: url("../images/shops/buttong-add.png") no-repeat scroll -180px -72px rgba(0, 0, 0, 0);
+}
+.option_prepage
+{
+    width:79px;
+    height:36px;
+    float:left;  
+    cursor:pointer;
+    background: url("../images/shops/button-page.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.option_prepage:hover
+{
+    background: url("../images/shops/button-page.png") no-repeat scroll 0 -36px rgba(0, 0, 0, 0);
+}
+.option_prepage:active
+{
+    background: url("../images/shops/button-page.png") no-repeat scroll 0 -72px rgba(0, 0, 0, 0);
+}
+
+.option_nextpage
+{
+    width:79px;
+    height:36px;
+    float:left;  
+    cursor:pointer;
+    background: url("../images/shops/button-page.png") no-repeat scroll -79px 0 rgba(0, 0, 0, 0);
+}
+.option_nextpage:hover
+{
+    background: url("../images/shops/button-page.png") no-repeat scroll -79px -36px rgba(0, 0, 0, 0);
+}
+.option_nextpage:active
+{
+    background: url("../images/shops/button-page.png") no-repeat scroll -79px -72px rgba(0, 0, 0, 0);
+}
+.option_page
+{
+    width:34px;
+    height:36px;
+    float:left;  
+    cursor:pointer;
+    background: url("../images/shops/button-omit.png") no-repeat scroll -34px 0 rgba(0, 0, 0, 0);
+}
+.option_page:hover
+{
+    color:#44B5DF;
+    background: url("../images/shops/button-omit.png") no-repeat scroll -34px -36px rgba(0, 0, 0, 0);    
+}
+.option_page:active
+{
+    color:#FFFFFF;
+    background: url("../images/shops/button-omit.png") no-repeat scroll -34px -72px rgba(0, 0, 0, 0);        
+}
+.option_page div
+{
+    margin-left:12px;
+    margin-top:8px;    
+}
+.option_omitpage
+{
+    width:34px;
+    height:36px;
+    float:left;  
+    cursor:pointer;
+    background: url("../images/shops/button-omit.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.option_omitpage:hover
+{
+    background: url("../images/shops/button-omit.png") no-repeat scroll 0 -36px rgba(0, 0, 0, 0);    
+}
+.option_omitpage:active
+{
+    background: url("../images/shops/button-omit.png") no-repeat scroll 0 -72px rgba(0, 0, 0, 0);        
+}
+.option_preomitpage
+{
+    display:none;    
+}
+/*
+   -------------------------------------------------界面的脚文件css
+*/
+.footer
+{
+    background-color: #EEF8FA;
+    bottom: 0;
+    height: 50px;
+    position: absolute;
+    width: 100%; 
+    text-align:center;  
+}
+.footer_div
+{
+    margin:auto 0;  
+}
+

@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>首页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="favicon.ico" rel="bookmark" type="image/x-icon" />
+    <link href="favicon.ico" rel="icon" type="image/x-icon" /> 
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" /> 
+    <link href="res/css/index.css" rel="stylesheet" type="text/css" />
+    <script src="res/js/jquery.min.js" type="text/javascript"></script>
+    <script src="res/js/unslider.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffe0b746d0d97ad96e482bd98c749aff3' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        $(function () {
+
+            $('.banner li').css('background-size', '100% 100%');
+            $('.banner li').css("width", "100%");
+
+            $('.banner').unslider({
+                speed: 1000,               //  The speed to animate each slide (in milliseconds)
+                delay: 3000,              //  The delay between slide animations (in milliseconds)
+                keys: true,               //  Enable keyboard (left, right) arrow shortcuts
+                dots: true,               //  Display dot navigation
+                fluid: false              //  Support responsive design. May break non-responsive designs
+            });
+            
+        })
+        $(function () {
+            $('body').click(function (event) {
+                event.stopPropagation();
+                $('.layerCon,.layer').fadeOut();
+            })
+        })
+	</script>
+</head>
+<body>
+    <div class="head">
+        <div class="head_content">
+            <div class="head_content_logo">
+                <div><img src="res/images/logo.png" /></div>
+            </div>
+            <div class="head_content_item">
+                <div class="content_item"><a>首&nbsp;&nbsp;页</a></div>
+                <div class="content_item"><a>关于我们</a></div>
+                <div class="content_item"><a>服务领域</a></div>
+                <div class="content_item"><a>产品案例</a></div>
+                <div class="content_item"><a>行业动态</a></div>
+                <div class="content_item"><a>联系我们</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+	幻灯片开始
+	-->
+	<div class="unslider">
+		<div class="banner">
+			<ul>
+				<li class="li1">
+					<div>
+						<img src="res/images/banner/banner0-1.png">
+					</div>
+				</li>
+				<li class="li2">
+					<div onClick="javascript:location.href='idianIndex.html'" style="cursor:pointer">
+						<img src="res/images/banner/banner0-2.png">
+					</div>
+				</li>
+				<li class="li3">
+					<div>
+						<img src="res/images/banner/banner0-3.png">
+					</div>
+				</li>
+				<li class="li4">
+					<div>
+						<img src="res/images/banner/banner0-4.png">
+					</div>
+				</li>
+				<li class="li5">
+					<div>
+						<img src="res/images/banner/banner0-5.png">
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--
+	幻灯片结束
+	-->
+    <div class="content">
+    
+    </div>
+</body>
+</html>

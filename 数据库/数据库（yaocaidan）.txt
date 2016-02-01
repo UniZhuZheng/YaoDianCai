@@ -1,0 +1,21 @@
+﻿数据库（yaocaidan）
+wifigw(无线网关表)
+CREATE TABLE "wifigw" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "gwId" VARCHAR NOT NULL UNIQUE, "gwName" VARCHAR, "gwAddress" VARCHAR, "gwPort" INTEGER, "createDate" DATE, "SID" VARCHAR)
+wifiauth(无线认证表)
+CREATE TABLE "wifiauth" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "gwId" VARCHAR, "token" VARCHAR, "mac" VARCHAR, "shopId" INTEGER, "userIp" VARCHAR, "incoming" INTEGER, "outcoming" VARCHAR, "createDate" DATETIME);
+managements(运营商账号表)
+CREATE TABLE "managements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "account" VARCHAR NOT NULL UNIQUE, "password" VARCHAR, "name" VARCHAR, "createDate" DATE);
+shops(商家表)
+CREATE TABLE "shops" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "account" VARCHAR NOT NULL UNIQUE, "password" VARCHAR, "name" VARCHAR, "telPhone_1" VARCHAR, "telPhone_2" VARCHAR, "email" VARCHAR, "address" VARCHAR, "contact" VARCHAR, "createBy" INTEGER, "createDate" DATE, "area" VARCHAR, "SID" VARCHAR)
+menus(商家菜单表)
+CREATE TABLE "menus" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "name" VARCHAR, "isUsing" BOOLEAN, "tableName" VARCHAR, "codeImgName" VARCHAR, "shopId" INTEGER, "createDate" DATETIME);
+orders（订单表）
+CREATE TABLE "bills" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "number" VARCHAR, "shopId" INTEGER, "createDate" DATETIME);
+orderdish(订单菜品)
+CREATE TABLE "dishrecords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "orderNumber" VARCHAR, "dishId" INTEGER, "dishName" VARCHAR, "dishPrice" INTEGER, "dishCount" INTEGER, "createDate" DATETIME);
+menu_{商家账号}_{菜单编号}（商家菜品表）
+CREATE TABLE "menu_union_1" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "number" VARCHAR, "name" VARCHAR, "price" INTEGER, "imgName" VARCHAR, "classify" VARCHAR, "chilies" INTEGER, "description" VARCHAR, "menuId" INTEGER, "createDate" DATETIME);
+table_{商家账号}(商家对应桌号表)
+CREATE TABLE "table_union" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "name" VARCHAR, "dishIds" VARCHAR);
+order_{商家账号}(商家对应点餐下单表)
+CREATE TABLE "order_union" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "number" VARCHAR, "price" INTEGER, "status" BOOLEAN, "tableId" INTEGER, "dishIds" VARCHAR, "shopId" INTEGER, "createDate" DATETIME);

@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商家印象汇总界面</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link  type="text/css" href="/res/css/shopslist.css" rel="stylesheet" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/res/js/backpage-top.js"></script>
+    <script type="text/javascript">
+        var maxResult = 20;
+        function appendList(data) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += '<div class="shoptuanlist_td">' +
+                '<div class="shoptuanlist_td_1">' + data[i].name + '</div>' +
+                '<div class="shoptuanlist_td_2">' + data[i].tabCount + '</div>' +
+                '<div class="shoptuanlist_td_3">' + data[i].comCount + '</div>' +
+                '<div class="shoptablist_td_5" onclick="window.location.href=\'/ShopTabRecord.html?SID=' + data[i].SID + '&name=' + data[i].name + '\';"></div>' +
+                '</div>';
+            }
+            $("#Tuan_ShopList").append(html);
+        }
+
+        function search() {
+            var search = $.trim($("input[name='search']").val());
+            if (search == "") {
+                refreshShopTabList();
+            } else {
+                refreshSearchShopTabList(search);
+            }
+        }
+
+        function refreshSearchShopTabList(search) {
+            var pageselectCallback = function (page_index) {
+                $("#Tuan_ShopList").empty();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/ShopLabelAction.ashx',
+                    data: { option: 'OP_ShopLabelSearchLimit', searchKey: search, firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $("#Tuan_ShopList").empty();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopLabelAction.ashx',
+                data: { option: 'OP_ShopLabelSearchLimit_Count', searchKey: search },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+
+        function refreshShopTabList() {
+            var pageselectCallback = function (page_index) {
+                $("#Tuan_ShopList").empty();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/ShopLabelAction.ashx',
+                    data: { option: 'OP_ShopLabelLimit', firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $("#Tuan_ShopList").empty();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopLabelAction.ashx',
+                data: { option: 'OP_ShopLabelLimit_Count' },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+
+        $('document').ready(function () {
+            $(".logo_top_right span").text(userInfo.account);
+            $("input[name='search']").keypress(function (e) {
+                if (e.keyCode == 13) {
+                    search();
+                }
+            });
+            refreshShopTabList();
+        });
+
+    </script>
+</head>
+<body>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/shops/top-logo.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>用户名</span></div>
+                <div onclick="user_exit();" style="cursor:pointer"><img src="/res/images/quit.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"><div class="right_tab_font tab_font_shop">0</div></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"><div class="right_tab_font tab_font_menu">0</div></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"><div class="right_tab_font tab_font_tuan">0</div></div>
+            <div class="right_tab_auth" onclick="right_tab_auth();"><div class="right_tab_font tab_font_auth">0</div></div>
+            <div class="right_tab_tab"  onclick="right_tab_tab();" ><div class="right_tab_font tab_font_tab" >0</div></div>
+            <div class="right_tab_chat" onclick="right_tab_chat();"><div class="right_tab_font tab_font_chat">0</div></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle" onclick="right_tab_tab();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;"><span>印象评价</span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+
+            <div class="navigation_center">
+                <input name="search" />
+                <div class="navigation_center_search" onclick="search();"></div>
+            </div>
+        </div>
+
+        <div class="shoptuanlist">
+            <div class="shoptuanlist_th">
+                <div class="shoptuanlist_th_1">商家名称</div>
+                <div class="shoptuanlist_th_2">印象标签数</div>
+                <div class="shoptuanlist_th_3">评价数</div>
+            </div>
+            <div id="Tuan_ShopList"></div>
+        </div>
+
+        <div class="pagination">
+            <div id="Pagination">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

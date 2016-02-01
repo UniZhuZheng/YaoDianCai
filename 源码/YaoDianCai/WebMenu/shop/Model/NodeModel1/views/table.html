@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>桌号列表</title>
+    <script type="text/javascript" src="./js/refresh.js"></script>
+</head>
+
+<body>
+    <div id="YDC_TablePage" data-dom-cache="true" data-role="page">
+        <div id="Header" data-role="header" data-position="fixed">
+            <a id="TableBackBtn" href="#" data-rel="back" data-role="button" data-icon="back"><span>返回</span></a>
+            <div class="right">
+                <span id="Table_ShopName"></span>
+            </div>
+            <h1 id="TableNameSelected" style="display:none;float:right;">餐桌号</h1>
+        </div>
+
+        <div id="Content" data-role="content" style="text-align: center;">
+            <div id="TableList" data-type="horizontal" class="ui-grid-b">
+            </div>
+        </div>
+        <div data-role="popup" id="TablePopup" class="ui-content" style="max-width:340px; padding-bottom:1em;">
+            <h2>提示:</h2>
+            <h3>桌号不能为空!</h3>
+            <a href="#" class="ui-btn ui-mini ui-corner-all ui-shadow" data-rel="back">确定</a>
+        </div>
+        <script type="text/javascript" src="js/table.js"></script>
+    </div>
+</body>
+
+</html>  

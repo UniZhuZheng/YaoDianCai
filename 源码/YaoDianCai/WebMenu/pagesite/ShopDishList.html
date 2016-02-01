@@ -1,0 +1,425 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商家菜品界面</title>
+    <link href="/res/css/pagesite.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/layer/layer.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.form.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/res/js/shopsitetop.js"></script>
+    <script type="text/javascript">
+        var maxResult = 20;
+        var tableUpdateCount = 0;
+        var stateSelectName = "";
+        var layerDiv;
+        function ShopDisdOptionHide() {
+            layer.close(layerDiv);
+        }
+        function MenuStateShow(div_id, name) {
+            layerDiv = $.layer({
+                shade: [0.3, '#000', true],
+                shadeClose: true,
+                type: 1,
+                move: ['.xubox_title', false],
+                area: ['180px', 'auto'],
+                title: '菜品状态修改',
+                border: [10, 0.5, '#000', true],
+                page: { dom: '#' + div_id },
+                close: function (index) {
+                    layer.close(index);
+                }
+            });
+            stateSelectName = name;
+        }
+        function MenuStateSelect(state) {
+            if (stateSelectName == null || stateSelectName == "") {
+                layer.alert("菜品名获取失败，请重新操作。", 12);
+                return;
+            }
+            $.ajax({
+                type: 'post',
+                url: '/action/DishAction.ashx',
+                data: { option: 'OP_ChangeDishState', SID: SID, name: stateSelectName, state: state },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        refreshMenuList();
+                        ShopDisdOptionHide();
+                        stateSelectName = "";
+                    } else {
+                        layer.alert("菜品状态修改失败。", 12);
+                    }
+                }
+            });
+        }
+        function MenuUpdateShow(div_id) {
+            layerDiv = $.layer({
+                shade: [0.3, '#000', true],
+                shadeClose: true,
+                type: 1,
+                move: ['.xubox_title', false],
+                area: ['349px', 'auto'],
+                title: '菜品信息修改',
+                border: [10, 0.5, '#000', true],
+                page: { dom: '#' + div_id },
+                close: function (index) {
+                    layer.close(index);
+                }
+            });
+        }
+        function GetMenuInfo(name) {
+            $.ajax({
+                type: 'post',
+                url: '/action/DishAction.ashx',
+                data: { option: 'OP_GetDishByName', SID: SID, name: name },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg != null) {
+                        $("input[name='numberUpdate']").val(msg.number);
+                        $("input[name='nameUpdate']").val(msg.name);
+                        $("input[name='propertyUpdate']").val(msg.property);
+                        $("input[name='typeUpdate']").val(msg.type);
+                        $("input[name='priceUpdate']").val(msg.price);
+                        $("#updateContent").val(msg.content);
+
+                        MenuUpdateShow('Menu_Update');
+                    } else {
+                        layer.alert("菜品信息获取失败。", 12);
+                    }
+                }
+            });
+        }
+        function MenuUpdate() {
+            var name = $.trim($("input[name='nameUpdate']").val());
+            if (name == "") {
+                layer.alert("菜品名不可为空。", 12);
+                return;
+            }
+            var number = $.trim($("input[name='numberUpdate']").val());
+            var property = $.trim($("input[name='propertyUpdate']").val());
+            var type = $.trim($("input[name='typeUpdate']").val());
+            var price = $.trim($("input[name='priceUpdate']").val());
+            if (price == "") {
+                layer.alert("菜品价格不可为空。", 12);
+                return;
+            }
+            if (isNaN(price)) {
+                layer.alert("菜品价格必须为数字", 12);
+                return;
+            }
+            var content = $.trim($("#updateContent").val());
+            $.ajax({
+                type: 'post',
+                url: '/action/DishAction.ashx',
+                data: { option: 'OP_UpdateOneDish', SID: SID, number: number, name: name, property: property, type: type, price: price, content: content },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        refreshMenuList();
+                        ShopDisdOptionHide();
+                    } else {
+                        layer.alert("菜单信息修改失败。", 12);
+                    }
+                    $("input[name='numberUpdate']").val("");
+                    $("input[name='nameUpdate']").val("");
+                    $("input[name='propertyUpdate']").val("");
+                    $("input[name='typeUpdate']").val("");
+                    $("input[name='priceUpdate']").val("");
+                    $("#updateContent").val("");
+                },
+                error: function () {
+                    layer.alert("网络连接出错，请重试。", 12);
+                }
+            });
+        }
+        function appendList(data) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += '<div class="shopsdishlist_td">' +
+                    '<div class="shopsdishlist_td_1">' + data[i].number + '</div>' +
+                    '<div class="shopsdishlist_td_2">' + data[i].name + '</div>' +
+                    '<div class="shopsdishlist_td_3">' + data[i].type + '</div>' +
+                    '<div class="shopsdishlist_td_4">' + data[i].property + '</div>' +
+                    '<div class="shopsdishlist_td_5">' + data[i].price + '</div>' +
+                    '<div class="shopsdishlist_td_6" onclick="MenuStateShow(\'Menu_State\',\'' + data[i].name + '\')"><image src="' + data[i].stateImg + '" width="68" height="32"></image></div>' +
+                    '<div class="shopsdishlist_td_7" onclick="MenuImgShow(\'MenuImg_Update\',\'' + data[i].name + '\')"><image src="' + data[i].imgCode + '" height="50"></image></div>' +
+                    '<div class="shopsdishlist_td_8"><div class="shopsdish_update" onclick="GetMenuInfo(\'' + data[i].name +
+                        '\');"></div></div>' +
+                '</div>';
+            }
+            $(".shopsdishlist_center").append(html);
+        }
+
+        function refreshMenuList() {
+            var pageselectCallback = function (page_index) {
+                $(".shopsdishlist_td").remove();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/DishAction.ashx',
+                    data: { option: 'OP_ShopListLimitDishes', SID: SID, firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data != null) {
+                            appendList(data);
+                        } else {
+                            $(".shopsdishlist_td").remove();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/DishAction.ashx',
+                data: { option: 'OP_ShopCountLimitDishes', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+        function refreshTopInfo() {
+            $.ajax({
+                type: 'post',
+                url: '/action/TableAction.ashx',
+                data: { option: 'OP_CountTable', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#TableCount").text(msg.count);
+                    }
+                }
+            });
+
+            $.ajax({
+                type: 'post',
+                url: '/action/DishAction.ashx',
+                data: { option: 'OP_ShopCountLimitDishes', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#MenuCount").text(msg.count);
+                    }
+                }
+            });
+        }
+        $('document').ready(function () {
+            $(".logo_top_right span").text(decodeURI(account));
+            $(".navigation_left_name").text(decodeURI(name));
+            $("#ShopName").text(decodeURI(name));
+            refreshMenuList();
+            refreshTopInfo();
+        });
+    </script>
+</head>
+<body>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/top-logo-shop.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>admin</span></div>
+                <div onclick="user_exit();" style="cursor:pointer;"><img src="/res/images/arrows-bottom.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"></div>
+            <div class="right_tab_dish" onclick="right_tab_dish();"></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"></div>
+            <!--<div class="right_tab_auth" onclick="right_tab_auth();"></div>-->
+            <div class="right_tab_tab" onclick="right_tab_tab();"></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle"  onclick="right_tab_shop();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;">
+                    <div class='logo_dish'></div><span class="navigation_left_name"></span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+        </div>
+        
+        <div class="shopsdishlist">
+            <div class="shopsdishlist_top">
+                <div class="dish_top_left">
+                    <div class="dish_top_left_div">
+                        <div>商家名：</div>
+                        <div class="div_font" id="ShopName"></div>
+                    </div>
+                    <div class="dish_top_left_div">
+                        <div>菜品数：</div>
+                        <div class="div_font" id="MenuCount">25</div>
+                    </div>
+                </div>
+                <div class="dish_top_center">
+                    <div class="dish_top_left_div">
+                        <div>餐桌数：</div>
+                        <div class="div_font TableCount_div" id="TableCount"></div>
+                    </div>
+                    <div class="dish_top_left_div">
+                        <div>模&nbsp;&nbsp;&nbsp;板：</div>
+                        <div class="div_font">默认</div>
+                    </div>
+                </div>
+                <!--
+                <div class="dish_top_right">
+                    <div class="dish_top_right_div dish_top_right_menu" onclick="MenuAddShow('Menu_Add');"></div>
+                    <div class="dish_top_right_div dish_top_right_tem" onclick="TemplateShow('Template_Div');"></div>
+                    <div class="dish_top_right_div dish_top_right_table" onclick="TableUpdateShow('Table_Update');"></div>
+                </div>-->
+            </div>
+            <div class="shopsdishlist_center">
+                <div class="shopsdishlist_th">
+                    <div class="shopsdishlist_th_1">菜品编号</div>
+                    <div class="shopsdishlist_th_2">菜品名称</div>
+                    <div class="shopsdishlist_th_3">菜品分类</div>
+                    <div class="shopsdishlist_th_4">菜品口味</div>
+                    <div class="shopsdishlist_th_5">价格</div>
+                    <div class="shopsdishlist_th_6">菜品状态</div>
+                    <div class="shopsdishlist_th_7">菜品图片</div>
+                </div>
+            </div>
+        </div>
+        <div class="pagination">
+            <div id="Pagination">
+        </div>
+        </div>
+    </div>
+   <!--更改菜品的状态-->
+   <div id="Menu_State" class="menu_state">
+        <div class="menu_state_select">
+            <div class="menu_state_select_xsz" onclick="MenuStateSelect(0)"></div>
+            <div class="menu_state_select_wxs" onclick="MenuStateSelect(1)"></div>
+            <!--<div class="menu_state_select_wsj" onclick="MenuStateSelect(2)"></div>-->
+        </div>
+   </div>
+
+
+    <!--  添加菜品  -->
+    
+    <!--<div id="Menu_Add" class="menu_add" >
+        <div class="menu_add_row">
+            <div class="menu_add_font">菜品名称：</div>
+            <div><input name="name" type="text" runat="server" id="name"/></div>
+        </div>
+        <div class="menu_add_row">
+            <div class="menu_add_font">菜品编号：</div>
+            <div><input name="number" type="text" runat="server" id="number"/></div>
+        </div>
+        
+        <div class="menu_add_row">
+            <div class="menu_add_font">菜品分类：</div>
+            <div><input name="type" type="text" runat="server" id="type"/></div>
+        </div>
+        <div class="menu_add_row">
+            <div class="menu_add_font">菜品口味：</div>
+            <div><input name="property" type="text" runat="server" id="property"/></div>
+        </div>
+        <div class="menu_add_row">
+            <div class="menu_add_font">菜品价格：</div>
+            <div><input name="price" type="text" runat="server" id="price"/></div>
+        </div>
+        <div class="menu_add_row menu_add_area">
+            <div class="menu_add_font">菜品介绍：</div>
+            <div>
+                <textarea rows="3" cols="20" id="content">
+                </textarea>
+
+            </div>
+        </div>
+        <div class="menu_add_row" style="float:right;">
+            <div class="menu_add_cancel"  onclick="ShopDisdOptionHide();"></div>
+            <div class="menu_add_confirm" onclick="MenuAdd();"></div>
+        </div>
+    </div>-->
+
+    <!--  修改信息菜品  -->
+    <div id="Menu_Update" class="menu_update" >
+        <div class="menu_update_row" >
+            <div class="menu_update_font">菜品名称：</div>
+            <div><input name="nameUpdate" type="text" style="color:#AAAAAA;" readonly/></div>
+        </div>
+        <div class="menu_update_row" style="display:none;">
+            <div class="menu_update_font">菜品编号：</div>
+            <div><input name="numberUpdate" type="text" style="color:#AAAAAA;" readonly/></div>
+        </div>
+        
+        <div class="menu_update_row" style="display:none;">
+            <div class="menu_update_font">菜品分类：</div>
+            <div><input name="typeUpdate" type="text" style="color:#AAAAAA;" readonly/></div>
+        </div>
+        <div class="menu_update_row" style="display:none;">
+            <div class="menu_update_font">菜品口味：</div>
+            <div><input name="propertyUpdate" type="text" style="color:#AAAAAA;" readonly/></div>
+        </div>
+        <div class="menu_update_row">
+            <div class="menu_update_font">菜品价格：</div>
+            <div><input name="priceUpdate" type="text" /></div>
+        </div>
+        <div class="menu_update_row menu_update_area" style="display:none;">
+            <div class="menu_update_font">菜品介绍：</div>
+            <div>
+                <textarea rows="3" cols="20" id="updateContent">
+                </textarea>
+            </div>
+        </div>
+        <div class="menu_update_row" style="float:right;">
+            <div class="menu_update_cancel"  onclick="ShopDisdOptionHide();"></div>
+            <div class="menu_update_confirm" onclick="MenuUpdate();"></div>
+        </div>
+    </div>
+
+    <!--桌号更改-->
+    <!--<div id="Table_Update" class="table_update">
+        <div class="table_update_top">
+            <div class="table_add_button" onclick="TableAdd();"></div>
+            <div class="table_add_input"><input type="text" id="tableNumber"/></div>
+            <div class="table_add_font">请输入新桌号名称：</div>
+        </div>
+        <div class="table_update_content">
+        </div>
+        <div class="table_update_bottom">
+            <div class="table_update_cancle" onclick="ShopDisdOptionHide();"></div>
+        </div>
+    </div>-->
+    <!--面板更改-->
+    <!--<div id="Template_Div" class="template_div">
+        <div class="template_div_content">
+            <div class="template_div_select">
+                <div class="template_div_select_top">
+                    <div class="template_div_select_top_img template_div_select_top_img_select"></div>
+                    <div class="template_div_select_top_font">默认模板一</div>
+                </div>
+                <div class="template_div_select_img"></div>
+            </div>
+        </div>
+        <div class="template_div_bottom">
+            <div class="template_div_cancle" onclick="ShopDisdOptionHide();"></div>
+            <div class="template_div_confirm"></div>
+        </div>
+    </div>-->
+    
+    <!--菜品图片修改-->
+    <!--<div id="MenuImg_Update" class="menuimg_update">
+        <div class="menuimg_update_top">
+            <form id="menuimgform" method="post" autocomplete="off" enctype="multipart/form-data">
+                <input id="menuimgfile" name="postfile" type="file" />
+                <input type="submit" value="上传保存" onclick="MenuImgSubmit();" style="width:80px;"/>
+        </div>
+        <div class="menuimg_update_bottom">
+            <div class="menuimg_update_cancle" onclick="ShopDisdOptionHide();"></div>
+        </div>
+    </div>-->
+</body>
+</html>

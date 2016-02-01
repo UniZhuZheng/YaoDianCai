@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>音乐列表</title>
+    <link href='res/css/music.css' rel='stylesheet' type='text/css' />
+    <script type='text/javascript' src='res/js/jquery.min.js'></script>
+    <script type="text/javascript" src="res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="plugin/layer.min.js" ></script>
+    <script type="text/javascript" src="ShopInfo/contants.js"></script>
+    <script type='text/javascript' src='res/js/music.js'></script>
+</head>
+
+<body style="background:#b82e23;">
+<div id="YDC_TablePage">
+
+    <div class="bottombar">
+        <div id="flippage">返回首页</div>
+    </div>
+    <div class="topbar" style="width: 100%;">
+        <img src="res/images/top.png" style="width: 100%;">
+    </div>
+    <div class="musictop">
+        <div class="musicimg"><img src="res/images/videoimg.png" style="width: 100%;height:100%;"></div>
+        <div class="musicplay">
+            <div class="musicplayname"></div>
+            <div class="musicplayaudio">
+                <div class="musicplaypre" onclick="musicplaypre();"></div>
+                <div class="musicplayplay" onclick="musicplayplay();"></div>
+                <div class="musicplaystop" onclick="musicplaystop();"></div>
+                <div class="musicplaynext" onclick="musicplaynext();"></div>
+            </div>
+
+        </div>
+    </div>
+    <audio id="media" preload="auto" loop="loop" ><!--autoplay="autoplay"-->
+        <source src="ShopInfo/music/牧笛.mp3" type="audio/mpeg">
+    </audio>
+    <div class="videolistdiv">
+        <!--<div class="videoitem">
+            <div class="videonamecount">
+                <div class="videoname">1.龙枪传奇主题音乐剧</div>
+                <div class="videopop">Pop</div><div class="videofont">点播次数：</div><div class="videocount">10</div>
+            </div>
+        </div>-->
+
+    </div>
+</div>
+</body>
+
+</html>  

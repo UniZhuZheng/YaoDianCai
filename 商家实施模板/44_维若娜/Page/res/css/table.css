@@ -1,0 +1,169 @@
+*{font-family:Georgia,微软雅黑, Arial, 宋体; -webkit-text-size-adjust:none;}
+.bottombar
+{
+    font-family:'Georgia', 微软雅黑,Arial,宋体;
+    position: absolute;bottom: 5px;
+    width: 100%;height: 30px;
+    background: #5b3a61 ;
+    filter:alpha(opacity=90);
+    -moz-opacity:0.9;
+    -khtml-opacity: 0.9;
+    opacity: 0.9;
+    padding: 0;
+    margin: 5px 0 0;z-index: 99;
+    text-align: center;
+}
+
+.bottombar #flippage
+{
+    cursor: pointer;
+    font-size:16px;
+    color: #ffffff;
+    margin-top:4px;
+}
+body
+{
+    padding:0px;
+    margin:0px;
+    }
+#YDC_TablePage
+{
+    width:100%;
+    height:100%;
+    padding:0px;
+    margin:0px;
+
+    }
+#table_header
+{
+    width:100%;
+    height:50px;
+    background:transparent url(../images/top.png) no-repeat 0 0;
+	background-repeat:repeat-x;
+	background-size: auto 100%;
+    }
+
+    
+#table_inputTextDiv
+{
+    padding-left:4%;
+    height:40px;
+    line-height:38px;
+    }
+.table_tip_text
+{
+    font-size:30px;
+    color: #281840;
+    font-weight:bold;
+}
+    
+#table_inputText
+{
+    width:25%;
+    border-radius:0.2em;
+    background-color:#d1d1d1;
+    border:solid #ebb0aa 1px;
+    height: 20px;
+    }
+    
+#table_select_text
+{
+    padding-top: 10px;
+    /*height:20px;*/
+    padding-left:4%;
+    
+    }    
+    
+#menu_list
+{
+    /*width:100%;*/
+    overflow: auto;
+    -webkit-overflow-scrolling:touch;
+    }
+    
+.menu_list_item
+{
+    width:33%;
+    float:left;
+    text-align:center;
+    margin:10px auto;
+    padding: 0;
+    }   
+    
+ .menu_list_tableNum
+ {
+    border: 1px solid #281840;
+    border-radius: 0.2em;
+    color: #fff;
+    cursor: pointer;
+    padding: 6px 20px;
+    width: 60px;
+}
+     
+  #YDC_footer
+  { 
+      width:100%;
+      height:50px;
+      margin:0 auto; 
+      background:transparent url(../images/footer.png) no-repeat 0 0;
+	  background-repeat:repeat-x;
+	  background-size: auto 100%;
+      }
+
+  #footer_confirmDiv
+  {
+      cursor:pointer;
+      float:left;
+      margin-left:5px;
+      width:40px;
+      border :solid 1px #281840;
+      padding:5px 12px;
+      border-radius:0.2em;
+      
+      color:White;
+      text-align:center;
+      position: absolute;
+      bottom: 3px;
+      font-weight:bold;
+      
+    background: -webkit-gradient(linear, left top, left bottom, from(#5b3a61 ), to(#281840 ), color-stop(50% #281840), color-stop(50% #281840));
+    background: -webkit-linear-gradient(top, #5b3a61 , #281840 );
+    background: -moz-linear-gradient(top, #5b3a61 ,  #281840 );
+    background: -ms-linear-gradient(top, #5b3a61 , #281840 );
+    background: -o-linear-gradient(top, #5b3a61 ,  #281840 );
+    background: linear-gradient(top, #5b3a61 ,  #281840 );
+}    
+
+      
+  #footer_shopNameDiv
+  {
+       width:113px;
+        height:32px;
+        background:url(../images/logo.png);
+	    position:absolute;
+	    right:5px;
+	    bottom:3px;
+	    background-size:contain;
+	    background-repeat:no-repeat;
+      }    
+
+ .table_number_click
+ {
+     border: 1px solid #5b3a61;
+     color: #281840;
+     background-image: -webkit-gradient(linear, left top, left bottom, from(#5b3a61 ), to(#5b3a61 ), color-stop(50% #5b3a61), color-stop(50% #5b3a61));
+    background-image: -webkit-linear-gradient(top, #5b3a61 , #5b3a61 );
+    background-image: -moz-linear-gradient(top, #5b3a61 ,  #5b3a61 );
+    background-image: -ms-linear-gradient(top, #5b3a61 , #5b3a61 );
+    background-image: -o-linear-gradient(top, #5b3a61 ,  #5b3a61 );
+    background-image: linear-gradient(top, #5b3a61 ,  #5b3a61 );
+}
+.table_number_normal
+{
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#5b3a61 ), to(#281840 ), color-stop(50% #281840), color-stop(50% #281840));
+    background-image: -webkit-linear-gradient(top, #5b3a61 , #281840 );
+    background-image: -moz-linear-gradient(top, #5b3a61 ,  #281840 );
+    background-image: -ms-linear-gradient(top, #5b3a61 , #281840 );
+    background-image: -o-linear-gradient(top, #5b3a61 ,  #281840 );
+    background-image: linear-gradient(top, #5b3a61 ,  #281840 );
+}     

@@ -1,0 +1,764 @@
+body a { text-decoration: none;}
+.right { float: right;}
+/* ------------- index.html-css ------------- */
+#YDC_SplashPage 
+{
+    background:url(../img/splash.jpg) no-repeat;
+    background-size:cover;
+    height: 100%;
+    width: 100%;
+}
+/* ------------- main.html-css ------------- */
+#YDC_MainPage{background: url(../img/bg.jpg);}
+#YDC_MainPage #Header{height: 40px;background: url(../img/top.png);background-size: contain;}
+#YDC_MainPage #Header .ui-select{ margin: 1px 0 0 5px; }
+#TypeSel-button
+{
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FB4A4A ), to(#01769d ), color-stop(50% #0290bf), color-stop(50% #0290bf));
+    background-image: -webkit-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -moz-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -ms-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -o-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    padding:6px 30px 6px 8px;
+    text-shadow: none;
+}
+#TypeSel-button span{ color: #efefef; font-size: 1.2em; line-height: 1.4em;}
+#OptionBtn{ float: right;margin: -1px 5px 10px 0px; }
+#OptionBtn .ui-icon-more:after{ display: none;}
+#OptionBtn .ui-icon-more
+{
+    border: 0 none;
+    border-radius: 0;
+    background:transparent url(../img/more.png);
+    background-size: contain;
+    height: 38px;
+    width: 32px;
+}
+#Main_ShopName
+{
+    float: right;
+    font:1.2em normal;
+    line-height: 2.0em;
+    text-shadow: -1px -1px 0 #EFEFEF, 1px 1px 0 #333333, 1px 1px 0 #5A5A5A;
+}
+#TypeSel-listbox-popup .ui-selectmenu{ min-width: 6em;border: 0 none;}
+#OptionSel-listbox-popup .ui-selectmenu{ min-width: 8em;border: 0 none;}
+#OptionSel-listbox-popup a{ padding-left: 40px;}
+#OptionSel-listbox-popup a:before
+{
+    background:transparent url(../img/order.png);
+    background-size: contain;
+    content: "";
+    display: block;
+    height: 18px;
+    margin-left: -25px;
+    position: absolute;
+    width: 20px;
+}
+#OptionSel-listbox-popup .ui-first-child a:before{background:url(../img/tuan.png);background-size: contain;}
+#OptionSel-listbox-popup .ui-last-child a:before{background:url(../img/order.png);background-size: contain;}
+#YDC_MainPage #Content ul li
+{
+    box-shadow: 0px 0px 5px #333333;
+    background: #eee;
+    height: 80px;
+    margin: 8px;
+}
+.info{ width: 100%;color: #5A5A5A; font-family: "Microsoft YaHei";}
+.info td{ text-align: right;}
+.info .left{ text-align: left;width: 96px;padding: 1px;}
+.info .left img{width: 96px;height: 72px;border: #a5a5a5 1px solid;}
+.info .middle{text-align: left;}
+.middle .dish-type,.dish-count{ display: none;}
+.middle .dish-name
+{
+    color: #333333;
+    float: left;
+    font-size: 1.3em;
+    height: 26px;
+    margin-bottom: 8px;
+    margin-top: 5px;
+    overflow: hidden;
+    padding: 0 0 0 4px;
+    width: 100%;
+}
+.middle .dish-kind
+{
+    color: #777;
+    float: left;
+    font-size: 1em;
+    padding: 6px 0 0 6px;
+    width: 100%;
+}
+.info .right{ width: 70px;}
+.right .hide{ display: none;}
+.right .dish-price{float: right;width: 100%;margin: 2px 10px 0 0;}
+.right .dish-pricenum{float: right;color: #ee0000;font-size: 1.5em;}
+.right .dish-priceyuan{float: right;margin: 7px 0 0 2px;font-size: 1em;}
+.right .dishselect-btn,.right .dishselected-btn
+{
+    border: none;
+    float: right;
+    height: 32px;
+    margin: 2px 5px 0 0;
+}
+.right .dishselect-btn img,.right .dishselected-btn img{height: 32px;width: 64px;}
+#Footer{ height: 40px;background: #33b5e5;}
+#TableBtn
+{
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FB4A4A ), to(#01769d ), color-stop(50% #0290bf), color-stop(50% #0290bf));
+    background-image: -webkit-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -moz-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -ms-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -o-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    color: #efefef;
+    float: left;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    margin:5px 0 0 10px;
+    padding: 4px 6px;
+    text-shadow: none;
+}
+#CartBtn{float: right; margin: 5px 10px 0 0;padding: 0;}
+#CartBtn.ui-icon-cart
+{
+    border: none;
+    box-shadow: 0 0 0;
+    background:transparent url(../img/cart.png) no-repeat;
+    background-size: contain;
+    height: 40px;
+    width: 50px;
+}
+#CartBtn.ui-icon-cart:after{ display: none;}
+#CartBtn span
+{
+    color: #eee;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.2em;
+    padding-left: 8px;
+    vertical-align: top;
+}
+/* ------------- table.html-css ------------- */
+#YDC_TablePage{background: url(../img/bg.jpg);}
+#Header{ height: 40px;background: url(../img/top.png); background-size: contain;}
+#TableBackBtn
+{
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FB4A4A ), to(#01769d ), color-stop(50% #0290bf), color-stop(50% #0290bf));
+    background-image: -webkit-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -moz-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -ms-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -o-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    float: left;
+    margin-left: 0;
+    margin-top: 2px;
+    padding-bottom: 3px;
+    padding-top: 5px;
+    text-shadow: none;
+}
+#TableBackBtn span{color: #eee;font-size: 1.2em;line-height: 1.4em;}
+#Table_ShopName
+{
+    float: right;
+    font-size: 1.2em;
+    line-height: 2.0em;
+    padding-right: 10px;
+    text-shadow: -1px -1px 0 #EFEFEF, 1px 1px 0 #333333, 1px 1px 0 #5A5A5A;
+}
+#YDC_TablePage #Content{padding: 8px 0px 0px;}
+.ui-block-a a,.ui-block-b a,.ui-block-c a
+{
+    color: #5a5a5a;
+    font-size: 1em;
+    font-weight: normal;
+    padding: 8px 0;
+    text-align: center;
+    width: 6em;
+}
+.ui-block-a a.selected,.ui-block-b a.selected,.ui-block-c a.selected
+{
+    color: #eee;
+    background-color: #0099cc;
+    box-shadow: 0 0 12px #3388cc;
+    text-shadow: 0 0 0;
+}
+/* ------------- cart.html-css ------------- */
+#YDC_CartPage{background: url(../img/bg.jpg);}
+#YDC_CartPage #Header{height: 40px; background: url(../img/top.png);background-size: contain;}
+#CartBackBtn
+{
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FB4A4A ), to(#01769d ), color-stop(50% #0290bf), color-stop(50% #0290bf));
+    background-image: -webkit-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -moz-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -ms-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -o-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    float: left;
+    margin-top: 2px;
+    margin-left: 0;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    text-shadow: none;
+}
+#CartBackBtn span{color: #eee;font-size: 1.2em;line-height: 1.4em;}
+#YDC_CartPage #Header .right{ float: right;}
+#Cart_ShopName
+{
+    color: #111;
+    float: right;
+    font-size: 1.2em;
+    line-height: 38px;
+    padding-right: 10px;
+    text-shadow: -1px -1px 0 #fff,1px 1px 0 #333,1px 1px 0 #444;
+}
+#YDC_CartPage #Content{ margin: 4px; }
+#YDC_CartPage #Content ul li{ padding: 6px; border-width: 1px 1px;margin: 1px;}
+#YDC_CartPage #Content ul li .delete,.minus,.plus{float: left;width: 24px;height: 24px;}
+#YDC_CartPage #Content ul li .delete{background: url(../img/del.png);background-size: contain;}
+#YDC_CartPage #Content ul li .minus{background: url(../img/minus.png);background-size: contain;}
+#YDC_CartPage #Content ul li .plus{background: url(../img/plus.png);background-size: contain;}
+#YDC_CartPage #Content ul li .name{float: left;
+    height: 20px;
+    margin: 3px 0 0 5px;
+    overflow: hidden;
+    width: 10em;}
+#YDC_CartPage #Content ul li .name span{font-size: 1em;line-height: 1em;}
+#YDC_CartPage #Content ul li .count{float: left;width: 1em;margin:0 4px;}
+#YDC_CartPage #Content ul li .count span{ float: right; font-size: 1em; line-height: 1.5em;}
+#YDC_CartPage #Content ul li .price{ float: right;width: 3em;margin-left: 4px;}
+#YDC_CartPage #Content ul li .price .number
+{
+    color: #e00;
+    float: right;
+    font-size: 1.4em;
+    line-height: 1.2em;
+}
+#YDC_CartPage #Content ul li .price .unit{float: right;margin: 4px 4px 0 1px;font-size: 1em;}
+#YDC_CartPage #Footer{border:none;background: transparent;}
+#YDC_CartPage #Footer table{width: 100%; height: 100%;margin: 0 auto;}
+#YDC_CartPage #Footer table td{ padding: 1px;}
+.footbar { width: 100%; background: #50B3D8;}
+.footbar .footbar-a{ width: 35%;padding-left: 15px;text-align: right;}
+.footbar .footbar-b{ width: 35%;padding-left: 10%; text-align: right;}
+.footbar .footbar-c{text-align: right;}
+.footbar .footbar-a span,.footbar-b span,.footbar-c span
+{
+    color: #111;
+    float: left;
+    font-size: 1.4em;
+    line-height: 1.4em;
+}
+.footbar-b .count{ margin-left: 1px;font-size: 1.5em;line-height: 1.3em;}
+.footbar-c .price{ float: right; color: #e00;font-size: 1.5em;}
+.footbar-c .yuan
+{
+    float: right;
+    font-size: 1.2em;
+    margin-left: 1px;
+    padding-right: 15px;
+    line-height: 1.8em;
+}		
+#CartSubmit.ui-btn
+{
+    background-color: #DC4748;
+    color: #eee;
+    font-weight: bold;
+    height: 32px;
+    margin: 0;
+    padding: 3px 0 8px;
+	text-align: center;
+	text-shadow: none;
+    width: 99%;
+}
+#CartSubmit.ui-btn
+{
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FB4A4A ), to(#01769d ), color-stop(50% #0290bf), color-stop(50% #0290bf));
+    background-image: -webkit-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -moz-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -ms-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -o-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    text-shadow: none;
+}
+#CartSubmit.ui-btn span{font-family: Helvetica, Arial, sans-serif;font-size: 1.5em;line-height: 2.0em;}
+.Cart_Confirm_Bac
+{
+    display:none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width:100%;    
+    background-color:rgba(10%,20%,30%,0.3);
+    z-index:9999;
+}
+.Cart_Confirm {
+    border-radius: 0.2em;
+    width: 96%;
+    margin-top:20px;
+    margin-left:2%;
+}
+.Cart_Confirm_top {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#33B5E5 ), to(#0099CC ), color-stop(50% #0099CC), color-stop(50% #0099CC));
+    background-image: -webkit-linear-gradient(top, #33B5E5 , #0099CC );
+    background-image: -moz-linear-gradient(top, #33B5E5 ,  #0099CC );
+    background-image: -ms-linear-gradient(top, #33B5E5 , #0099CC );
+    background-image: -o-linear-gradient(top, #33B5E5 ,  #0099CC );
+    background-image: linear-gradient(top, #33B5E5 ,  #0099CC );
+    border-left: 1px solid #33B5E5;
+    border-radius: 0.2em 0.2em 0 0;
+    border-right: 1px solid #33B5E5;
+    float: left;
+    font-size: 24px;
+    height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    width: 96%;
+}
+
+.Cart_Confirm_top > div {
+    color: #FFFFFF;
+    margin-top: 8px;
+}
+.Cart_Confirm_content {
+    background-color: #FFFFFF;
+    float: left;
+    margin-top: 47px;
+    overflow: auto;
+    width: 100%;
+   
+    
+    border-left: 1px solid #33B5E5;
+    border-right: 1px solid #33B5E5;
+}
+
+.Cart_Confirm_item {
+    border-bottom: 1px solid #D5D5D5;
+    float: left;
+    height: 30px;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 10px;
+    width: 98%;
+}
+.Cart_Confirm_item_name {
+    float: left;
+    width: 60%;
+    height:20px;
+    overflow:hidden;
+}
+
+.Cart_Confirm_item_num {
+    float: left;
+    width: 20%;
+}
+.Cart_Confirm_item_price
+{
+    float: left;
+}
+
+.Cart_Confirm_bottom 
+{
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#33B5E5 ), to(#0099CC ), color-stop(50% #0099CC), color-stop(50% #0099CC));
+    background-image: -webkit-linear-gradient(top, #33B5E5 , #0099CC );
+    background-image: -moz-linear-gradient(top, #33B5E5 ,  #0099CC );
+    background-image: -ms-linear-gradient(top, #33B5E5 , #0099CC );
+    background-image: -o-linear-gradient(top, #33B5E5 ,  #0099CC );
+    background-image: linear-gradient(top, #33B5E5 ,  #0099CC );
+    bottom: 50px;
+    color: #FFFFFF;
+    font-size: 18px;
+    height: 30px;
+    line-height: 25px;
+    position: absolute;
+    width: 96%;
+   border-left: 1px solid #33B5E5;
+    border-right: 1px solid #33B5E5;
+}
+.Cart_Confirm_bottom_table
+{
+    color: #FFFFFF;
+    float: left;
+    font-size: 20px;
+    margin-top: 3px;
+    margin-left:2%;
+    width: 50%;    
+}
+.Cart_Confirm_bottom_num {
+    color: #FFFFFF;
+    float: left;
+    font-size: 20px;
+    margin-top: 3px;
+    margin-left:2%;
+    width: 23%;
+}
+.Cart_Confirm_bottom_price
+{
+    color: #FFFFFF;
+    float: left;
+    font-size: 20px;
+    margin-top: 3px;
+    width: 23%;
+}
+.Cart_Confirm_bottom_bottom
+{
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#33B5E5 ), to(#0099CC ), color-stop(50% #0099CC), color-stop(50% #0099CC));
+    background-image: -webkit-linear-gradient(top, #33B5E5 , #0099CC );
+    background-image: -moz-linear-gradient(top, #33B5E5 ,  #0099CC );
+    background-image: -ms-linear-gradient(top, #33B5E5 , #0099CC );
+    background-image: -o-linear-gradient(top, #33B5E5 ,  #0099CC );
+    background-image: linear-gradient(top, #33B5E5 ,  #0099CC );
+    border-radius: 0 0 0.2em 0.2em;
+    float: left;
+    font-size: 20px;
+    height: 50px;
+    position: absolute;
+    text-align: center;
+    bottom: 50px;
+    width: 96%;   
+    border-left: 1px solid #33B5E5;
+    border-right: 1px solid #33B5E5; 
+}
+.Cart_Confirm_bottom_cancle
+{
+    border: 1px solid #D17560;
+    border-radius: 0.2em;
+    margin-left:2%;
+    bottom: 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font-weight: bold;
+    padding: 5px 3px;
+    text-align: center;
+    margin-top:10px;
+    width: 30%;
+    background: -webkit-gradient(linear, left top, left bottom, from(#33B5E5 ), to(#0099CC ), color-stop(50% #0099CC), color-stop(50% #0099CC));
+    background: -webkit-linear-gradient(top, #33B5E5 , #0099CC );
+    background: -moz-linear-gradient(top, #33B5E5 ,  #0099CC );
+    background: -ms-linear-gradient(top, #33B5E5 , #0099CC );
+    background: -o-linear-gradient(top, #33B5E5 ,  #0099CC );
+    background: linear-gradient(top, #33B5E5 ,  #0099CC );      
+}
+.Cart_Confirm_bottom_submit
+{
+    border: 1px solid #D17560;
+    border-radius: 0.2em;
+    bottom: 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    margin-right: 2%;
+    padding: 5px 3px;
+    text-align: center;
+    margin-top:10px;
+    width: 30%;
+    background: -webkit-gradient(linear, left top, left bottom, from(#33B5E5 ), to(#0099CC ), color-stop(50% #0099CC), color-stop(50% #0099CC));
+    background: -webkit-linear-gradient(top, #33B5E5 , #0099CC );
+    background: -moz-linear-gradient(top, #33B5E5 ,  #0099CC );
+    background: -ms-linear-gradient(top, #33B5E5 , #0099CC );
+    background: -o-linear-gradient(top, #33B5E5 ,  #0099CC );
+    background: linear-gradient(top, #33B5E5 ,  #0099CC );   
+}
+
+
+
+
+/* ------------- tuan.html-css ------------- */
+#YDC_TuanPage{background: url(../img/bg.jpg);}
+#YDC_TuanPage #Header{height: 40px; background: url(../img/top.png); background-size: contain;}
+#TuanBackBtn
+{
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FB4A4A ), to(#01769d ), color-stop(50% #0290bf), color-stop(50% #0290bf));
+    background-image: -webkit-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -moz-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -ms-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -o-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    float: left;
+    margin-left: 0;
+    margin-top: 2px;
+    padding-bottom: 3px;
+    padding-top: 5px;
+    text-shadow: none;
+}
+#TuanBackBtn span{color: #eee;font-size: 1.2em;line-height: 1.4em;}
+#Tuan_ShopName
+{
+    float: right;
+    padding-right: 10px;
+    font-size: 1.2em;
+    line-height: 2.0em;
+    text-shadow: -1px -1px 0 #EFEFEF, 1px 1px 0 #333333, 1px 1px 0 #5A5A5A;
+}
+#YDC_TuanPage #Content{ padding: 10px 5px;}
+#YDC_TuanPage #Content table
+{
+    background: #eee;
+    box-shadow: 0px 0px 5px #333333;
+    padding: 2px;
+    width: 100%;
+}
+#YDC_TuanPage span.title{ color: #5A5A5A;font: 1.2em "Microsoft YaHei";}
+#YDC_TuanPage .label1,.label2,.label3{width: 22px;height: 22px;margin: 0 0 0 8px;}
+#YDC_TuanPage .label1{background: url(../img/1.png);background-size: contain; }
+#YDC_TuanPage .label2{background: url(../img/2.png);background-size: contain;}
+#YDC_TuanPage .label3{background: url(../img/3.png);background-size: contain;}
+#YDC_TuanPage .block{ height: 65px;}
+#YDC_TuanPage .block .blockleft{float: left; width: 40%;}
+#YDC_TuanPage .block .blockleft .ui-select{ margin: 14px 4px 14px 0;}
+#YDC_TuanPage .block .blockleft .ui-btn{padding: 10px 0 10px 10px;}
+#YDC_TuanPage .block .blockleft span{color: #5A5A5A;text-align: left;font: 1em "Microsoft YaHei";}
+#YDC_TuanPage .block .blockright{float: left; width: 60%;}
+#TuanHistory
+{
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 5px #333333;
+    margin-top: 10px;
+    padding: 8px 0;
+    width:100%;
+}
+#TuanHistory span
+{
+    color: #5a5a5a;
+    font: 1em "Microsoft YaHei";
+    padding-left: 10px;
+    line-height: 1.5em;
+}
+#TuanHistory span.title{padding-left: 10px;}
+#TuanHistoryList{ margin-top: 4px;}
+#YDC_TuanPage #Footer{width: 96%;margin: 0 auto;}
+#TuanSubmit.ui-btn 
+{
+    color: #eee;
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FB4A4A ), to(#01769d ), color-stop(50% #0290bf), color-stop(50% #0290bf));
+    background-image: -webkit-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -moz-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -ms-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -o-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    height: 32px;
+    margin: 0;
+    padding: 3px 0 8px;
+    text-shadow: none;
+    width: 100%;
+}
+#TuanSubmit.ui-btn span{font-size: 1.5em;line-height: 2.0em;}
+/* ------------- order.html-css ------------- */
+#YDC_OrderPage{background: url(../img/bg.jpg);}
+#YDC_OrderPage{background: url(../img/bg.jpg);}
+#YDC_OrderPage #Header{height: 40px;background: url(../img/top.png); background-size: contain;}
+#OrderBackBtn
+{
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FB4A4A ), to(#01769d ), color-stop(50% #0290bf), color-stop(50% #0290bf));
+    background-image: -webkit-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -moz-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -ms-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -o-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    float: left;
+    margin:2px 0 0 0;
+    padding:6px 13px 2px 31px;
+    text-shadow: none;
+}
+#OrderBackBtn span{color: #eee;font-size: 1.2em;line-height: 1.4em;}
+#Order_ShopName
+{
+    float: right;
+    font-weight: normal;
+    font-size: 1.2em;
+    padding-right: 10px;
+    line-height: 2.0em;
+    text-shadow: -1px -1px 0 #EFEFEF, 1px 1px 0 #333333, 1px 1px 0 #5A5A5A;
+}
+#OrderList .name{float: left;width: 180px;}
+#OrderList .count{float: left;margin-left: 20px;}
+#OrderList .price{float: right;margin-right: 20px;}
+/* ------------- dishinfo.html-css ------------- */
+#YDC_DishinfoPage{background: url(../img/bg.jpg);}
+#YDC_DishinfoPage #Header{height: 40px;background: url(../img/top.png);background-size: contain;}
+#DishinfoBackBtn
+{
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FB4A4A ), to(#01769d ), color-stop(50% #0290bf), color-stop(50% #0290bf));
+    background-image: -webkit-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -moz-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -ms-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -o-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    float: left;
+    margin-left: 0;
+    margin-top: 2px;
+    padding-bottom: 3px;
+    padding-top: 5px;
+    text-shadow: none;
+}
+#DishinfoBackBtn span{color: #eee;font-size: 1.2em;line-height: 1.4em}
+#Dishinfo_ShopName
+{
+    float: right;
+    padding-right: 10px;
+    font-size: 1.2em;
+    line-height: 2.0em;
+    text-shadow: -1px -1px 0 #EFEFEF, 1px 1px 0 #333333, 1px 1px 0 #5A5A5A;
+}
+#DishTitle
+{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 5px #333333;
+    margin-top: 0px;
+    padding: 8px 0;
+    width:100%;
+}
+#DishinfoImg
+{
+    border: 1px solid #A5A5A5;
+    display: block;
+    margin: 0 auto;
+    width: 98%;
+}
+#DishTitle table{color: #5a5a5a;margin: 8px auto 5px;width: 96%;}
+#DishTitle table .tr-a{height: 1.5em;font-size: 1.2em;}
+#DishTitle table .tr-b{ height: 1.8em;font-size: 1.5em;}
+#DishTitle table .tr-b .right{float: right;padding-right: 0.6em;}
+#DishTitle table .tr-c{height: 1.0em;font-size: 0.8em;}
+#DishTitle table .tr-c span{ padding: 0 5px 0 10px;}
+#DishContent
+{
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 5px #333333;
+    margin-top: 10px;
+    padding: 8px 0;
+    width: 100%;
+}
+#DishinfoContent
+{
+    color: #5a5a5a;
+    font-size: 1em;
+    margin: 8px 2%;
+    width: 96%;
+}
+#YDC_DishinfoPage #Footer{width: 100%;border: 0 none;background: transparent;}
+#YDC_DishinfoPage #Footer .blockleft{float: left;width: 60%;}
+#YDC_DishinfoPage #Footer .blockright{float: right;width: 40%;}
+#DishinfoMinus,#DishinfoPlus
+{
+    border-radius: 0.3em;
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    float:left;
+    height: 40px;
+    margin: 2px 5px;
+	text-shadow: none;
+    width: 40px;
+}
+#DishinfoMinus{background: url(../img/minus.png);background-size: contain;}
+#DishinfoPlus{background: url(../img/plus.png);background-size: contain;}
+#DishinfoCount
+{
+    border-radius: 0.2em;
+    background: url(../img/top.png);
+    background-size: contain;
+    float:left;
+    height: 38px;
+    margin: 3px 0;
+    width: 80px;
+}
+#DishinfoCount span
+{
+    color: #eee;
+    display: block;
+    font-size: 1.5em;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.5em;
+}
+#DishinfoSubmit.ui-btn 
+{
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FB4A4A ), to(#01769d ), color-stop(50% #0290bf), color-stop(50% #0290bf));
+    background-image: -webkit-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -moz-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -ms-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -o-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    color: #eee;
+    float: right;
+    height: 32px;
+    margin: 1px 5px 0 0;
+    padding: 3px 0 6px;
+	text-shadow: none;
+    width: 100%;
+}
+#DishinfoSubmit.ui-btn span{font-size: 1.5em;line-height: 2.0em;}
+/* ------------- call.html-css ------------- */
+#YDC_CallPage{background: url(../img/bg.jpg);}
+#YDC_CallPage{background: url(../img/bg.jpg);}
+#YDC_CallPage #Header{height: 40px;background: url(../img/top.png);background-size: contain;}
+#CallBackBtn
+{
+    border: 1px solid #005571;
+    box-shadow: 0 1px rgba(0, 35, 46, .2), 0 0 1px rgba(0, 0, 0, .2);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FB4A4A ), to(#01769d ), color-stop(50% #0290bf), color-stop(50% #0290bf));
+    background-image: -webkit-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -moz-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -ms-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: -o-linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    background-image: linear-gradient(top, #56cff8 , #1393be 50%, #0290bf 50% , #01769d );
+    float: left;
+    margin-left: 0;
+    margin-top: 2px;
+    padding-bottom: 3px;
+    padding-top: 5px;
+    text-shadow: none;
+}
+#CallBackBtn span{color: #eee;font-size: 1.2em;line-height: 1.4em;}
+#Call_ShopName
+{
+    float: right;
+    font-size: 1.2em;
+    line-height: 2.0em;
+    padding-right: 10px;
+    text-shadow: -1px -1px 0 #EFEFEF, 1px 1px 0 #333333, 1px 1px 0 #5A5A5A;
+}
+#YDC_CallPage .Content_div {margin-top: 100px;text-align: center;}
+#YDC_CallPage .Content_div_call {
+    background: -webkit-gradient(linear, left top, left bottom, from(#e81c1b ), to(#a11715 ), color-stop(50% #a11715), color-stop(50% #a11715)) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -webkit-linear-gradient(top, #e81c1b , #a11715 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(top, #e81c1b ,  #a11715 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -ms-linear-gradient(top, #e81c1b , #a11715 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -o-linear-gradient(top, #e81c1b ,  #a11715 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(top, #e81c1b ,  #a11715 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #FF4444;
+    border-radius: 0.2em;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 36px;
+    margin: 0 auto;
+    padding: 5px 12px;
+    width: 200px;
+}
+
+

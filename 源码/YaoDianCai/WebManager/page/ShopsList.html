@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商家列表界面</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link   type="text/css" href="/res/css/shopslist.css" rel="stylesheet"/>
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/res/js/backpage-top.js"></script>
+    <script type="text/javascript">
+        var maxResult = 20;
+        function appendList(data) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += '<div class="shopslist_content" onmouseover="this.className=\'shopslist_content shopslist_over\';" onmouseout="this.className=\'shopslist_content shopslist_out\';">' +
+                    '<div class="shopslist_content_1">' +
+                        '<div><span class="shopslist_content_font">编号</span><span>' + data[i].SID + '</span></div>' +
+                        '<div><span class="shopslist_content_shopname">' + data[i].name + '</span></div>' +
+                        '<div><span class="shopslist_content_span">' + data[i].area + '</span></div>' + 
+                    '</div>' +
+                    '<div class="shopslist_content_2">' +
+                        '<div><span class="shopslist_content_font">销售菜品数</span><span>' + data[i].dishMarket + '</span></div>' +
+                        '<div><span class="shopslist_content_font">商家餐桌数</span><span>' + data[i].tableNumber + '</span></div>' +
+                        '<div><span class="shopslist_content_font">菜单模板名</span><span>' + data[i].menuTem + '</span></div>' +
+                    '</div>' +
+
+                    '<div class="shopslist_content_2">' +
+                        '<div><span class="shopslist_content_font">网关数量</span><span>' + data[i].gwCount + '</span></div>' +
+                        '<div><span class="shopslist_content_font">用户账号</span><span>' + data[i].account + '</span></div>' +
+                        '<div><span class="shopslist_content_font">注册时间</span><span>' + DateTimeConvertYMD(data[i].createDate) + '</span></div>' +
+                    '</div>' +
+                    '<div class="shopslist_content_6">'+
+                        '<div class="content_6_div content_6_top">'+
+                            '<div class="content_6_top_1"></div>'+
+                            '<div class="content_6_top_2" onclick="window.location.href=\'/ShopsUpdate.html?SID=' + data[i].SID + '\';"></div>' +
+                        '</div>' +  
+                        '<div class="content_6_div content_6_bottom">'+
+                            '<div class="content_6_bottom_1" onclick="window.location.href=\'/ShopsBillsList.html?SID=' + data[i].SID + '&name=' + data[i].name + '\';"></div>' +
+                            '<div class="content_6_bottom_2" onclick="window.location.href=\'/ShopWifiGW.html?SID=' + data[i].SID + '&name=' + data[i].name + '\';"></div>' +
+                            '<div class="content_6_bottom_3" onclick="window.location.href=\'/ShopTuanAuthRecord.html?SID=' + data[i].SID + '&name=' + data[i].name + '\';"></div>' +
+                        '</div>'+
+                    '</div>'+
+                '</div>';
+            }
+            $(".shopslist").append(html);
+        }
+
+        function search() {
+            var search = $.trim($("input[name='search']").val());
+            if (search == "") {
+                refreshShopsList();
+            } else {
+                refreshSearchShopsList(search);
+            }
+        }
+
+        function refreshSearchShopsList(search) {
+            var pageselectCallback = function (page_index) {
+                $(".shopslist").empty();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/ShopsAction.ashx',
+                    data: { option: 'shopslist_search', serStr: search, firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $(".shopslist").empty();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopsAction.ashx',
+                data: { option: 'shopslist_search_count', search: search },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+
+        function refreshShopsList() {
+            var pageselectCallback = function (page_index) {
+                $(".shopslist").empty();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/ShopsAction.ashx',
+                    data: { option: 'shopslist_select', firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $(".shopslist").empty();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopsAction.ashx',
+                data: { option: 'shopslist_count' },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+
+        $('document').ready(function () {
+            $(".logo_top_right span").text(userInfo.account);
+            $("input[name='search']").keypress(function (e) {
+                if (e.keyCode == 13) {
+                    search();
+                }
+            });
+
+            refreshShopsList();
+        });
+
+    </script>
+</head>
+<body>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/shops/top-logo.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span >用户名</span></div>
+                <div onclick="user_exit();"><img src="/res/images/shops/arrows-bottom.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"><span>商家列表</span></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"><span>商家下单统计</span></div>
+            <div class="right_tab_auth" onclick="right_tab_auth();"><span>热点认证统计</span></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"><span>团购验证统计</span></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle" onclick="right_tab_shop();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;"><span>商家列表</span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+            <div class="navigation_center">
+                <input name="search" />
+                <div class="navigation_center_search" onclick="search();"></div>
+            </div>
+            <div class="navigation_right">
+                <div class="option_add" onclick="window.location.href='/ShopsAdd.html';"></div>
+            </div>
+        </div>
+
+        <div class="shopslist">
+        </div>
+
+        <div class="pagination">
+            <div id="Pagination">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

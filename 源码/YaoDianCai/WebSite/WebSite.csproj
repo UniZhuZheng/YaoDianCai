@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{73EC10DB-137C-4699-8D54-B979204C70B9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Uni.WebSite</RootNamespace>
+    <AssemblyName>Uni.WebSite</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="mysql.data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\db\mysql\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\Lib\db\sqlite\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="autherror.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="index.html" />
+    <Content Include="main.html" />
+    <Content Include="mainPhone.html" />
+    <Content Include="page\index.html" />
+    <Content Include="page\favicon.ico" />
+    <Content Include="page\res\css\index.css" />
+    <Content Include="page\res\images\banner\banner0-1.png" />
+    <Content Include="page\res\images\banner\banner0-2.png" />
+    <Content Include="page\res\images\banner\banner0-3.png" />
+    <Content Include="page\res\images\banner\banner0-4.png" />
+    <Content Include="page\res\images\banner\banner0-5.png" />
+    <Content Include="page\res\images\banner\banner001.png" />
+    <Content Include="page\res\images\banner\banner002.png" />
+    <Content Include="page\res\images\banner\banner003.png" />
+    <Content Include="page\res\images\banner\banner004.png" />
+    <Content Include="page\res\images\banner\banner005.png" />
+    <Content Include="page\res\images\bg.gif" />
+    <Content Include="page\res\images\logo.png" />
+    <Content Include="page\res\js\jquery.min.js" />
+    <Content Include="page\res\js\unslider.min.js" />
+    <Content Include="res\css\main.css" />
+    <Content Include="res\css\mainPhone.css" />
+    <Content Include="res\images\arrows-bottom.png" />
+    <Content Include="res\images\bg.gif" />
+    <Content Include="res\images\btn_search_box.gif" />
+    <Content Include="res\images\button-omit.png" />
+    <Content Include="res\images\button-page.png" />
+    <Content Include="res\images\button_bac_img.png" />
+    <Content Include="res\images\button_num.png" />
+    <Content Include="res\images\button_select.png" />
+    <Content Include="res\images\button_upload.png" />
+    <Content Include="res\images\button_uploadstatus.png" />
+    <Content Include="res\images\loading.gif" />
+    <Content Include="res\images\login.png" />
+    <Content Include="res\images\logo.png" />
+    <Content Include="res\images\menu-delete.png" />
+    <Content Include="res\images\menu-option-wsj.png" />
+    <Content Include="res\images\menu-option-wxs.png" />
+    <Content Include="res\images\menu-option-xsz.png" />
+    <Content Include="res\images\menu-option.png" />
+    <Content Include="res\images\menu-status.png" />
+    <Content Include="res\images\menu_fileadd_button.png" />
+    <Content Include="res\images\navigation1.png" />
+    <Content Include="res\images\navigation2.png" />
+    <Content Include="res\images\navigation3.png" />
+    <Content Include="res\images\navigation4.png" />
+    <Content Include="res\images\save-cancel-button.png" />
+    <Content Include="res\images\search-input.png" />
+    <Content Include="res\images\search.png" />
+    <Content Include="res\images\shop-update-button.png" />
+    <Content Include="res\images\shopimg\banner_left1.jpg" />
+    <Content Include="res\images\shopimg\banner_left2.jpg" />
+    <Content Include="res\images\shopimg\banner_left3.jpg" />
+    <Content Include="res\images\shopimg\banner_right1.jpg" />
+    <Content Include="res\images\shopimg\banner_right2.jpg" />
+    <Content Include="res\images\shopimg\banner_right3.jpg" />
+    <Content Include="res\images\table-list.png" />
+    <Content Include="res\images\top-line.png" />
+    <Content Include="res\images\top-logo.png" />
+    <Content Include="res\images\top.png" />
+    <Content Include="res\js\jquery.cookie.js" />
+    <Content Include="res\js\jquery.min.js" />
+    <Content Include="res\js\jquery.waterfall.js" />
+    <Content Include="res\js\jquery.waterfall.min.js" />
+    <Content Include="res\js\jquery.ydc.js" />
+    <Content Include="res\js\layer\extend\layer.ext.js" />
+    <Content Include="res\js\layer\layer.js" />
+    <Content Include="res\js\layer\layer.min.js" />
+    <Content Include="res\js\layer\skin\default\textbg.png" />
+    <Content Include="res\js\layer\skin\default\xubox_ico0.png" />
+    <Content Include="res\js\layer\skin\default\xubox_loading0.gif" />
+    <Content Include="res\js\layer\skin\default\xubox_loading1.gif" />
+    <Content Include="res\js\layer\skin\default\xubox_loading2.gif" />
+    <Content Include="res\js\layer\skin\default\xubox_loading3.gif" />
+    <Content Include="res\js\layer\skin\default\xubox_title0.png" />
+    <Content Include="res\js\layer\skin\layer.css" />
+    <Content Include="res\js\layer\skin\layer.ext.css" />
+    <Content Include="res\js\Modernizr-demo.js" />
+    <Content Include="res\js\Modernizr.js" />
+    <Content Include="res\js\ShopsInfo.js" />
+    <Content Include="site\images\banner0-1.png" />
+    <Content Include="site\images\banner0-2.png" />
+    <Content Include="site\images\banner0-3.png" />
+    <Content Include="site\images\banner0-4.png" />
+    <Content Include="site\images\banner0-5.png" />
+    <Content Include="site\images\banner001.png" />
+    <Content Include="site\images\banner002.png" />
+    <Content Include="site\images\banner003.png" />
+    <Content Include="site\images\banner004.png" />
+    <Content Include="site\images\banner005.png" />
+    <Content Include="site\images\headerLogo.png" />
+    <Content Include="site\images\iDianImg1.png" />
+    <Content Include="site\images\iDianImg2.png" />
+    <Content Include="site\images\iDianImg3.png" />
+    <Content Include="site\images\iDianImg4.png" />
+    <Content Include="site\images\iDianImg5.png" />
+    <Content Include="site\images\iDianImg6.png" />
+    <Content Include="site\images\logo2.png" />
+    <Content Include="site\images\页面.png" />
+    <Content Include="site\index.html" />
+    <Content Include="site\js\jquery-1.11.0.min.js" />
+    <Content Include="site\js\unslider.min.js" />
+    <Content Include="site\style\base.css" />
+    <Content Include="site\style\master.css" />
+    <Content Include="site\style\reset.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="action\HostAction.ashx.cs">
+      <DependentUpon>HostAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\ShopDishAction.ashx.cs">
+      <DependentUpon>ShopDishAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\WifiGWAction.ashx.cs">
+      <DependentUpon>WifiGWAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="wifiauth\auth.ashx.cs">
+      <DependentUpon>auth.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="wifiauth\login.ashx.cs">
+      <DependentUpon>login.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="wifiauth\portal.ashx.cs">
+      <DependentUpon>portal.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="action\Login.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\Core\UniCommon\UniCommon.csproj">
+      <Project>{DE56302C-23D6-4ED5-A7EE-A8E7A0B0F81E}</Project>
+      <Name>UniCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\Core\UniDatabase\UniDatabase.csproj">
+      <Project>{A478F54C-D0C5-472B-A6D1-F6DF4268B31B}</Project>
+      <Name>UniDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\Core\UniUrlRewrite\UniUrlRewrite.csproj">
+      <Project>{7B8E650D-9ADE-4406-BCC3-206771B63408}</Project>
+      <Name>UniUrlRewrite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\YDC\Dao\UniDaoSite\UniDaoSite.csproj">
+      <Project>{4EC8B2DF-0873-40D5-AE64-0E6B5A02E996}</Project>
+      <Name>UniDaoSite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\YDC\Web\UniDllSite\UniDllSite.csproj">
+      <Project>{3FBE5A1C-7DAB-483B-9B94-A8CD209CDEDB}</Project>
+      <Name>UniDllSite</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wifiauth\auth.ashx" />
+    <Content Include="wifiauth\login.ashx" />
+    <Content Include="wifiauth\portal.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="action\HostAction.ashx" />
+    <Content Include="action\WifiGWAction.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="action\ShopDishAction.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="site\upload\newsImg\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>17340</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,15 @@
+D:\WorkStation\无线菜单\MenuMsgSystem\YDCControl\bin\Debug\YDCControl.dll
+D:\WorkStation\无线菜单\MenuMsgSystem\YDCControl\bin\Debug\YDCControl.pdb
+D:\WorkStation\无线菜单\MenuMsgSystem\YDCControl\bin\Debug\CSkin.dll
+D:\WorkStation\无线菜单\MenuMsgSystem\YDCControl\obj\Debug\YDCControl.dll
+D:\WorkStation\无线菜单\MenuMsgSystem\YDCControl\obj\Debug\YDCControl.pdb
+C:\Users\Administrator\Desktop\MenuMsgSystem\YDCControl\bin\Debug\YDCControl.dll
+C:\Users\Administrator\Desktop\MenuMsgSystem\YDCControl\bin\Debug\YDCControl.pdb
+C:\Users\Administrator\Desktop\MenuMsgSystem\YDCControl\bin\Debug\CSkin.dll
+C:\Users\Administrator\Desktop\MenuMsgSystem\YDCControl\obj\Debug\YDCControl.dll
+C:\Users\Administrator\Desktop\MenuMsgSystem\YDCControl\obj\Debug\YDCControl.pdb
+C:\Users\Administrator\Desktop\YDC\YaoDianCai_PC\YDCControl\bin\Debug\YDCControl.dll
+C:\Users\Administrator\Desktop\YDC\YaoDianCai_PC\YDCControl\bin\Debug\YDCControl.pdb
+C:\Users\Administrator\Desktop\YDC\YaoDianCai_PC\YDCControl\bin\Debug\CSkin.dll
+C:\Users\Administrator\Desktop\YDC\YaoDianCai_PC\YDCControl\obj\Debug\YDCControl.dll
+C:\Users\Administrator\Desktop\YDC\YaoDianCai_PC\YDCControl\obj\Debug\YDCControl.pdb

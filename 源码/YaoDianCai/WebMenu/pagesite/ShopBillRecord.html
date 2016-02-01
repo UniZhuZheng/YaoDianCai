@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商家订单列表界面</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link href="/res/css/pagesite.css" rel="stylesheet" type="text/css" />
+    <link   type="text/css" href="/res/css/datepicker.css" rel="stylesheet" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery-1.2.6.pack.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/res/js/shopsitetop.js"></script>
+    <script type="text/javascript" src="/res/js/datepicker.js"></script>
+    <script type="text/javascript">
+        var maxResult = 20;
+        function appendList(data) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += '<div class="billslist_td">' +
+                    '<div class="billslist_td_1">' + data[i].BID + '</div>' +
+                    '<div class="billslist_td_2">' + data[i].tableName + '</div>' +
+                    '<div class="billslist_td_3">' + data[i].count + '</div>' +
+                    '<div class="billslist_td_4">' + data[i].price + '</div>' +
+                    '<div class="billslist_td_5">' + DateTimeConvertMDHM(data[i].createDate) + '</div>' +
+                    '<div class="billslist_td_6" onclick="DishRecords_BID(\'' + data[i].BID + '\',\'' + data[i].tableName + '\',\'' + data[i].createDate + '\')"></div>' +
+                '</div>';
+            }
+            $("#Shop_BillRecord").append(html);
+        }
+
+        function refreshSearchBillsList(option, startDate) {
+            var pageselectCallback = function (page_index) {
+                $("#Shop_BillRecord").empty();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/BillAction.ashx',
+                    data: {
+                        option: option,
+                        SID: SID,
+                        startDate: startDate,
+                        firstResult: page_index * maxResult,
+                        maxResult: maxResult
+                    },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $("#Shop_BillRecord").empty();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/BillAction.ashx',
+                data: { option: option + '_Count', SID: SID, startDate: startDate },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+
+        function refreshShopBillRecord() {
+            var pageselectCallback = function (page_index) {
+                $("#Shop_BillRecord").empty();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/BillAction.ashx',
+                    data: { option: 'OP_BillInfoByShopLimit', SID: SID, firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $("#Shop_BillRecord").empty();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/BillAction.ashx',
+                data: { option: 'OP_BillInfoByShopLimit_Count', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+
+
+        function cancleSearch() {
+            refreshShopBillRecord();
+            $(".inputDate").val("全部");
+        }
+
+        function DishRecords_BID(BID, tableName, createDate) {
+            $(".billsrecord_content").empty();
+            $.ajax({
+                type: 'post',
+                url: '/action/BillAction.ashx',
+                data: { option: 'OP_ShowDishRecord', BID: BID, SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        var data = msg.lists;
+                        var str = "";
+                        var num = data.length;
+                        var price = 0;
+                        var disCount = 0;
+                        if (num % 2 == 0) {
+                            for (var i = 0; i < num; i += 2) {
+                                str += '<div class="dishinfo">' +
+                                    '<div class="dishinfo_number">' + data[i].dishNum + '</div>' +
+                                    '<div class="dishinfo_name">' + data[i].dishName + '</div>' +
+                                    '<div class="dishinfo_count">X ' + data[i].dishCount + '</div>' +
+                                    '<div class="dishinfo_price">' + data[i].dishPrice + '元</div>' +
+                                    '<div class="dishinfo_number">' + data[i + 1].dishNum + '</div>' +
+                                    '<div class="dishinfo_name">' + data[i + 1].dishName + '</div>' +
+                                    '<div class="dishinfo_count">X ' + data[i + 1].dishCount + '</div>' +
+                                    '<div class="dishinfo_price">' + data[i + 1].dishPrice + '元</div>' +
+                                '</div>';
+                                price = price + data[i].dishCount * data[i].dishPrice + data[i + 1].dishCount * data[i + 1].dishPrice;
+                                disCount = disCount + parseInt(data[i].dishCount) + parseInt(data[i + 1].dishCount);
+                            }
+                        } else {
+                            for (var i = 0; i < num - 1; i += 2) {
+                                str += '<div class="dishinfo">' +
+                                    '<div class="dishinfo_number">' + data[i].dishNum + '</div>' +
+                                    '<div class="dishinfo_name">' + data[i].dishName + '</div>' +
+                                    '<div class="dishinfo_count">X ' + data[i].dishCount + '</div>' +
+                                    '<div class="dishinfo_price">' + data[i].dishPrice + '元</div>' +
+                                    '<div class="dishinfo_number">' + data[i + 1].dishNum + '</div>' +
+                                    '<div class="dishinfo_name">' + data[i + 1].dishName + '</div>' +
+                                    '<div class="dishinfo_count">X ' + data[i + 1].dishCount + '</div>' +
+                                    '<div class="dishinfo_price">' + data[i + 1].dishPrice + '元</div>' +
+                                '</div>';
+                                price = price + data[i].dishCount * data[i].dishPrice + data[i + 1].dishCount * data[i + 1].dishPrice;
+                                disCount = disCount + parseInt(data[i].dishCount) + parseInt(data[i + 1].dishCount);
+                            }
+                            str += '<div class="dishinfo">' +
+                                '<div class="dishinfo_number">' + data[num - 1].dishNum + '</div>' +
+                                '<div class="dishinfo_name">' + data[num - 1].dishName + '</div>' +
+                                '<div class="dishinfo_count">X ' + data[num - 1].dishCount + '</div>' +
+                                '<div class="dishinfo_price">' + data[num - 1].dishPrice + '元</div>' +
+                            '</div>';
+                            price = price + data[num - 1].dishCount * data[num - 1].dishPrice;
+                            disCount = disCount + parseInt(data[num - 1].dishCount);
+                        }
+                        $(".billsrecord_content").append(str);
+
+                        $(".tablenumber").html(tableName);
+                        $(".BID").html(BID);
+                        $(".billsdate").html(createDate);
+                        $(".price").html(price + "元");
+                        $(".dishcount").html(" X" + disCount);
+                        $(".billinfo").css("display", "block");
+                    } else {
+                        $(".billsrecord_content").empty();
+                        $(".billinfo").css("display", "none");
+                        alert("数据获取失败。");
+                    }
+                }
+            });
+        }
+
+        function closebutton() {
+            $(".billinfo").css("display", "none");
+        }
+
+        $('document').ready(function () {
+            $(".logo_top_right span").text(decodeURI(account));
+            $(".navigation_left_name").text(decodeURI(name));
+            refreshShopBillRecord();
+            $(".inputDate").val("全部");
+
+            $('.inputDate').DatePicker({
+                format: 'Y-m-d',
+                date: $('#inputDate').val(),
+                current: $('#inputDate').val(),
+                starts: 1,
+                position: 'right',
+                onBeforeShow: function () {
+                    if ($.trim($('#inputDate').val()) == "全部") {
+                        var myDate = new Date();
+                        $('#inputDate').DatePickerSetDate(myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate(), true);
+                        return;
+                    }
+                    $('#inputDate').DatePickerSetDate($('#inputDate').val(), true);
+                },
+                onChange: function (formated, dates) {
+                    $('#inputDate').val(formated);
+                    $('#inputDate').DatePickerHide();
+                    var startDate = formated;
+                    refreshSearchBillsList('OP_BillInfoByDayLimit', startDate);
+                },
+                onMonthsChange: function (yearDate, monthsDate) {
+                    $('#inputDate').val(yearDate + '-' + monthsDate);
+                    $('#inputDate').DatePickerHide();
+                    var startDate = yearDate + '-' + monthsDate + '-01';
+                    refreshSearchBillsList('OP_BillInfoByMonthLimit', startDate);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="billinfo">
+        <div class="billsrecord">
+        <div class="billsrecord_top">
+            <div class="tablenumber">飞黄腾飞厅</div>
+            <div class="billsdate">2014-02-23 12:30</div>
+        </div>
+        <div class="billsrecord_content">
+            <div class="dishinfo">
+                <div class="dishinfo_number">hdys</div>
+                <div class="dishinfo_name">辣炒小白菜</div>
+                <div class="dishinfo_count">X 1</div>
+                <div class="dishinfo_price">108元</div>
+                <div class="dishinfo_number">hdys</div>
+                <div class="dishinfo_name">清蒸咸水淡水鲈鱼</div>
+                <div class="dishinfo_count">X 1</div>
+                <div class="dishinfo_price">108元</div>
+            </div>
+        </div>
+        <div class="billsrecord_footer">
+            <div class="BID">下单号：0512000001_0100000001</div>
+            <div class="price">200元</div>
+            <div class="dishcount">X 15</div>
+        </div>
+        <div class="billsrecord_btn">
+            <div class="closebutton" onclick="closebutton();"></div>
+        </div>
+    </div>
+    </div>
+    
+
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/top-logo-shop.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>用户名</span></div>
+                <div onclick="user_exit();" style="cursor:pointer"><img src="/res/images/quit.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"></div>
+            <div class="right_tab_dish" onclick="right_tab_dish();"></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"></div>
+            <!--<div class="right_tab_auth" onclick="right_tab_auth();"></div>-->
+            <div class="right_tab_tab" onclick="right_tab_tab();"></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle"  onclick="right_tab_shop();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;">
+                    <div class='logo_bill'></div><span class="navigation_left_name"></span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+            <div class="navigation_center">
+                <input name="search" class="inputDate" id='inputDate' readonly/>
+                <div class="navigation_center_search_cancle" onclick="cancleSearch();"></div>
+            </div>
+        </div>
+
+        <div class="billslist">
+            <div class="billslist_th">
+                <div class="billslist_th_1">下单号</div>
+                <div class="billslist_th_2">桌号</div>
+                <div class="billslist_th_3">餐品数量</div>
+                <div class="billslist_th_4">金额(元)</div>
+                <div class="billslist_th_5">下单时间</div>
+            </div>
+            <div id="Shop_BillRecord"></div>
+        </div>
+        
+        <div class="pagination">
+            <div id="Pagination">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

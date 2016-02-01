@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商家印象评价界面</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link type="text/css" href="/res/css/shopslist.css" rel="stylesheet" />
+    <link type="text/css" href="/res/css/datepicker.css" rel="stylesheet" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery-1.2.6.pack.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/backpage-top.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/res/js/datepicker.js"></script>
+    <script type="text/javascript">
+        var SID = request.QueryString("SID");
+        var name = request.QueryString("name");
+        var maxResult = 20;
+        function appendAuthList(data) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += '<div class="tab_auth_list_td">' +
+                            '<div class="tab_auth_list_td_1">' + data[i].name + '</div>' +
+                            '<div class="tab_auth_list_td_2">' + data[i].count + '</div>' +
+                            '<div class="tab_auth_list_td_3">' +DateTimeConvertYMD( data[i].lastDate) + '</div>' +
+                        '</div>';
+            }
+            $(".shop_tab_auth_list").append(html);
+        }
+        function appendPreventList(data) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += '<div class="tab_tab_list_td">' +
+                            '<div class="tab_tab_list_td_1">' + data[i].comment + '</div>' +
+                            '<div class="tab_tab_list_td_2">' + DateTimeConvertYMD(data[i].createDate) + '</div>' +
+                        '</div>';
+            }
+            $(".shop_tab_tab_list").append(html);
+        }
+        function preventPrevent() {
+            $(".shop_tab_tab_auth").css("border-left", "0px solid #D5D5D5");
+            $(".shop_tab_tab_auth").css("border-right", "0px solid #D5D5D5");
+            $(".shop_tab_tab_auth").css("background-color", "transparent");
+            $(".shop_tab_auth_list").css("display", "none");
+            $(".pagination").css("display", "block");
+
+            $(".shop_tab_tab_prevent").css("border-left", "1px solid #D5D5D5");
+            $(".shop_tab_tab_prevent").css("border-right", "1px solid #D5D5D5");
+            $(".shop_tab_tab_prevent").css("background-color", "#FFFFFF");
+            $(".shop_tab_tab_list").css("display", "block");
+
+            var pageselectCallback = function (page_index) {
+                $(".tab_tab_list_td").remove();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/ShopLabelAction.ashx',
+                    data: { option: 'OP_ShopLabelComment_List', SID: SID, firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendPreventList(msg.lists);
+                        } else {
+                            $(".tab_tab_list_td").remove();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopLabelAction.ashx',
+                data: { option: 'OP_ShopLabelComment_Count', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+        function preventAuth() {
+            $(".shop_tab_tab_auth").css("border-left", "1px solid #D5D5D5");
+            $(".shop_tab_tab_auth").css("border-right", "1px solid #D5D5D5");
+            $(".shop_tab_tab_auth").css("background-color", "#FFFFFF");
+            $(".shop_tab_auth_list").css("display", "block");
+            
+
+            $(".shop_tab_tab_prevent").css("border-left", "0px solid #D5D5D5");
+            $(".shop_tab_tab_prevent").css("border-right", "0px solid #D5D5D5");
+            $(".shop_tab_tab_prevent").css("background-color", "transparent");
+            $(".shop_tab_tab_list").css("display", "none");
+            $(".pagination").css("display", "none");
+
+            $(".tab_auth_list_td").remove();
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopLabelAction.ashx',
+                data: { option: 'OP_ShopLabelCountList', SID: SID},
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        appendAuthList(msg.lists);
+                    } else {
+                        $(".tab_auth_list_td").remove();
+                    }
+                }
+            });
+        }
+
+        $('document').ready(function () {
+            $(".logo_top_right span").text(userInfo.account);
+            $(".navigation_left_name").text(decodeURI(name));
+
+            preventAuth();
+        });
+    </script>
+</head>
+<body>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/shops/top-logo.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>用户名</span></div>
+                <div onclick="user_exit();" style="cursor:pointer"><img src="/res/images/quit.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"><div class="right_tab_font tab_font_shop">0</div></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"><div class="right_tab_font tab_font_menu">0</div></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"><div class="right_tab_font tab_font_tuan">0</div></div>
+            <div class="right_tab_auth" onclick="right_tab_auth();"><div class="right_tab_font tab_font_auth">0</div></div>
+            <div class="right_tab_tab"  onclick="right_tab_tab();" ><div class="right_tab_font tab_font_tab" >0</div></div>
+            <div class="right_tab_chat" onclick="right_tab_chat();"><div class="right_tab_font tab_font_chat">0</div></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle" onclick="right_tab_shop();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;"><span>商家列表</span></div>
+                <div class="navigation_left_center"></div>
+            </div>
+            <div class="navigation_left">
+                <div class="navigation_left_middle"  style="font:14px/18px '宋体',arial,sans-serif;"><div class='logo_tab'></div><span class="navigation_left_name"></span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+        </div>
+
+        <div class="shop_tab_tab">
+            <div class="shop_tab_tab_auth" onclick="preventAuth();">印象标签</div>
+            <div class="shop_tab_tab_prevent" onclick="preventPrevent();">商家评价</div>
+        </div>
+
+        <div class="shop_tab_auth_list">
+            <div class="tab_auth_list_th">
+                <div class="tab_auth_list_th_1">印象标签</div>
+                <div class="tab_auth_list_th_2">印象次数</div>
+                <div class="tab_auth_list_th_3">认证时间</div>
+            </div>
+        </div>
+        
+        <div class="shop_tab_tab_list">
+            <div class="tab_tab_list_th">
+                <div class="tab_tab_list_th_1">评价内容</div>
+                <div class="tab_tab_list_th_2">评价时间</div>
+            </div>
+        </div>
+        <div class="pagination">
+            <div id="Pagination">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

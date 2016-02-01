@@ -1,0 +1,44 @@
+var localPort=8080;
+var express = require('express')
+    ,http = require('http'),
+    ejs = require('ejs');
+var app = module.exports = express();
+
+app.set('port', process.env.PORT || localPort);
+app.set('views', __dirname + '/views');
+app.engine('.html', ejs.__express);
+app.set('view engine', 'html');//引用模版引擎
+
+app.use(express.static(__dirname + '/public'));
+
+
+app.get('/index', function(req, res){
+    res.render('index');
+});
+app.get('/main', function(req, res){
+    res.render('main');
+});
+app.get('/table', function(req, res){
+    res.render('table');
+});
+app.get('/tuan', function(req, res){
+    res.render('tuan');
+});
+app.get('/order', function(req, res){
+    res.render('order');
+});
+app.get('/call', function(req, res){
+    res.render('call');
+});
+app.get('/impressTab', function(req, res){
+    res.render('impressTab');
+});
+app.get('/cart', function(req, res){
+    res.render('cart');
+});
+app.get('/dishinfo', function(req, res){
+    res.render('dishinfo');
+});
+http.createServer(app).listen(app.get('port'), function(){
+    console.log("Express server listening on port " + app.get('port'));
+});

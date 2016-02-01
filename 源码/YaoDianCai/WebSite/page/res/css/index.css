@@ -1,0 +1,85 @@
+﻿body 
+{
+    background: url("/res/images/bg.gif") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    font-family:微软雅黑;
+    font-size:14px;
+}
+/*------------------文件top css-----------------------*/
+.head
+{
+    clear: both;
+    height: 98px;
+    margin: 0 auto;
+    width: 100%;
+    float:left;
+}
+.head_content
+{
+    clear: both;
+    margin: 0 auto;
+    padding: 0;
+    width: 1016px;    
+}
+.head_content div
+{
+    float:left;    
+}
+
+.head_content_logo
+{
+    width:352px;    
+}
+.head_content_logo div
+{
+    margin-top:39px;    
+}
+.content_item 
+{
+    background: -webkit-gradient(linear, left top, left bottom, from(#046cac ), to(#046cac ), color-stop(50% #046cac), color-stop(50% #046cac)) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -webkit-linear-gradient(top, #046cac , #046cac ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(top, #046cac ,  #046cac ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -ms-linear-gradient(top, #046cac , #046cac ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -o-linear-gradient(top, #046cac ,  #046cac ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(top, #046cac ,  #046cac ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #046cac;
+    border-radius: 0.2em;
+    float:left;
+    height: 26px;
+    line-height: 26px;
+    margin: 45px 5px 0;
+    text-align: center;
+    width: 76px; 
+}
+.content_item a
+{
+    color:#013352;   
+    
+}
+/*---------------图片滚动----------------------*/
+.banner { position: relative; overflow: auto; }
+.banner li { list-style: none; height: 500px;}
+.banner li div { width: 980px; margin: 0 auto; text-align: center; line-height: 500px; height: 500px; vertical-align: middle; }
+.banner li div img { vertical-align:middle;}
+.banner li.li1 { background: url(../images/banner/banner001.png) no-repeat; }
+.banner li.li2 { background: url(../images/banner/banner002.png) no-repeat; }
+.banner li.li3 { background: url(../images/banner/banner003.png) no-repeat; }
+.banner li.li4 { background: url(../images/banner/banner004.png) no-repeat; }
+.banner li.li5 { background: url(../images/banner/banner005.png) no-repeat; }
+.banner .dots { bottom: 20px; position: absolute; text-align: center; display: block; width: 100%; }
+.banner .dots li.active { background: none repeat scroll 0 0 #ee972c; opacity: 1; }
+.banner .dots li { border: 1px solid #fff; background: #858788; border-radius: 6px; cursor: pointer; display: inline-block; height: 10px; margin: 0 4px; opacity: 0.4; text-indent: -999em;  *float: left;
+ *position: relative;
+ *left: 49%;
+transition: background 0.5s ease 0s, opacity 0.5s ease 0s; width: 10px; }
+.v_box{width:340px;position:relative;float:left;margin-right:34px}
+.v_btn{position:absolute;top:50%;left:50%;margin-top:-47px;margin-left:-47px;z-index:50;cursor:pointer}
+.v_layer{width:100%;height:998px;background:#000;position:fixed;_position:absolute;top:0;left:0;bottom:0;display:none;z-index:60;opacity:0.8;filter:Alpha(opacity=80)-moz-opacity:0.8;-webkit-opacity:0.8}
+.v_play{width:980px;height:552px;position:fixed;_position:absolute;top:50%;left:50%;border:1px solid #fff;margin-left:-490px;margin-top:-271px;z-index:100;display:none;background:#000 url(../dyd_new/news/v_loading.gif) no-repeat center center}
+.v_play object{border-radius:15px;-webkit-border-radius:15px;-moz-border-radius:15px}
+.v_close{position:absolute;right:0px;top:0px;cursor:pointer}
+
+
+.content
+{
+    width:100%;    
+}

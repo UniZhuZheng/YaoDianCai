@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FBB35B50-EA9C-4CA6-A4C3-BA11019DB51D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Uni.WebManager</RootNamespace>
+    <AssemblyName>Uni.WebManager</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ditujiupian.com.4.0">
+      <HintPath>..\Lib\webservice\ditujiupian.com.4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="mysql.data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\db\mysql\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SQLite, Version=1.0.80.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <HintPath>..\Lib\db\sqlite\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="main.txt" />
+    <Content Include="page\BillShopRecord.html" />
+    <Content Include="page\Login.html" />
+    <Content Include="page\ShopAdd.html" />
+    <Content Include="page\ShopAddTab.html" />
+    <Content Include="page\ShopBillRecord.html" />
+    <Content Include="page\ShopList.html" />
+    <Content Include="page\BillShopList.html" />
+    <Content Include="page\ShopPreventList.html" />
+    <Content Include="page\ShopTabList.html" />
+    <Content Include="page\ShopTabRecord.html" />
+    <Content Include="page\TuanShopList.html" />
+    <Content Include="page\TuanShopRecord.html" />
+    <Content Include="page\ShopUpdate.html" />
+    <Content Include="page\ShopWifiGWRecord.html" />
+    <Content Include="page\WebChatList.html" />
+    <Content Include="page\WebChatRecord.html" />
+    <Content Include="page\WifiAuthShopRecord.html" />
+    <Content Include="page\WifiGWShopList.html" />
+    <Content Include="page\WifiGWShopRecord.html" />
+    <Content Include="page\ShopWifiAuthRecord.html" />
+    <Content Include="page\ShopTuanRecord.html" />
+    <Content Include="res\css\login.css" />
+    <Content Include="res\css\shopslist.css" />
+    <Content Include="res\css\datepicker.css" />
+    <Content Include="res\css\showLoading.css" />
+    <Content Include="res\images\arrow-button.png" />
+    <Content Include="res\images\arrow_button.png" />
+    <Content Include="res\images\bg.gif" />
+    <Content Include="res\images\bg.jpg" />
+    <Content Include="res\images\button-page.png" />
+    <Content Include="res\images\call-button.png" />
+    <Content Include="res\images\custom_b.png" />
+    <Content Include="res\images\custom_bl.png" />
+    <Content Include="res\images\custom_br.png" />
+    <Content Include="res\images\custom_l.png" />
+    <Content Include="res\images\custom_r.png" />
+    <Content Include="res\images\custom_t.png" />
+    <Content Include="res\images\custom_tl.png" />
+    <Content Include="res\images\custom_tr.png" />
+    <Content Include="res\images\datepicker_b.png" />
+    <Content Include="res\images\datepicker_bl.png" />
+    <Content Include="res\images\datepicker_br.png" />
+    <Content Include="res\images\datepicker_l.png" />
+    <Content Include="res\images\datepicker_r.png" />
+    <Content Include="res\images\datepicker_t.png" />
+    <Content Include="res\images\datepicker_tl.png" />
+    <Content Include="res\images\datepicker_tr.png" />
+    <Content Include="res\images\div_title.png" />
+    <Content Include="res\images\field.png" />
+    <Content Include="res\images\input_account.png" />
+    <Content Include="res\images\input_password.png" />
+    <Content Include="res\images\line.png" />
+    <Content Include="res\images\loading-bars.gif" />
+    <Content Include="res\images\loading.gif" />
+    <Content Include="res\images\login_button.png" />
+    <Content Include="res\images\login_input.png" />
+    <Content Include="res\images\login_logo.png" />
+    <Content Include="res\images\logo.png" />
+    <Content Include="res\images\nav_icon.png" />
+    <Content Include="res\images\prevent_button.png" />
+    <Content Include="res\images\prevent_state_button.png" />
+    <Content Include="res\images\quit.png" />
+    <Content Include="res\images\shops\arrow-button.png" />
+    <Content Include="res\images\shops\arrows-bottom.png" />
+    <Content Include="res\images\shops\bg-time.png" />
+    <Content Include="res\images\shops\button-omit.png" />
+    <Content Include="res\images\shops\button-page.png" />
+    <Content Include="res\images\shops\button-shop-option.png" />
+    <Content Include="res\images\shops\button-shopadd.png" />
+    <Content Include="res\images\shops\button.png" />
+    <Content Include="res\images\shops\buttong-add.png" />
+    <Content Include="res\images\shops\button_bac_img.png" />
+    <Content Include="res\images\shops\button_num.png" />
+    <Content Include="res\images\shops\button_select.png" />
+    <Content Include="res\images\shops\button_upload.png" />
+    <Content Include="res\images\shops\button_uploadstatus.png" />
+    <Content Include="res\images\shops\logo.png" />
+    <Content Include="res\images\shops\navigation1.png" />
+    <Content Include="res\images\shops\navigation2.png" />
+    <Content Include="res\images\shops\navigation3.png" />
+    <Content Include="res\images\shops\navigation4.png" />
+    <Content Include="res\images\shops\option-setting.png" />
+    <Content Include="res\images\shops\search-input.png" />
+    <Content Include="res\images\shops\search.png" />
+    <Content Include="res\images\shops\searchCnacle.png" />
+    <Content Include="res\images\shops\shop-option-1.png" />
+    <Content Include="res\images\shops\shop-option.png" />
+    <Content Include="res\images\shops\shop-update-button.png" />
+    <Content Include="res\images\shops\shop-wifigw-crow-hover.png" />
+    <Content Include="res\images\shops\shop-wifigw-crow.png" />
+    <Content Include="res\images\shops\shops-button-bottom.png" />
+    <Content Include="res\images\shops\shops-button-top.png" />
+    <Content Include="res\images\shops\switch.png" />
+    <Content Include="res\images\shops\top-line.png" />
+    <Content Include="res\images\shops\top-logo.png" />
+    <Content Include="res\images\shops\two-code.png" />
+    <Content Include="res\images\shops\wifi-list.png" />
+    <Content Include="res\images\shops\wifi-add.png" />
+    <Content Include="res\images\taboption_button.png" />
+    <Content Include="res\images\tab_button.png" />
+    <Content Include="res\images\updatepwd_button.png" />
+    <Content Include="res\images\video-music-button.png" />
+    <Content Include="res\js\backpage-top.js" />
+    <Content Include="res\js\datepicker.js" />
+    <Content Include="res\js\jquery-1.2.6.pack.js" />
+    <Content Include="res\js\jquery.min.js" />
+    <Content Include="res\js\jquery.cookie.js" />
+    <Content Include="res\js\jquery.form.js" />
+    <Content Include="res\js\jquery.pagination.js" />
+    <Content Include="res\js\jquery.showLoading.min.js" />
+    <Content Include="res\js\layer\extend\layer.ext.js" />
+    <Content Include="res\js\layer\layer.js" />
+    <Content Include="res\js\layer\layer.min.js" />
+    <Content Include="res\js\layer\skin\default\textbg.png" />
+    <Content Include="res\js\layer\skin\default\xubox_ico0.png" />
+    <Content Include="res\js\layer\skin\default\xubox_loading0.gif" />
+    <Content Include="res\js\layer\skin\default\xubox_loading1.gif" />
+    <Content Include="res\js\layer\skin\default\xubox_loading2.gif" />
+    <Content Include="res\js\layer\skin\default\xubox_loading3.gif" />
+    <Content Include="res\js\layer\skin\default\xubox_title0.png" />
+    <Content Include="res\js\layer\skin\layer.css" />
+    <Content Include="res\js\layer\skin\layer.ext.css" />
+    <Content Include="res\js\md5.js" />
+    <Content Include="res\js\Shops-top.js" />
+    <Content Include="res\js\副本 jquery.pagination.js" />
+    <Content Include="webservice\WebManagerService.asmx" />
+    <Content Include="webservice\WebMenuRemote.asmx" />
+    <Content Include="webservice\ClientCommonRemote.asmx" />
+    <Content Include="webservice\WebSiteRemote.asmx" />
+    <Content Include="action\NetPreventAction.ashx" />
+    <Content Include="action\WebChatAction.ashx" />
+    <Content Include="action\ShopLabelAction.ashx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <None Include="res\js\layer\skin\default\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="action\BillAction.ashx.cs">
+      <DependentUpon>BillAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\HostAction.ashx.cs">
+      <DependentUpon>HostAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\NetPreventAction.ashx.cs">
+      <DependentUpon>NetPreventAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\ShopAction.ashx.cs">
+      <DependentUpon>ShopAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\ShopLabelAction.ashx.cs">
+      <DependentUpon>ShopLabelAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\TuanAction.ashx.cs">
+      <DependentUpon>TuanAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\WebChatAction.ashx.cs">
+      <DependentUpon>WebChatAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\WifiAuthAction.ashx.cs">
+      <DependentUpon>WifiAuthAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="action\WifiGWAction.ashx.cs">
+      <DependentUpon>WifiGWAction.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="webservice\WebManagerService.asmx.cs">
+      <DependentUpon>WebManagerService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="webservice\WebMenuRemote.asmx.cs">
+      <DependentUpon>WebMenuRemote.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="webservice\ClientCommonRemote.asmx.cs">
+      <DependentUpon>ClientCommonRemote.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="webservice\WebSiteRemote.asmx.cs">
+      <DependentUpon>WebSiteRemote.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="action\BillAction.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="action\WifiGWAction.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="action\Login.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="action\ShopAction.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="action\WifiAuthAction.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="action\TuanAction.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="action\HostAction.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\Core\UniCommon\UniCommon.csproj">
+      <Project>{DE56302C-23D6-4ED5-A7EE-A8E7A0B0F81E}</Project>
+      <Name>UniCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\Core\UniDatabase\UniDatabase.csproj">
+      <Project>{A478F54C-D0C5-472B-A6D1-F6DF4268B31B}</Project>
+      <Name>UniDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\YDC\Dao\UniDaoManager\UniDaoManager.csproj">
+      <Project>{DBA4A527-52A3-4470-84C1-2EFD867801BE}</Project>
+      <Name>UniDaoManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\YDC\Web\UniDllManager\UniDllManager.csproj">
+      <Project>{2F8F24B1-390E-4A68-9E05-959E4F108279}</Project>
+      <Name>UniDllManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>12779</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

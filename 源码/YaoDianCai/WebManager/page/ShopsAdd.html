@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商家注册界面</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link   type="text/css" href="/res/css/shopslist.css" rel="stylesheet" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/backpage-top.js"></script>
+    <script type="text/javascript">
+        $('document').ready(function () {
+            var wifiCount = 0;
+
+            $(".logo_top_right span").text(userInfo.account);
+
+            (function () {
+                $("select[name='area']").empty();
+
+                $.ajax({
+                    type: 'post',
+                    url: '/action/HostAction.ashx',
+                    data: { option: 'Host_Select' },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            var data = msg.lists;
+                            for (var i = 0; i < data.length; i++) {
+                                $("select[name='area']").append('<option value="' + data[i].serverId + '">' + data[i].name + '</option>');
+                            }
+                        }
+                    }
+                });
+            })();
+
+            $("input[name='name']").focusout(function () {
+                var name = $.trim($(this).val());
+                if (name == "") {
+                    $(".span_name").html("商家名不可为空");
+                    $(".span_name").css("display", "block");
+                    $(".span_name").css("color", "red");
+                    $(".span_name").removeClass("allow");
+                    refreshSaveButton();
+                    return;
+                }
+
+                $.ajax({
+                    type: 'post',
+                    url: '/action/ShopsAction.ashx',
+                    data: { option: 'name_judge', name: name },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            $(".span_name").html("商家名已存在");
+                            $(".span_name").css("display", "block");
+                            $(".span_name").css("color", "red");
+                            $("input[name='name']").val("");
+                            $(".span_name").removeClass("allow");
+                            refreshSaveButton();
+                        } else {
+                            $(".span_name").html("商家名可以使用");
+                            $(".span_name").css("display", "block");
+                            $(".span_name").css("color", "green");
+                            $(".span_name").addClass("allow");
+                            refreshSaveButton();
+                            return;
+                        }
+                    }
+                });
+            });
+
+
+            $("input[name='account']").focusout(function () {
+                var account = $.trim($(this).val());
+                if (account == "") {
+                    $(".span_account").html("商家名不可为空");
+                    $(".span_account").css("display", "block");
+                    $(".span_account").css("color", "red");
+                    $(".span_account").removeClass("allow");
+                    refreshSaveButton();
+                    return;
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/action/ShopsAction.ashx',
+                    data: { option: 'account_judge', account: account },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            $(".span_account").html("商家账号已存在");
+                            $(".span_account").css("display", "block");
+                            $(".span_account").css("color", "red");
+                            $("input[name='account']").val("");
+                            $(".span_account").removeClass("allow");
+                            refreshSaveButton();
+                        } else {
+                            $(".span_account").html("商家账号可以使用");
+                            $(".span_account").css("display", "block");
+                            $(".span_account").css("color", "green");
+                            $(".span_account").addClass("allow");
+                            refreshSaveButton();
+                            return;
+                        }
+                    }
+                });
+            });
+
+            $("input[name='password']").focusout(function () {
+                var pwd = $.trim($(this).val());
+                if (pwd == "") {
+                    $(".span_password").html("密码不可为空");
+                    $(".span_password").css("display", "block");
+                    $(".span_password").css("color", "red");
+                    $(".span_password").removeClass("allow");
+                    refreshSaveButton();
+                    return;
+                } else {
+                    $(".span_password").html("密码可行");
+                    $(".span_password").css("display", "block");
+                    $(".span_password").css("color", "green");
+                    $(".span_password").addClass("allow");
+                    refreshSaveButton();
+                }
+            });
+
+            $("input[name='repassword']").focusout(function () {
+                var pwd = $.trim($("input[name='password']").val());
+                var repwd = $.trim($(this).val());
+                if (repwd != pwd) {
+                    $(".span_repassword").html("密码输入不一致");
+                    $(".span_repassword").css("display", "block");
+                    $(".span_repassword").css("color", "red");
+                    $(".span_repassword").removeClass("allow");
+                    refreshSaveButton();
+                    return;
+                } else if (repwd == "") {
+                    $(".span_repassword").html("密码不可为空");
+                    $(".span_repassword").css("display", "block");
+                    $(".span_repassword").css("color", "red");
+                    $(".span_repassword").removeClass("allow");
+                    refreshSaveButton();
+                } else {
+                    $(".span_repassword").html("重复密码可行");
+                    $(".span_repassword").css("display", "block");
+                    $(".span_repassword").css("color", "green");
+                    $(".span_repassword").addClass("allow");
+                    refreshSaveButton();
+                }
+            });
+
+            var shop_save = function () {
+                $("input[name='name']").blur();
+                $("input[name='account']").blur();
+                $("input[name='password']").blur();
+                $("input[name='repassword']").blur();
+                if ($('.requirement').length != $('.requirement.allow').length) {
+                    alert('信息填写有误！');
+                    return;
+                }
+
+                var account = $.trim($("input[name='account']").val());
+                var password = $.trim($("input[name='password']").val());
+                var name = $.trim($("input[name='name']").val());
+                var area = $.trim($("select[name='area'] option:selected").val());
+                var phone = $.trim($("input[name='phone']").val());
+                var email = $.trim($("input[name='email']").val());
+                var contact = $.trim($("input[name='contact']").val());
+                var address = $.trim($("input[name='address']").val());
+
+                var json = {
+                    option: 'account_add',
+                    account: account,
+                    password: password,
+                    name: name,
+                    area: area,
+                    phone: phone,
+                    email: email,
+                    contact: contact,
+                    address: address,
+                    createBy: userInfo.id,
+                    wifiCount: wifiCount
+                };
+
+                $.ajax({
+                    type: 'post',
+                    url: '/action/ShopsAction.ashx',
+                    data: json,
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            alert("商家新增成功。");
+                            window.location.href = "/ShopsList.html";
+                        } else {
+                            alert('商家新增失败。');
+                        }
+                    }
+                });
+            }
+
+            var refreshSaveButton = function () {
+                if ($('.requirement').length == $('.requirement.allow').length) {
+                    $('#Shop_Save').bind("click", shop_save);
+                } else {
+                    $('#Shop_Save').unbind("click", shop_save);
+                }
+            }
+
+            $('#Shop_Add_Wifi').click(function () {
+                var obj = jQuery("<div class='register_wifi_list'></div>").bind("click", function () {
+                    this.remove();
+                    wifiCount-=1;
+                });
+                $("#Shop_Register_Wifi_List").prepend(obj);
+                wifiCount += 1;
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/shops/top-logo.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>用户名</span></div>
+                <div onclick="user_exit();"><img src="/res/images/shops/arrows-bottom.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"><span>商家列表</span></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"><span>商家下单统计</span></div>
+            <div class="right_tab_auth" onclick="right_tab_auth();"><span>热点认证统计</span></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"><span>团购验证统计</span></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle" onclick="right_tab_shop();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;"><span>商家列表</span></div>
+                <div class="navigation_left_center"></div>
+            </div>
+            <div class="navigation_left">
+                <div class="navigation_left_middle" style="font:14px/18px '宋体',arial,sans-serif;"><span>商家注册</span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+        </div>
+
+        <div class="shop_register">
+            <div class="shop_register_title"><div>填写商家信息</div></div>
+            <div class="shop_register_must">
+                <div class="shop_register_div">
+                    <div class="shop_register_font">商家名称：</div>
+                    <div><input name="name" /><div class="requirement div_span span_name"></div></div>
+                </div>
+                <div class="shop_register_div">
+                    <div class="shop_register_font">商家账号：</div>
+                    <div><input name="account" /><div class="requirement div_span span_account"></div></div>
+                </div>
+                <div class="shop_register_div">
+                    <div class="shop_register_font">商家密码：</div>
+                    <div><input name="password" type="password" /><div class="requirement div_span span_password"></div></div>
+                </div>
+                <div class="shop_register_div">
+                    <div class="shop_register_font">重复密码：</div>
+                    <div><input name="repassword" type="password" /><div class="requirement div_span span_repassword"></div></div>
+                </div>
+                
+                <div class="shop_register_div">
+                    <div class="shop_register_font">所在服务器：</div>
+                    <div>
+                        <select name="area">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="shop_register_non_must" style="height:105px;">
+                <div class="shop_register_div">
+                    <div class="shop_register_font">联系电话：</div><div><input name="phone"/></div>
+                    <div class="shop_register_font shop_register_non_must_div">电子邮件 ：</div><div><input name="email"/></div>
+                </div>
+                <div class="shop_register_div">
+                    <div class="shop_register_font ">联系人名：</div><div><input name="contact"/></div>
+                    <div class="shop_register_font shop_register_non_must_div">商家地址：</div><div><input name="address"/></div>
+                </div>
+            </div>
+            <div class="shop_register_wifi">
+                <div id="Shop_Register_Wifi_List" class="shop_register_div "><div id="Shop_Add_Wifi" class="register_wifi_add" style="float:left;"></div></div>
+            </div>
+            <div class="shop_register_button">
+                <div class="shop_register_button_context">
+                    <div id="Shop_Save" class="shop_register_button_save"></div>
+                    <div class="shop_register_button_cancle" onclick="javascript:history.back(-1);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

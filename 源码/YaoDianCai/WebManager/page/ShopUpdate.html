@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商家信息修改界面</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link   type="text/css" href="/res/css/shopslist.css" rel="stylesheet" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/layer/layer.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.showLoading.min.js"></script>
+    <script type="text/javascript" src="/res/js/backpage-top.js"></script>
+    <script type="text/javascript">
+        var SID = request.QueryString("SID");
+        var name = request.QueryString("name");
+        var domain = request.QueryString("domain");
+        var layerDiv;
+        function pwdUpdate() {
+            var prepassword = $.trim($("input[name='prepassword']").val());
+            var password = $.trim($("input[name='password']").val());
+            var repassword = $.trim($("input[name='repassword']").val());
+            if (password == "") {
+                layer.alert("密码不能为空。",12);
+                return;
+            }
+            if (password != repassword) {
+                layer.alert("重复密码不一致。",12);
+                return;
+            }
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopAction.ashx',
+                data: {
+                    option: 'OP_ShopPasswordUpdate',
+                    SID: SID,
+                    prepassword: prepassword,
+                    password: password
+                },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        layer.alert("商家密码修改成功。",12);
+                        $('.update_pwd_cancel').click();
+                    } else {
+                        layer.alert('商家密码修改失败。',12);
+                    }
+                }
+            });
+        }
+
+        function shopSave() {
+            $('.mask').showLoading();
+            var phone = $.trim($("input[name='phone']").val());
+            var email = $.trim($("input[name='email']").val());
+            var contact = $.trim($("input[name='contact']").val());
+            var address = $.trim($("input[name='address']").val());
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopAction.ashx',
+                data: {
+                    option: 'OP_ShopBaseInfoUpdate',
+                    SID: SID,
+                    phone: phone,
+                    email: email,
+                    contact: contact,
+                    address: address
+                },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        alert("商家信息修改成功。");
+                        window.location.href = "/ShopList.html";
+                    } else {
+                        alert('商家信息修改失败。');
+                    }
+                    $('.mask').hideLoading();
+                },
+                error: function (msg) {
+                    alert("访问失败，请查看网络是否正常！");
+                    $('.mask').hideLoading();
+                }
+            });
+        }
+
+        function addWifi() {
+            if(window.confirm("你确定为商家添加一个热点吗?")){
+                $('.mask').showLoading();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/WifiGWAction.ashx',
+                    data: { option: 'OP_WifiGWNewOne', SID: SID },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            $(".shop_register_wifi_list").prepend(
+                            '<div class="register_wifi_update">' +
+                                '<div class="register_wifi_update_list"></div>' +
+                                '<div class="register_wifi_num">' + msg.gwId + '</div>' +
+                            '</div>');
+                        } else {
+                            alert('商家网关新增失败。');
+                        }
+                        $('.mask').hideLoading();
+                    },
+                    error: function (msg) {
+                        alert("访问失败，请查看网络是否正常！");
+                        $('.mask').hideLoading();
+                    }
+                });
+            }
+        }
+
+        $('document').ready(function () {
+            $(".logo_top_right span").text(userInfo.account);
+            $(".navigation_left_name").text(decodeURI(name));
+
+            (function () {
+                $.ajax({
+                    type: 'post',
+                    url: '/action/ShopAction.ashx',
+                    data: { option: 'OP_ShopBaseInfo', SID: SID },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            var data = msg.data;
+                            $("input[name='account']").val(data.account);
+                            $("input[name='name']").val(data.name);
+                            $("input[name='phone']").val(data.phone);
+                            $("input[name='email']").val(data.email);
+                            $("input[name='contact']").val(data.contact);
+                            $("input[name='address']").val(data.address);
+                            $("input[name='area']").val(data.hostName);
+                        } else {
+                            layer.alert("商家信息获取失败。", 12);
+                        }
+                    }
+                });
+
+                $.ajax({
+                    type: 'post',
+                    url: '/action/WifiGWAction.ashx',
+                    data: { option: 'OP_WifiGWIdByShop', SID: SID },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            var data = msg.lists;
+                            for (var i = data.length - 1; i >= 0; i--) {
+                                $(".shop_register_wifi_list").
+                                prepend('<div class="register_wifi_update">' +
+                                        '<div class="register_wifi_update_list"></div>' +
+                                        '<div class="register_wifi_num">' + data[i].gwId + '</div>' +
+                                    '</div>');
+                            }
+                        }
+                    }
+                });
+            })();
+
+            $(".shop_video_button a").attr('href', 'http://' + domain + '/page/ShopVideoManager.aspx?SID=' + SID);
+            $(".shop_music_button a").attr('href', 'http://' + domain + '/page/ShopMusicManager.aspx?SID=' + SID);
+            $(".shop_call_button a").attr('href', 'http://' + domain + '/page/ShopCallManager.aspx?SID=' + SID);
+        });
+
+        function popupDiv(div_id) {
+            layerDiv = $.layer({
+                shade: [0.3, '#000', true],
+                shadeClose: true,
+                type: 1,
+                move: ['.xubox_title', false],
+                area: ['432px', 'auto'],
+                title: '商家密码修改',
+                border: [10, 0.5, '#000', true],
+                page: { dom: '#' + div_id },
+                close: function (index) {
+                    layer.close(index);
+                }
+            });
+
+        }
+
+        function hideDiv() {
+            layer.close(layerDiv);
+        }
+        function shopPrevent() {
+            window.location.href = "/ShopPreventList.html?SID=" + SID + "&name=" + name;
+        }
+        function shopTabOption() {
+            window.location.href = "/ShopAddTab.html?SID=" + SID + "&name=" + name;
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="mask" style="width:100%;height:100%;position:absolute;left:0;top:0;display:none;"></div>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/shops/top-logo.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>用户名</span></div>
+                <div onclick="user_exit();" style="cursor:pointer"><img src="/res/images/quit.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"><div class="right_tab_font tab_font_shop">0</div></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"><div class="right_tab_font tab_font_menu">0</div></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"><div class="right_tab_font tab_font_tuan">0</div></div>
+            <div class="right_tab_auth" onclick="right_tab_auth();"><div class="right_tab_font tab_font_auth">0</div></div>
+            <div class="right_tab_tab"  onclick="right_tab_tab();" ><div class="right_tab_font tab_font_tab" >0</div></div>
+            <div class="right_tab_chat" onclick="right_tab_chat();"><div class="right_tab_font tab_font_chat">0</div></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle" onclick="right_tab_shop();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;"><span>商家列表</span></div>
+                <div class="navigation_left_center"></div>
+            </div>
+            <div class="navigation_left">
+                <div class="navigation_left_middle"  style="font:14px/18px '宋体',arial,sans-serif;"><div class='logo_shop'></div><span class="navigation_left_name"></span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+        </div>
+
+        <div class="shop_register">
+            <div class="shop_register_must" style="height:150px;">
+                <div class="shop_register_div">
+                    <div class="shop_register_font">商家名称：</div>
+                    <div><input name="name" readonly="readonly" style="color:#aaa;" /></div>
+                    <div class="shop_register_font shop_register_non_must_div"></div>
+                    <div class="shop_register_prevent">
+                        <div class="shop_update_button_prevent" onclick="shopPrevent();"></div>
+                        <div class="shop_update_button_tab" onclick="shopTabOption();"></div>
+                    </div>
+                </div>
+                <div class="shop_register_div">
+                    <div class="shop_register_font">商家账号：</div>
+                    <div><input name="account" readonly="readonly" style="color:#aaa;" /><div class="shop_update_button_pwd" onclick="popupDiv('Shop_Update_Pwd');"></div></div>
+                    <div class="shop_register_prevent">
+                        <div class="shop_video_button" ><a href="#" target="_blank"></a></div>
+                        <div class="shop_music_button" ><a href="#" target="_blank"></a></div>
+                    </div>
+                </div>
+                <div class="shop_register_div">
+                    <div class="shop_register_font">所在服务器：</div>
+                    <div>
+                        <input name="area" readonly="readonly" style="color:#aaa;" />
+                    </div>
+                    <div class="shop_register_prevent">
+                        <div class="shop_call_button" ><a href="#" target="_blank" ></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="shop_register_non_must" style="height:105px;">
+                <div class="shop_register_div">
+                    <div class="shop_register_font">联系电话：</div><div><input name="phone"/></div>
+                    <div class="shop_register_font shop_register_non_must_div">电子邮件 ：</div><div><input name="email"/></div>
+                </div>
+                <div class="shop_register_div">
+                    <div class="shop_register_font">联系人名：</div><div><input name="contact"/></div>
+                    <div class="shop_register_font shop_register_non_must_div">商家地址：</div><div><input name="address"/></div>
+                </div>
+            </div>
+
+            <div id="Shop_Update_Pwd" class="shop_update_pwd" >
+                <div class="update_pwd_row">
+                    <div class="update_pwd_font">旧&nbsp;密&nbsp;码：</div>
+                    <div><input name="prepassword" type="password" /></div>
+                </div>
+                <div class="update_pwd_row">
+                    <div class="update_pwd_font">新&nbsp;密&nbsp;码：</div>
+                    <div><input name="password" type="password" /></div>
+                </div>
+                <div class="update_pwd_row">
+                    <div class="update_pwd_font">确认密码：</div>
+                    <div><input name="repassword" type="password" /></div>
+                </div>
+                <div class="update_pwd_row" style="float:right;">
+                    <div class="update_pwd_cancel"  onclick="hideDiv('Shop_Update_Pwd');"></div>
+                    <div class="update_pwd_confirm" onclick="pwdUpdate();"></div>
+                </div>
+            </div>
+            <div class="shop_register_wifi" style="height:205px;">
+                <div class="shop_register_div shop_register_wifi_list">
+                    <div class="register_wifi_add" onclick="addWifi();"></div>
+                </div>
+                <!--<div class="shop_register_div" style="float:left;width:80px;">
+                    
+                </div>-->
+            </div>
+            <div class="shop_register_button">
+                <div class="shop_register_button_context" style="width:705px;">
+                    <div class="shop_register_button_save" onclick="shopSave();"></div>
+                    <div class="shop_register_button_cancle" onclick="javascript:history.back(-1);"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+</html>

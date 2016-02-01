@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A478F54C-D0C5-472B-A6D1-F6DF4268B31B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Uni.Core.Database</RootNamespace>
+    <AssemblyName>Uni.Core.Database</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\ThirdPartyLib\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DebugProxy\DbCommandDebugProxy.cs" />
+    <Compile Include="DebugProxy\DbConnectionDebugProxy.cs" />
+    <Compile Include="DebugProxy\DbTransactionDebugProxy.cs" />
+    <Compile Include="DebugProxy\AdoDebugEventArgs.cs" />
+    <Compile Include="DebugProxy\ActionTimer.cs" />
+    <Compile Include="DebugProxy\AdoDebugProfile.cs" />
+    <Compile Include="DbExtensions.cs" />
+    <Compile Include="DbManager.cs" />
+    <Compile Include="DbRegistry.cs" />
+    <Compile Include="DbTransaction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sql\Dialects\MySQLDialect.cs" />
+    <Compile Include="Sql\Dialects\SQLiteDialect.cs" />
+    <Compile Include="Sql\Expressions\BetweenExp.cs" />
+    <Compile Include="Sql\Expressions\EqColumnsExp.cs" />
+    <Compile Include="Sql\Expressions\EqExp.cs" />
+    <Compile Include="Sql\Expressions\ExistsExp.cs" />
+    <Compile Include="Sql\Expressions\Exp.cs" />
+    <Compile Include="Sql\Expressions\InExp.cs" />
+    <Compile Include="Sql\Expressions\JunctionExp.cs" />
+    <Compile Include="Sql\Expressions\LikeExp.cs" />
+    <Compile Include="Sql\Expressions\LtExp.cs" />
+    <Compile Include="Sql\Expressions\SelectAgregate.cs" />
+    <Compile Include="Sql\Expressions\SqlExp.cs" />
+    <Compile Include="Sql\Expressions\SubExp.cs" />
+    <Compile Include="Sql\ISqlDialect.cs" />
+    <Compile Include="Sql\ISqlInstruction.cs" />
+    <Compile Include="Sql\SqlCreate.cs" />
+    <Compile Include="Sql\SqlDelete.cs" />
+    <Compile Include="Sql\Dialects\SqlDialect.cs" />
+    <Compile Include="Sql\SqlIdentifier.cs" />
+    <Compile Include="Sql\SqlInsert.cs" />
+    <Compile Include="Sql\SqlQuery.cs" />
+    <Compile Include="Sql\SqlUpdate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniCommon\UniCommon.csproj">
+      <Project>{DE56302C-23D6-4ED5-A7EE-A8E7A0B0F81E}</Project>
+      <Name>UniCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

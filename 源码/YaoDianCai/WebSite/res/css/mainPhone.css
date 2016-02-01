@@ -1,0 +1,225 @@
+﻿html, body, div, span,   
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,  
+a, abbr, acronym, address, big, cite, code,  
+img, ins, kbd, q, s, samp,  
+small, strike, strong,   
+dl, dt, dd, ol, ul, li,  
+fieldset, form, label, legend,  
+caption, tbody, tfoot, thead{
+    margin: 0;  
+    padding: 0;  
+    border: 0;  
+    outline: 0;  
+    font-size: 100%;  
+    vertical-align: baseline;  
+    background: transparent;
+}  
+body {  
+    line-height: 1;
+    margin:0;padding:0;
+}  
+ol, ul {  
+    list-style: none;  
+}  
+blockquote, q {  
+    quotes: none;  
+}  
+blockquote:before, blockquote:after,  
+q:before, q:after {  
+    content: '';  
+    content: none;  
+}
+
+.Fix
+{
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+}
+
+/*
+----------------------------------------------界面的头信息的css
+*/
+
+body 
+{  
+    background: url("/res/images/bg.gif") repeat scroll 0 0;
+    overflow-x: hidden;
+}  
+
+
+.body_panel
+{
+    margin: 10px auto 0px;
+    width: 340px;
+    font-family: "Microsoft YaHei";
+}
+
+.logo_top_right {
+    float: right;
+    margin: 15px 10px 0 0;
+    padding: 10px;
+}
+
+.logo_top {
+    width:100%;
+    height: 40px;
+    float:left;
+    margin-bottom: 4px;
+}
+.logo_top_left {
+    float: left;
+    width:300px;
+    height:56px;
+    margin-left: 13px;
+}
+.logo_top_right div{
+    cursor: pointer;
+    float: left;
+    margin-left: 6px;
+    margin-right: 2px;
+}
+
+#mask 
+{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:#666;
+    filter:alpha(opacity=40);
+    opacity:.4;
+    z-index:10;
+}
+#loading
+{
+    display: block;
+    margin: 20% auto 0;
+}
+.shop_select
+{ 
+    background-color: #333333;
+    border: 1px solid #6E8BDE;
+    height: 100px;
+    padding: 10px 20px;
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    z-index: 9999999;
+    color:#FFFFFF;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+}
+.shop_select_menu
+{
+    cursor:pointer;
+    margin:20px;    
+}
+.shop_select_website
+{
+    cursor:pointer;
+    margin:20px; 
+}
+.search_box {
+    width: 227px;
+    height: 33px;
+    background: url(../images/search-input.png);
+    margin-top: 5px;
+    float:left;
+}
+.search_box #searchtext {
+    float: left;
+    padding: 0;
+    margin: 6px 0 0 6px;
+    border: 0;
+    width: 159px;
+    background: none;
+    font-size: 1.2em;
+    color:#808080;
+}
+.search_box #searchbtn {
+    float: right;
+    margin: 9px 4px 0 0;
+}
+
+
+.food_type
+{
+    height:170px;
+    width:100%;   
+    float:left; 
+}
+.pubu_shops
+{
+    float:left;
+    width:100%;    
+}
+#content
+{
+    float:left;
+    width:100%;
+    margin-top:5px;
+}
+
+#content .content_div
+{
+    float:left;
+    width:164px;
+    background:#eee;
+    text-align:center;
+    font-size:24px;
+    color:#999;    
+    margin:2px; 
+}
+.content_div .img,.content_div .title,.content_div .bottomline
+{
+    width:100%;  
+    float:left; 
+    background:#eee; 
+}
+.content_div .menunum{
+    font-size: 20px;
+    position:absolute;
+    bottom:30px;
+    right:0px;
+    padding: 5px;
+    background-color:#FFBB32;
+    color:#FFF;
+    filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#33000000, endcolorstr=#33000000);
+}
+.content_div .shopsname{
+    display: block;
+    font-size: 22px;
+    color: red;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.content_div .shopsaddress{
+    display: block;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    text-align:center;
+}
+
+.content_div .bottomline
+{
+    height: 8px;
+    background-color: #98CB00;
+}
+#footer {
+    float: left;
+    height: 1px;
+    width: 100%;
+}
+#img
+{
+    background: url("../images/shopimg/banner_left1.jpg") repeat-x scroll 0 0 rgba(0, 0, 0, 0);    
+}
+#img2
+{
+    background: url("../images/shopimg/banner_left1.jpg") repeat-x scroll 0 0 rgba(0, 0, 0, 0);    
+}

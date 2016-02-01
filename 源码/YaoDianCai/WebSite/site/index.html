@@ -1,0 +1,225 @@
+﻿<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="style/reset.css" rel="stylesheet" type="text/css">
+<link href="style/base.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="js/unslider.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+			/*导航效果*/
+			$(function() {
+				$(".navUl .lis").hover(function() {
+					$(this).find("ul").show();
+					$(this).find("a").first().css({
+						"color" : "#fff",
+						"background" : "#EA8915",
+						"box-shadow" : "1px 1px 3px #333",
+						"z-index" : "2"
+					});
+				}, function() {
+					$(this).find("ul").hide();
+					$(this).find("a").first().css({
+						"color" : "#595757",
+						"background" : "#fff",
+						"box-shadow" : "none",
+						"z-index" : "1"
+					});
+				})
+			})
+
+		</script>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffe0b746d0d97ad96e482bd98c749aff3' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<div style="display:none"><script src="http://s17.cnzz.com/stat.php?id=5743490&amp;web_id=5743490" language="JavaScript"></script></div>
+
+<!--脚部结束-->
+<html lang="en">
+
+<!-- Mirrored from www.daoyoudao.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 12 Jun 2014 15:50:14 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>要点菜首页</title>
+<meta name="keywords" content="要点菜线上点餐" />
+<meta name="description" content="要点菜线上点餐" />
+<meta name="baidu-site-verification" content="R89Cszoe1z" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="renderer" content="webkit"/>
+<link href="style/master.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+		$(function(){
+
+			$('.banner li').css('background-size', '100% 100%');
+			$('.banner li').css("width","100%");
+			
+			$('.banner').unslider({
+					speed: 1000,               //  The speed to animate each slide (in milliseconds)
+					delay: 3000,              //  The delay between slide animations (in milliseconds)
+					keys: true,               //  Enable keyboard (left, right) arrow shortcuts
+					dots: true,               //  Display dot navigation
+					fluid: false              //  Support responsive design. May break non-responsive designs
+				});
+			})
+
+	</script>
+<script>
+		$(function(){
+			$('body').click(function(event){
+			event.stopPropagation(); 
+			$('.layerCon,.layer').fadeOut();
+		})
+})
+function submit() {
+    var account = $.trim($("input[name='account']").val());
+    var password = $.trim($("input[name='password']").val());
+    if (account == "") {
+        alert("账号不可为空");
+        return;
+    }
+
+    if (password == "") {
+        alert("密码不可为空");
+        return;
+    }
+
+    $.ajax({
+        type: 'post',
+        url: '/action/Login.ashx',
+        data: { account: account, password: password },
+        dataType: 'json',
+        success: function (msg) {
+            if (msg.ok) {
+                window.location.href = 'http://' + msg.domain + "/pagesite/main.html?SID=" + msg.SID + "&account=" + account + "&name=" + msg.name;
+            }
+        }
+    });
+}
+	</script>
+</head>
+<body>
+<div id="header">
+  <div class="headerCon">
+    <div class="logo"> <a href="index.html"><img src="images/headerLogo.png"></a> </div>
+    <div class="header-bar">
+        <div class="inner Fix">
+            <ul class="quick-menu">
+                <li class="ml mt">账户:</li>
+                <li class="ml mi"><input name="account" id="account" type="text" style="width: 100px;"/></li>
+                <li class="ml mt">密码:</li>
+                <li class="ml mi"><input name="password" id="password" type="password" style="width: 100px;"/></li>
+                <li class="ml last" onclick="submit();"></li>
+            </ul>
+        </div>
+    </div>
+  </div>
+</div>
+<!--
+		幻灯片开始
+		-->
+<div class="unslider">
+  <div class="banner">
+    <ul>
+      <li class="li1">
+        <div> <img src="images/banner0-1.png"> </div>
+      </li>
+      <li class="li2">
+        <div onClick="javascript:location.href='idianIndex.html'" style="cursor:pointer"> <img src="images/banner0-2.png"> </div>
+      </li>
+      <li class="li3">
+        <div> <img src="images/banner0-3.png"> </div>
+      </li>
+      <li class="li4">
+        <div> <img src="images/banner0-4.png"> </div>
+      </li>
+      <li class="li5">
+        <div> <img src="images/banner0-5.png"> </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--
+		幻灯片结束
+		--> 
+
+<!--
+		主体内容开始
+		-->
+<div class="cont">
+  <div class="section">
+    <div class="active1">
+      <div class="col-2">
+        <ul>
+          <li>
+            <div> <img src="images/iDianImg1.png"> </div>
+            <h3>自助点餐</h3>
+            <p> 连接wifi即可点餐</p>
+            <p>节省服务员劳动成本 </p>
+          </li>
+          <li>
+            <div> <img src="images/iDianImg2.png"> </div>
+            <h3>合作点餐</h3>
+            <p> 不用大家争抢菜单 </p>
+            <p> 各自点餐，统一出菜 </p>
+          </li>
+          <li>
+            <div> <img src="images/iDianImg3.png"> </div>
+            <h3>呼叫服务</h3>
+            <p> 买单？加汤？上菜？ </p>
+            <p> 随时满足顾客需求 </p>
+          </li>
+        </ul>
+      </div>
+      <div class="col-2">
+        <ul>
+          <li>
+            <div> <img src="images/iDianImg4.png"> </div>
+            <h3>内网应用</h3>
+            <p> 视频点播，音乐欣赏 </p>
+            <p> 游戏互动，店内娱乐 </p>
+            <p> 让您的顾客流连忘返 </p>
+          </li>
+          <li>
+            <div> <img src="images/iDianImg5.png"> </div>
+            <h3>商家印象</h3>
+            <p> 环境优雅？价格适中？ </p>
+            <p> 服务到位？交通便利？ </p>
+            <p> 顾客反馈即时知晓 </p>
+          </li>
+          <li>
+            <div> <img src="images/iDianImg6.png"> </div>
+            <h3>定制服务</h3>
+            <p> 更多丰富的内网服务项目 </p>
+            <p> 专业的技术顾问团队 </p>
+            <p> 量身定制的特色服务方案！ </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+		主体内容结束
+		--> 
+<!--底部开始-->
+
+<div class="footer">
+<div class="width">
+  <div class="footer_logo"><img src="images/logo2.png"> </div>
+  <div class="contact">
+    <p>云锐软件设计工作室</p>
+    <p>QQ：99654533</p>
+    <p>E-mail：grafik@126.com</p>
+    <p>地址：苏州市白塔东路管家园21号1311室</p>
+  </div>
+  </div>
+  <div class="clear"></div>
+  <div class="footTxt"> Copyright © 2013-2014 Union Studio, All Rights Reserved. 苏州云锐软件工作室 | <a href="www.unistudio.cn"  target="_top">www.unistudio.cn</a> </div>
+</div>
+<!--底部结束-->
+
+</body>
+</html>

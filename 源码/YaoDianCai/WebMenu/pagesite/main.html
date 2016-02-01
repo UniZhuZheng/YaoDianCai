@@ -1,0 +1,452 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商家菜品界面</title>
+    <link href="/res/css/pagesite.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/Highcharts-3.0.10/js/highcharts.js"></script>
+    <script type="text/javascript" src="../res/js/shopsitetop.js" ></script>
+    <script type="text/javascript">
+        var chart_pie;
+        var chart_line_order;
+        var chart_line_total;
+        
+        function CurrentDayChartPie(data){
+            chart_pie = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'chart-pie',
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.point.name + '</b>: ' + this.percentage.toFixed(2) + ' %';
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: false
+                        }
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'pie',
+                    data: [{
+                        name: '今日下单数',
+                        y: data.order,
+                        color: '#FEBA31'
+                    }, {
+                        name: '今日团购数',
+                        y: data.tuan,
+                        color: '#A967CB'
+                    }, {
+                        name: '今日认证数',
+                        y: data.auth,
+                        color: '#FD4442'
+                    }]
+                }]
+            });
+        }
+
+        function CurrentMonthChartLine(targetId,data,msg){
+            var date = new Date();
+            var year=date.getFullYear();
+            var month=date.getMonth();
+            var day=date.getDate();
+            chart_line_order = new Highcharts.Chart({
+                chart: {
+			        renderTo: targetId,
+			        type: 'line',
+			        marginRight: 5,
+			        marginBottom:25
+		        },
+                title: {
+			        text: ''
+		        },
+                xAxis: {
+                    type:'datetime',
+                    dateTimeLabelFormats: {
+                        day: '%e'
+                    }
+		        },
+		        yAxis: {
+			        title: {
+				        text: ''
+			        },
+			        plotLines: [{
+				        value: 0,
+				        width: 2,
+				        color: '#808080'
+			        }]
+		        },
+                tooltip: {
+			        formatter: function() {
+                        var d = new Date(this.x);
+					    return '<b>'+ this.series.name +'</b><br/><br/>'+
+					    (d.getMonth()+1)+'月'+d.getDate() +'日: '+ this.y ;
+			        }
+		        },
+                legend: {
+			        enabled:false
+		        },
+			    series: [{
+			        name: msg,
+                    pointInterval: 24 * 3600 * 1000,
+                    pointStart: Date.UTC(year, month, 1),
+			        data: data
+			    }]
+            });
+        }
+        function CurrentYearChartLine(dataOrder, dataTuan, dataAuth, dataMonth) {
+            chart_line_total = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'chart-line-total',
+                    type: 'line',
+                    marginRight: 5,
+                    marginBottom: 25
+                },
+                title: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: dataMonth
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 0,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/><br/>' +
+					        this.x + ': ' + this.y + '单位';
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                series: [{
+                    name: '下单总数',
+                    color: '#FFBB33',
+                    data: dataOrder
+                }, {
+                    name: '团购总数',
+                    color: '#AA66CC',
+                    data: dataTuan
+                }, {
+                    name: '认证总数',
+                    
+                    color: '#FF4444',
+                    data: dataAuth
+                }]
+            });
+        }
+        function GetTableDishCount(){
+            $.ajax({
+                type: 'post',
+                url: '/action/TableAction.ashx',
+                data: { option: 'OP_CountTable', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $(".shop-info-table").text(msg.count);
+                    }
+                }
+            });
+
+            $.ajax({
+                type: 'post',
+                url: '/action/DishAction.ashx',
+                data: { option: 'OP_ShopCountLimitDishes', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $(".shop-info-dish").text(msg.count);
+                    }
+                }
+            });
+            $.ajax({
+                type: 'post',
+                url: '/action/MainAction.ashx',
+                data: { option: 'OP_GetBillSales', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $(".shop-info-cursales").text(msg.lists[1].sales+"元");
+                        $(".shop-info-tomsales").text(msg.lists[0].sales+"元");
+                    }
+                }
+            });
+        }
+        function CurrentDayStat(){
+            $.ajax({
+                type: 'post',
+                url: '/action/MainAction.ashx',
+                data: { option: 'OP_CurrentDay', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $(".pie-content-order-count").text(msg.order);
+                        $(".pie-content-tuan-count").text(msg.tuan);
+                        $(".pie-content-auth-count").text(msg.auth);
+                        var date = new Date();
+                        var year=date.getFullYear();
+                        var month=date.getMonth();
+                        var day=date.getDate();
+                        var hour=date.getHours();
+                        var min=date.getMinutes();
+                        var str=year+'/'+(month+1)+'/'+day+' '+hour+":"+min+" 更新";
+                        $(".pie-content-date-font").text(str);
+                        CurrentDayChartPie(msg);
+                    }else{
+                        alert("当日信息获取失败。");
+                    }
+                }
+            });
+        }
+        function CurrentMonthStat(){
+            $.ajax({
+                type: 'post',
+                url: '/action/MainAction.ashx',
+                data: { option: 'OP_CurrentMonthOrder', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        var data=[];
+                        for(var i=0;i<msg.lists.length;i++){
+                            data.push(msg.lists[i].count);
+                        }
+                        CurrentMonthChartLine("chart-line-order",data,"下单数");
+                    }else{
+                        alert("当月下单数获取失败。");
+                    }
+                }
+            });
+
+            $.ajax({
+                type: 'post',
+                url: '/action/MainAction.ashx',
+                data: { option: 'OP_CurrentMonthTuan', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        var data = [];
+                        for (var i = 0; i < msg.lists.length; i++) {
+                            data.push(msg.lists[i].count);
+                        }
+                        CurrentMonthChartLine("chart-line-tuan", data,"团购数");
+                    } else {
+                        alert("当月团购数获取失败。");
+                    }
+                }
+            });
+
+            $.ajax({
+                type: 'post',
+                url: '/action/MainAction.ashx',
+                data: { option: 'OP_CurrentMonthAuth', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        var data = [];
+                        for (var i = 0; i < msg.lists.length; i++) {
+                            data.push(msg.lists[i].count);
+                        }
+                        CurrentMonthChartLine("chart-line-auth", data,"认证数");
+
+                    } else {
+                        alert("当月认证数获取失败。");
+                    }
+                }
+            });
+
+        }
+
+        function CurrentYearStat() {
+            $.ajax({
+                type: 'post',
+                url: '/action/MainAction.ashx',
+                data: { option: 'OP_CurrentYear', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        var dataOrder = [];
+                        var dataTuan = [];
+                        var dataAuth = [];
+                        var dataMonth = [];
+                        var countOrder = 0;
+                        var countTuan = 0;
+                        var countAuth = 0;
+                        for (var i = 0; i < msg.orderlists.length; i++) {
+                            dataOrder.push(msg.orderlists[i].count);
+                            countOrder += msg.orderlists[i].count;
+                        }
+                        for (var i = 0; i < msg.tuanlists.length; i++) {
+                            dataTuan.push(msg.tuanlists[i].count);
+                            countTuan += msg.tuanlists[i].count;
+                        }
+                        for (var i = 0; i < msg.authlists.length; i++) {
+                            dataAuth.push(msg.authlists[i].count);
+                            countAuth += msg.authlists[i].count;
+                        }
+                        var date = new Date();
+                        var month = date.getMonth();
+                        for (var i = 0; i <= month; i++) {
+                            dataMonth.push((i + 1) + '月');
+                        }
+                        CurrentYearChartLine(dataOrder, dataTuan, dataAuth, dataMonth);
+                        $(".chart-line-content-order-count").text(countOrder);
+                        $(".chart-line-content-tuan-count").text(countTuan);
+                        $(".chart-line-content-auth-count").text(countAuth);
+                        
+                    } else {
+                        alert("当年数据获取失败。");
+                    }
+                }
+            });
+        }
+        $('document').ready(function () {
+            $(".logo_top_right span").text(decodeURI(account));
+            $(".shop-info-name").text(decodeURI(name));
+            $(".shop-info-account").text(decodeURI(account));
+            var date = new Date();
+            var month = date.getMonth() + 1;
+            $(".chart-line-top-date").text("(" + month + "月)");
+            //获取桌数与菜品数
+            GetTableDishCount();
+
+            //当日统计汇总
+            CurrentDayStat();
+
+            //当月汇总
+            CurrentMonthStat();
+
+            //一年汇总
+            CurrentYearStat();
+        });
+    </script>
+</head>
+<body>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/top-logo-shop.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>admin</span></div>
+                <div onclick="user_exit();" style="cursor:pointer;"><img src="/res/images/arrows-bottom.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"></div>
+            <div class="right_tab_dish" onclick="right_tab_dish();"></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"></div>
+            <!--<div class="right_tab_auth" onclick="right_tab_auth();"></div>-->
+            <div class="right_tab_tab" onclick="right_tab_tab();"></div>
+        </div>
+        <div class="chart-pie">
+            <div class="pie-top"><div class="pie-top-font">当日统计汇总</div></div>
+            <div class="pie-content">
+                <div class="pie-content-left">
+                    <div id="chart-pie"></div>
+                </div>
+                <div class="pie-content-right">
+                    <div class="pie-content-order">
+                        <div class="pie-content-right-div"></div>
+                        <div class="pie-content-right-font">当日下单数</div>
+                        <div class="pie-content-right-count pie-content-order-count"></div>
+                    </div>
+                    <div class="pie-content-tuan">
+                        <div class="pie-content-right-div"></div>
+                        <div class="pie-content-right-font">当日团购数</div>
+                        <div class="pie-content-right-count pie-content-tuan-count"></div>
+                    </div>
+                    <div class="pie-content-auth">
+                        <div class="pie-content-right-div"></div>
+                        <div class="pie-content-right-font">当日认证数</div>
+                        <div class="pie-content-right-count pie-content-auth-count"></div>
+                    </div>
+                    <div class="pie-content-date">
+                        <div class="pie-content-date-font">2014/05/05 10:30 更新</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shop-info">
+            <div class="shop-info-top"><div class="shop-info-top-font">商家信息</div></div>
+            <div class="shop-info-content">
+                <div class="shop-info-name">云锐餐厅</div>
+                <div class="shop-info-font">用户名</div><div class="shop-info-account">union</div>
+                <div class="shop-info-font">销售菜品</div><div class="shop-info-dish">52</div>
+                <div class="shop-info-font">商家桌数</div><div class="shop-info-table">60</div>
+                <div class="shop-info-font">菜单模板</div><div class="shop-info-temp">默认</div>
+                <div class="shop-info-font">今日销售额</div><div class="shop-info-cursales">500</div>
+                <div class="shop-info-font">昨日销售额</div><div class="shop-info-tomsales">600</div>
+            </div>
+        </div>
+
+        <div class="chart-line">
+            <div class="chart-line-top line-order">
+                <div class="chart-line-top-font">当月下单数</div>
+                <div class="chart-line-top-date">(5月)</div>
+            </div>
+            <div class="chart-line-content">
+                <div id="chart-line-order"></div>
+            </div>
+        </div>
+        <div class="chart-line">
+            <div class="chart-line-top line-tuan">
+                <div class="chart-line-top-font">当月团购数</div>
+                <div class="chart-line-top-date">(5月)</div>    
+            </div>
+            <div class="chart-line-content">
+                <div id="chart-line-tuan"></div>
+            </div>
+        </div>
+        <div class="chart-line">
+            <div class="chart-line-top line-auth">
+                <div class="chart-line-top-font">当月认证数</div>
+                <div class="chart-line-top-date">(5月)</div>    
+            </div>
+            <div class="chart-line-content">
+                <div id="chart-line-auth"></div>
+            </div>
+        </div>
+        <div class="chart-line-total">
+            <div class="chart-line-top line-total"><div class="chart-line-top-font">年度统计汇总</div></div>
+            <div class="chart-line-content">
+                <div class="chart-line-content-top">
+                    <div class="chart-line-content-order">
+                        <div class="chart-line-content-right-div"></div>
+                        <div class="chart-line-content-right-font">全年下单数</div>
+                        <div class="chart-line-content-right-count chart-line-content-order-count">0</div>
+                    </div>
+                    <div class="chart-line-content-tuan">
+                        <div class="chart-line-content-right-div"></div>
+                        <div class="chart-line-content-right-font">全年团购数</div>
+                        <div class="chart-line-content-right-count chart-line-content-tuan-count">0</div>
+                    </div>
+                    <div class="chart-line-content-auth">
+                        <div class="chart-line-content-right-div"></div>
+                        <div class="chart-line-content-right-font">全年认证数</div>
+                        <div class="chart-line-content-right-count chart-line-content-auth-count">0</div>
+                    </div>
+                </div>
+                <div id="chart-line-total"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

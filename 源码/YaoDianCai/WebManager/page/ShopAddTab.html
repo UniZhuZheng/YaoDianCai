@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商家印象标签新增界面</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link type="text/css" href="/res/css/shopslist.css" rel="stylesheet" />
+    <link type="text/css" href="/res/css/datepicker.css" rel="stylesheet" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/layer/layer.min.js"></script>
+    <script type="text/javascript" src="/res/js/backpage-top.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/res/js/datepicker.js"></script>
+    <script type="text/javascript">
+        var SID = request.QueryString("SID");
+        var name = request.QueryString("name");
+        var layerDiv;
+        function appendTabList(data) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += '<div class="shoptablist_td">' +
+                    '<div class="shoptablist_td_1">' + data[i].name + '</div>' +
+                    '<div class="shoptablist_td_2">' + DateTimeConvertYMD(data[i].createDate)+ '</div>' +
+                    '<div class="shoptablist_td_3"><div class="shoptablist_td_update" onclick="popupDiv(\'Shop_Update_Tab\',\'' +
+                        data[i].name + '\',' + data[i].id + ',\'' + data[i].SID + '\');"></div><div class="shoptablist_td_delete" onclick="ShopTabDelete(' + data[i].id + 
+                        ',\'' + data[i].name + '\',\'' + data[i].SID + '\')"></div></div>' +
+                '</div>';
+            }
+            $("#Tab_ShopList").append(html);
+        }
+        
+        function tabList() {
+            $("#Tab_ShopList").empty();
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopLabelAction.ashx',
+                data: { option: 'OP_ShopLabelList', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        appendTabList(msg.lists);
+                    } else {
+                        $("#Tab_ShopList").empty();
+                    }
+                }
+            });
+        }
+        function ShopTabDelete(id,name,SID) {
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopLabelAction.ashx',
+                data: { option: 'OP_ShopLabelDelete', id: id,name:name,SID:SID},
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        alert("删除成功。");
+                        tabList();
+                    } else {
+                        alert("删除失败。");
+                    }
+                }
+            });
+        }
+        
+        function preventSubmit() {
+            var shopTab = $.trim($(".shop_prevent_top_input input[name='ShopTab']").val());
+            if (shopTab == "") {
+                alert("请输入商家的印象标签。");
+                return;
+            }
+            if (shopTab.length>10) {
+                alert("商家的印象标签需小于10个字。");
+                return;
+            }
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopLabelAction.ashx',
+                data: { option: 'OP_ShopLabelExit', SID: SID, name: shopTab },
+                dataType: 'json',
+                success: function (msg) {
+                    if (!msg.ok) {
+                        $.ajax({
+                            type: 'post',
+                            url: '/action/ShopLabelAction.ashx',
+                            data: { option: 'OP_ShopLabelAdd', SID: SID, shopTab: shopTab },
+                            dataType: 'json',
+                            success: function (msg) {
+                                if (msg.ok) {
+                                    alert("添加成功。");
+                                    $(".shop_prevent_top_input input[name='ShopTab']").val("");
+                                    tabList();
+                                } else {
+                                    alert("添加失败。");
+                                }
+                            }
+                        });
+                    } else {
+                        alert("标签已存在。");
+                        $(".shop_prevent_top_input input[name='ShopTab']").val("");
+                    }
+                }
+            });
+
+
+        }
+        
+        function popupDiv(div_id, name, id,SID) {
+            layerDiv = $.layer({
+                shade: [0.3, '#000', true],
+                shadeClose: true,
+                type: 1,
+                move: ['.xubox_title', false],
+                area: ['432px', 'auto'],
+                title: '商家印象修改',
+                border: [10, 0.5, '#000', true],
+                page: { dom: '#' + div_id },
+                close: function (index) {
+                    layer.close(index);
+                }
+            });
+            $("input[name='tabname']").val(name);
+            $("input[name='tabOldName']").val(name);
+            $("input[name='tabSID']").val(SID);
+            $("input[name='tabid']").val(id);
+        }
+        function hideDiv() {
+            layer.close(layerDiv);
+        }
+        function tabUpdate() {
+            var name = $.trim($("input[name='tabname']").val());
+            var id = $("input[name='tabid']").val();
+            var SID = $("input[name='tabSID']").val();
+            var oldName = $("input[name='tabOldName']").val();
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopLabelAction.ashx',
+                data: { option: 'OP_ShopLabelUpdate', name: name, id: id, SID: SID, oldName: oldName },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        tabList();
+                    } else {
+                        alert("修改失败。");
+                    }
+                    layer.close(layerDiv);
+                }
+            });
+        }
+        $('document').ready(function () {
+            $(".logo_top_right span").text(userInfo.account);
+            $(".navigation_left_name").text(decodeURI(name));
+
+            tabList();
+        });
+    </script>
+</head>
+<body>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/shops/top-logo.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>用户名</span></div>
+                <div onclick="user_exit();" style="cursor:pointer"><img src="/res/images/quit.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"><div class="right_tab_font tab_font_shop">0</div></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"><div class="right_tab_font tab_font_menu">0</div></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"><div class="right_tab_font tab_font_tuan">0</div></div>
+            <div class="right_tab_auth" onclick="right_tab_auth();"><div class="right_tab_font tab_font_auth">0</div></div>
+            <div class="right_tab_tab"  onclick="right_tab_tab();" ><div class="right_tab_font tab_font_tab" >0</div></div>
+            <div class="right_tab_chat" onclick="right_tab_chat();"><div class="right_tab_font tab_font_chat">0</div></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle" onclick="right_tab_shop();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;"><span>商家列表</span></div>
+                <div class="navigation_left_center"></div>
+            </div>
+            <div class="navigation_left">
+                <div class="navigation_left_middle"  style="font:14px/18px '宋体',arial,sans-serif;"><div class='logo_shop'></div><span class="navigation_left_name"></span></div>
+                <div class="navigation_left_center"></div>
+            </div>
+            <div class="navigation_left">
+                <div class="navigation_left_middle"  style="font:14px/18px '宋体',arial,sans-serif;"><span>印象标签</span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+
+        </div>
+
+        <div class="shop_prevent_top">
+            <div class="shop_prevent_top_font">请输入商家的印象标签内容：</div>
+            <div class="shop_prevent_top_input"><input name="ShopTab"/></div>
+            <div class="shop_prevent_top_button" onclick="preventSubmit();"></div>
+        </div>
+
+        <div class="shoptablist">
+            <div class="shoptablist_th">
+                <div class="shoptablist_th_1">印象标签</div>
+                <div class="shoptablist_th_2">创建时间</div>
+                <div class="shoptablist_th_3">操作</div>
+            </div>
+            <div id="Tab_ShopList"></div>
+        </div>
+    </div>
+
+    <div id="Shop_Update_Tab" class="shop_update_tab" >
+        <div class="update_tab_row">
+            <div class="update_tab_font">印象标签：</div>
+            <div><input name="tabname" type="text" /><input name="tabid" type="hidden"/><input name="tabSID" type="hidden"/><input name="tabOldName" type="hidden"/></div>
+        </div>
+        <div class="update_tab_row" style="float:right;">
+            <div class="update_tab_cancel"  onclick="hideDiv('Shop_Update_Tab');"></div>
+            <div class="update_tab_confirm" onclick="tabUpdate();"></div>
+        </div>
+    </div>
+
+</body>
+</html>

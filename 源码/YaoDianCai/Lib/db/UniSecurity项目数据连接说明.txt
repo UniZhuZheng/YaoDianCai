@@ -1,0 +1,54 @@
+UniSecurity项目数据连接说明
+连接sqlite数据库
+1.引用System.Data.SQLite.dll
+2.在config中添加如下：
+	<configSections>
+	    <section name="dataConfiguration"
+	             type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null" />
+	  </configSections>
+	  <startup useLegacyV2RuntimeActivationPolicy="true">
+	    <supportedRuntime version="v4.0" sku = ".NETFramework,Version=v4.0"/>
+	    <supportedRuntime version="v2.0.50727"/>
+	  </startup>
+
+	  <dataConfiguration defaultDatabase="">
+	    <providerMappings>
+	      <add databaseType="EntLibContrib.Data.SQLite.SQLiteDatabase, EntLibContrib.Data.SqLite, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null"
+	        name="System.Data.SQLite" />
+	    </providerMappings>
+	  </dataConfiguration>
+	  <system.data>
+	    <DbProviderFactories>
+	      
+	      <remove invariant="System.Data.SQLite"/>
+	      <add name="SQLite Data Provider" 
+	           invariant="System.Data.SQLite" 
+	           description=".Net Framework Data Provider for SQLite" 
+	           type="System.Data.SQLite.SQLiteFactory, System.Data.SQLite, Version=1.0.80.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139" />
+	      
+	    </DbProviderFactories>
+	  </system.data>
+	  <connectionStrings>
+	    <add name="databasetest" connectionString="Data Source=.\DataBaseTest.db3;Version=3;binaryGuid=false;FailIfMissing=True;Journal Mode=Persist;Pooling=True;" providerName="System.Data.SQLite"/>
+	    
+	  </connectionStrings>
+ 3.需要注意的是，数据库文件存放的位置.\DataBaseTest.db3指的是文件存放在debug目录下
+
+连接mysql数据
+1.下载并安装mysql-connector-net-6.8.3.msi程序
+2.在C盘安装mysql的位置找到三个DLL，复制到Bin文件夹下（其实就是添加mysql.data.dll的引用，也可以自己下载）
+3.在config文件下添加：
+	<system.data>
+	    <DbProviderFactories>
+	      
+	      <remove invariant="MySql.Data.MySqlClient" />
+	      <add name="MySQL Data Provider" 
+	           invariant="MySql.Data.MySqlClient" 
+	           description=".Net Framework Data Provider for MySQL" 
+	           type="MySql.Data.MySqlClient.MySqlClientFactory, MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
+	    </DbProviderFactories>
+	  </system.data>
+	  <connectionStrings>
+	    
+	    <add name="mysqltest" connectionString="Server=localhost;Database=test;User ID=root;Password=123;Pooling=True;Character Set=utf8" providerName="MySql.Data.MySqlClient" />
+	  </connectionStrings>

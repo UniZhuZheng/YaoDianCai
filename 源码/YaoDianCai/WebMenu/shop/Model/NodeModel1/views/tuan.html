@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>团购</title>
+    <script type="text/javascript" src="./js/refresh.js"></script>
+</head>
+
+<body>
+    <div id="YDC_TuanPage" data-dom-cache="true" data-role="page">
+        <div id="Header" data-role="header" data-position="fixed">
+            <a id="TuanBackBtn" href="#" data-rel="back" data-role="button" data-icon="back"><span>返回</span></a>
+            <div class="right">
+                <span id="Tuan_ShopName"></span>
+            </div>
+        </div>
+
+        <div id="Content" data-role="content">
+            <table border="0">
+                <tr>
+                    <td valign="top" style="width:38px;">
+                        <div class="label1"></div>
+                    </td>
+                    <td>
+                        <span class="title">请输入您的姓名</span>
+                        <input id="TuanOwner" type="text" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" style="width:38px;">
+                        <div class="label2"></div>
+                    </td>
+                    <td>
+                        <span class="title">请输入您的电话</span>
+                        <input id="TuanPhone" type="text" value="" />
+                    </td>
+                </tr>
+                <tr style="width:38px;">
+                    <td valign="top" >
+                        <div class="label3"></div>
+                    </td>
+                    <td >
+                        <span class="title">请输入您的团购</span>
+                        <div class="block">
+                            <div class="blockleft">
+                                <select id="TuanWebsite" data-native-menu="false">
+                                    <option value="大众点评">大众点评</option>
+                                    <option value="美团团购">美团团购</option>
+                                    <option value="拉手团购">拉手团购</option>
+                                </select>
+                            </div>
+                            <div class="blockright" data-role="controlgroup">
+                                <input id="TuanNumber" type="text" value="" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div id="TuanHistory">
+                <span class="title">团购券记录</span>
+                <div id="TuanHistoryList">
+                </div>
+            </div>
+        </div>
+
+        <div id="Footer" data-role="footer" data-position="fixed">
+            <a id="TuanSubmit" href="#" data-inline="true" data-role="button"><span>点击确定</span></a>
+        </div>
+
+        <div id="TuanNumberPopup" data-role="popup" class="ui-content" style="max-width:340px; padding-bottom:1em;">
+            <h2>提示:</h2>
+            <h3>团购号为空!</h3>
+            <a href="#" class="ui-btn ui-mini ui-corner-all ui-shadow" data-rel="back">确定</a>
+        </div>
+
+        <script type="text/javascript" src="./js/tuan.js"></script>
+    </div>
+</body>
+</html>

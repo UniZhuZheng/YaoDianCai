@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>团购认证界面</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link href="/res/css/pagesite.css" rel="stylesheet" type="text/css" />
+    <link   type="text/css" href="/res/css/datepicker.css" rel="stylesheet" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery-1.2.6.pack.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/res/js/shopsitetop.js"></script>
+    <script type="text/javascript" src="/res/js/datepicker.js"></script>
+    <script type="text/javascript">
+        var maxResult = 20;
+        function appendList(data) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += '<div class="shoptuanlist_td">' +
+                    '<div class="shoptuanlist_td_1" style="width:25%;">' + data[i].number + '</div>' +
+                    '<div class="shoptuanlist_td_2" style="width:15%;">' + data[i].webSite + '</div>' +
+                    '<div class="shoptuanlist_td_4" style="width:15%;">' + data[i].owner + '</div>' +
+                    '<div class="shoptuanlist_td_2" style="width:20%;">' + data[i].phone + '</div>' +
+                    '<div class="shoptuanlist_td_3" style="width:15%;">' + DateTimeConvertMDHM(data[i].createDate) + '</div>' +
+                    '<div class="shoptuanlist_td_block"></div>' +
+                    '</div>';
+            }
+            $("#ShopTuan_AuthRecord").append(html);
+        }
+
+        function refreshSearchTuanList(option, startDate) {
+            var pageselectCallback = function (page_index) {
+                $("#ShopTuan_AuthRecord").empty();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/TuanAction.ashx',
+                    data: {
+                        option: option,
+                        SID: SID,
+                        startDate: startDate,
+                        firstResult: page_index * maxResult,
+                        maxResult: maxResult
+                    },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $("#Tuan_List").empty();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/TuanAction.ashx',
+                data: { option: option + '_Count', SID: SID, startDate: startDate },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+
+        function refreshTuanList() {
+            var pageselectCallback = function (page_index) {
+                $("#ShopTuan_AuthRecord").empty();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/TuanAction.ashx',
+                    data: { option: 'OP_TuanInfoByShopLimit', SID: SID, firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $("#ShopTuan_AuthRecord").empty();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/TuanAction.ashx',
+                data: { option: 'OP_TuanInfoByShopLimit_Count', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+        function cancleSearch() {
+            refreshTuanList();
+            $(".inputDate").val("全部");
+        }
+        $('document').ready(function () {
+            $(".logo_top_right span").text(decodeURI(account));
+            $(".navigation_left_name").text(decodeURI(name));
+
+            refreshTuanList();
+
+            $(".inputDate").val("全部");
+
+            $('.inputDate').DatePicker({
+                format: 'Y-m-d',
+                date: $('#inputDate').val(),
+                current: $('#inputDate').val(),
+                starts: 1,
+                position: 'right',
+                onBeforeShow: function () {
+                    if ($.trim($('#inputDate').val()) == "全部") {
+                        var myDate = new Date();
+                        $('#inputDate').DatePickerSetDate(myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate(), true);
+                        return;
+                    }
+                    $('#inputDate').DatePickerSetDate($('#inputDate').val(), true);
+                },
+                onChange: function (formated, dates) {
+                    $('#inputDate').val(formated);
+                    $('#inputDate').DatePickerHide();
+                    var startDate = formated;
+                    refreshSearchTuanList('OP_TuanInfoByDayLimit', startDate);
+                },
+                onMonthsChange: function (yearDate, monthsDate) {
+                    $('#inputDate').val(yearDate + '-' + monthsDate);
+                    $('#inputDate').DatePickerHide();
+                    var startDate = yearDate + '-' + monthsDate + '-01';
+                    refreshSearchTuanList('OP_TuanInfoByMonthLimit', startDate);
+                }
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/top-logo-shop.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>用户名</span></div>
+                <div onclick="user_exit();" style="cursor:pointer"><img src="/res/images/quit.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"></div>
+            <div class="right_tab_dish" onclick="right_tab_dish();"></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"></div>
+            <!--<div class="right_tab_auth" onclick="right_tab_auth();"></div>-->
+            <div class="right_tab_tab" onclick="right_tab_tab();"></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle"  onclick="right_tab_shop();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;">
+                    <div class='logo_tuan'></div><span class="navigation_left_name"></span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+            <div class="navigation_center">
+                <input name="search" class="inputDate" id='inputDate' readonly />
+                <div class="navigation_center_search_cancle" onclick="cancleSearch();"></div>
+            </div>
+        </div>
+        <div class="shopswifilist">
+            <div class="shopswifilist_th">
+                <div class="shopswifilist_th_1" style="width:25%;">团购编号</div>
+                <div class="shopswifilist_th_2" style="width:15%;">团购网站</div>
+                <div class="shopswifilist_th_4" style="width:15%;">认证用户</div>
+                <div class="shopswifilist_th_2" style="width:20%;">用户电话</div>
+                <div class="shopswifilist_th_3" style="width:15%;">验证时间</div>
+            </div>
+            <div id="ShopTuan_AuthRecord"></div>
+        </div>
+
+        <div class="pagination">
+            <div id="Pagination">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>要点菜商家菜单</title>
+    <script type="text/javascript" src="./js/refresh.js"></script>
+</head>
+    
+<body>
+<div id="YDC_MainPage" data-dom-cache="true" data-role="page">
+    <div id="Header" data-role="header" data-position="fixed" data-tap-toggle="false">
+        <select id="TypeSel" data-inline="true"  data-native-menu="false">
+        </select>
+
+        <div class="right">
+            <div id="OptionBtn">
+                <select id="OptionSel" data-inline="true" data-native-menu="false" data-icon="more" data-iconpos="notext" data-shadow="false">
+                    <option></option>
+                    <option value="2">团购券号</option>
+                    <option value="3">已点菜单</option>
+                    <option value="4">呼叫服务</option>
+                </select>
+            </div>
+            <span id="Main_ShopName"></span>
+        </div>
+    </div>
+
+    <div id="Content" data-role="content" >
+        <ul id="DishList" data-role="listview" data-icon="false">
+        </ul>
+    </div>
+
+    <div id="Footer" data-role="footer" data-position="fixed" data-tap-toggle="false">
+        <a id="CartBtn" href="/cart" data-role="button" data-icon="cart" >
+            <span id="CartCount">0</span>
+        </a>
+        <a id="TableBtn" href="javascript:void(0);" data-role="button" >
+            <span id="TableName" >餐桌号</span>
+        </a>
+    </div>
+    <div id="TableSelPopup" data-role="popup" class="ui-content" style="max-width:340px; padding-bottom:1em;">
+        <h2>提示:</h2>
+        <h3>请先选择桌号!</h3>
+        <a href="#" class="ui-btn ui-mini ui-corner-all ui-shadow" data-rel="back">确定</a>
+    </div>
+    <script type="text/javascript" src="./js/main.js" ></script>
+</div>
+</body>
+</html>

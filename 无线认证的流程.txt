@@ -1,0 +1,26 @@
+1.路由器的设置，需要设置路由器的以下参数
+	
+
+2.用户通过路由器访问网路，路由器会向服务器发送以下信息，通过http协议访问：
+	http://auth_server/login?
+		gw_id      =[路由器的识别编号]
+		gw_address =[路由器的ip地址]
+		gw_port    =[路由器的端口号]
+		url	   =[用户访问网站的url]	
+
+3.服务器接收到信息，经过处理，返回路由器一个界面，路由器将此界面返回给用户，具体步骤如下：
+	1）服务器接收信息，并生成一个表示字符串tokenStr
+	2）通过接收的消息，组建一条http请求
+		http://[gw_address]:[gw_port]/wifidog/auth?token=[tokenStr]，
+		并根据实际要求做好相应操作
+	3)返回界面，并将http请求保存到界面中
+
+4.用户收到验证界面，点击界面，发送http请求到路由器，路由器会发信息到服务器，发送信息如下
+	http://[gw_address]:[gw_port]/wifidog/auth?token=[tokenStr]
+
+5.服务器获取token，判断token是否存在，根据情况返回以下值：
+	[Auth: 0]：阻止
+	[Auth: 1]：成功
+	[Auth: 5]：批准
+	[Auth: 6]：不批准
+	[Auth: -1]：错误

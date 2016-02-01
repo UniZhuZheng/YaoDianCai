@@ -1,0 +1,4 @@
+E:\要点菜系统\源码\2014-03-01\YaoDianCai\Core\WebSite\bin\Debug\com.YaoDianCai.WebSite.dll
+E:\要点菜系统\源码\2014-03-01\YaoDianCai\Core\WebSite\bin\Debug\com.YaoDianCai.WebSite.pdb
+E:\要点菜系统\源码\2014-03-01\YaoDianCai\Core\WebSite\obj\Debug\com.YaoDianCai.WebSite.dll
+E:\要点菜系统\源码\2014-03-01\YaoDianCai\Core\WebSite\obj\Debug\com.YaoDianCai.WebSite.pdb

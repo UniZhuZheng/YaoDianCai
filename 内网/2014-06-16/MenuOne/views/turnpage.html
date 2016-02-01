@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>商家首页</title>
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/turn.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/shop2.css" />
+</head>
+<body>
+<div id="magazine" class="container">
+    <div class="page img-1"></div>
+    <div class="page img-2"></div>
+    <div class="page img-3"></div>
+    <div class="page img-4"></div>
+    <div class="page img-5"></div>
+    <div class="page img-6"></div>
+</div>
+<script type="text/javascript">
+    $(window).ready(function() {
+        $('#magazine').turn({
+            display: 'single',//单页模式
+            acceleration: true,
+            gradients: !$.isTouch,//阴影
+            elevation:100,
+            when: {
+                turned: function(e, page) {
+                    /*console.log('Current view: ', $(this).turn('view'));*/
+                }
+            }
+        });
+        $("#magazine").bind("turning", function(event, page, view) {
+            var size = $("#magazine").turn("size");
+            //if()
+
+        });
+    });
+    $(window).bind('keydown', function(e){
+        if (e.keyCode==37)
+            $('#magazine').turn('previous');
+        else if (e.keyCode==39)
+            $('#magazine').turn('next');
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>商家下单汇总界面</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link  type="text/css" href="/res/css/shopslist.css" rel="stylesheet" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/res/js/backpage-top.js"></script>
+    <script type="text/javascript">
+        
+        function shopsorders_SID(SID,name) {
+            window.location.href = "BillsList.html?SID=" + SID+"&name="+name;
+        }
+
+        var maxResult = 20;
+        function appendList(data) {
+            var str = "";
+            for (var i = 0; i < data.length; i++) {
+                str += '<div class="shopsorderslist_td">' +
+                '<div class="shopsorderslist_td_2">' + data[i].name + '</div>' +
+                '<div class="shopsorderslist_td_3">' + data[i].count + '</div>' +
+                '<div class="shopsorderslist_td_4">' + data[i].area + '</div>' +
+                '<div class="shopsorderslist_td_5" onclick="shopsorders_SID(\'' +
+                    data[i].SID + '\',\'' + data[i].name + '\')"></div>' +
+                '</div>';
+            }
+            $(".shopsorderslist").append(str);
+        }
+
+        function textChange() {
+            var search = $.trim($("input[name='search']").val());
+            if (search == "") {
+                refreshShopsOrdersList();
+            } else {
+                refreshSearchShopsOrdersList(search);
+            }
+        }
+        function refreshSearchShopsOrdersList(search) {
+            var pageselectCallback = function (page_index) {
+                $(".shopsorderslist_td").remove();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/ShopsAction.ashx',
+                    data: { option: 'shopsorderslist_search', serStr: search, firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $(".shopsorderslist_td").remove();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopsAction.ashx',
+                data: { option: 'shopslist_search_count', search: search },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+        function refreshShopsOrdersList() {
+            var pageselectCallback = function (page_index) {
+                $(".shopsorderslist_td").remove();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/ShopsAction.ashx',
+                    data: { option: 'shopsorderslist_count', firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $(".shopsorderslist_td").remove();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/ShopsAction.ashx',
+                data: { option: 'shopslist_count' },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+
+        window.onload = function () {
+            
+            $(".logo_top_right span").text(userInfo.account);
+
+            $("input[name='search']").keypress(function (e) {
+                if (e.keyCode == 13) {
+                    textChange();
+                }
+            });
+            refreshShopsOrdersList();
+        }
+
+    </script>
+</head>
+<body>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/shops/top-logo.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>用户名</span></div>
+                <div onclick="user_exit();"><img src="/res/images/shops/arrows-bottom.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"><span>商家列表</span></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"><span>商家下单统计</span></div>
+            <div class="right_tab_auth" onclick="right_tab_auth();"><span>热点认证统计</span></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"><span>团购验证统计</span></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle" onclick="right_tab_menu();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;"><span>下单汇总</span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+
+            <div class="navigation_center">
+                <input name="search" />
+                <div class="navigation_center_search" onclick="textChange();"></div>
+            </div>
+        </div>
+
+        <div class="shopsorderslist">
+            <div class="shopsorderslist_th">
+                <div class="shopsorderslist_th_2">商家名称</div>
+                <div class="shopsorderslist_th_3">下单次数</div>
+                <div class="shopsorderslist_th_4">商家区域</div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <div id="Pagination">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

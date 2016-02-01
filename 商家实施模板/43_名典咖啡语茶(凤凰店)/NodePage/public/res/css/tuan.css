@@ -1,0 +1,177 @@
+*{font-family:Georgia,'微软雅黑', Arial, '宋体'; -webkit-text-size-adjust:none;}
+.bottombar
+{
+    background: none repeat scroll 0 0 #724444;
+    bottom: 5px;
+    height: 30px;
+    filter:alpha(opacity=90);
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+}
+.bottombar #flippage
+{
+    cursor: pointer;
+    font-size:16px;
+    color: #ffffff;
+    margin-top:4px;
+    margin-left: 10px;
+    float:left;
+}
+.bottombar #footer_confirm
+{
+    cursor: pointer;
+    font-size:16px;
+    color: #ffffff;
+    margin-top:4px;
+    margin-right: 10px;
+    float:right;
+}
+
+#tuan_content{
+    padding: 10px 5px;
+    border-width: 0;
+    overflow: visible;
+    overflow-x: hidden;
+}
+
+#tuan_content table{
+    width: 100%;
+    padding: 2px;
+    box-shadow: 0px 0px 5px #333333;
+}
+
+
+
+#tuan_content .img1
+{
+    float: left;
+    width: 22px;
+    height: 22px;
+    margin-top: 0;
+    margin-left: 8px;
+    background-image: url("../images/1.png");
+    background-size: contain;
+}
+
+#tuan_content .text1,#tuan_content .text2,#tuan_content .text3
+{
+    color: #724444;
+    font-size: 1.2em;
+    font-family: "Microsoft YaHei";
+}
+
+#tuan_content .img2
+{
+    float: left;
+    width: 22px;
+    height: 22px;
+    margin-top: 0;
+    margin-left: 8px;
+    background-image: url("../images/2.png");
+    background-size: contain;
+}
+
+#tuan_content .img3
+{
+    float: left;
+    width: 22px;
+    height: 22px;
+    margin-top: 0;
+    margin-left: 8px;
+    background-image: url("../images/3.png");
+    background-size: contain;
+}
+
+#TuanRecord
+{
+    margin-top: 10px;
+    padding: 8px 0;
+    width: 100%;
+    box-shadow: 0px 0px 5px #333333;
+}
+
+#TuanRecord .record_title
+{
+    padding-left: 10px;
+    color: #d8bdaa;
+    font-size: 1.2em;
+    font-family: "Microsoft YaHei";
+}
+
+#TuanRecord .record_list_item
+{
+    padding-left:15px;
+}
+
+#TuanRecord .record_list_item .item_name, #TuanRecord .record_list_item .item_num
+{
+    font-size: 1em;
+    color: #724444;
+    font-family: "Microsoft YaHei";
+    margin-right: 10px;
+}
+
+
+
+#tuan_footer
+{
+    width:100%;
+    height:50px;
+    margin:0 auto;
+    background:transparent url(../images/footer.png) no-repeat 0 0;
+    background-repeat:repeat-x;
+    background-size: auto 100%;
+    position:absolute;
+    bottom:0;
+}
+
+#tuan_footer #footer_confirm
+{
+    cursor:pointer;
+    width:50px;
+    border :solid 1px #d17560;
+    padding:5px 10px;
+    border-radius:0.2em;
+    color:White;
+    text-align:center;
+    position: absolute;
+    bottom: 3px;
+    left:5px;
+    font-weight:bold;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e81c1b ), to(#a11715 ), color-stop(50% #a11715), color-stop(50% #a11715));
+    background: -webkit-linear-gradient(top, #e81c1b , #a11715 );
+    background: -moz-linear-gradient(top, #e81c1b ,  #a11715 );
+    background: -ms-linear-gradient(top, #e81c1b , #a11715 );
+    background: -o-linear-gradient(top, #e81c1b ,  #a11715 );
+    background: linear-gradient(top, #e81c1b ,  #a11715 );
+}
+
+#tuan_footer #footer_logo
+{
+    width:113px;
+    height:32px;
+    background:url(../images/logo.png);
+    position:absolute;
+    right:5px;
+    bottom:3px;
+    background-size:contain;
+    background-repeat:no-repeat;
+}
+
+
+input {
+    font-size: 18px;
+    height: 22px;
+}
+
+#tuan_content div {
+    margin-top: 7px;
+}
+#TuanWebsite {
+    color: #5D5D5D;
+    font-size: 16px;
+    font-weight: bold;
+}
+    

@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商家认证列表界面</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link href="/res/css/pagesite.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="/res/css/datepicker.css" rel="stylesheet" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery-1.2.6.pack.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/shopsitetop.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/res/js/datepicker.js"></script>
+    <script type="text/javascript">
+        var gwId = request.QueryString("gwId");
+        var maxResult = 20;
+        function appendList(data) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += '<div class="wifiauthlist_td">' +
+                                '<div class="wifiauthlist_td_2">' + data[i].mac + '</div>' +
+                                '<div class="wifiauthlist_td_3">' + data[i].token + '</div>' +
+                                '<div class="wifiauthlist_td_4">' + data[i].userIp + '</div>' +
+                                '<div class="wifiauthlist_td_4">' + DateTimeConvertMDHM(data[i].createDate) + '</div>' +
+                                '<div class="wifiauthlist_td_block"></div>' +
+                            '</div>';
+            }
+            $("#ShopWifiGW_AuthRecord").append(html);
+        }
+
+        function refreshSearchWifiAuthList(option, startDate) {
+            var pageselectCallback = function (page_index) {
+                $("#ShopWifiGW_AuthRecord").empty();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/WifiAuthAction.ashx',
+                    data: { option: option, startDate: startDate, gwId: gwId, firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $("#ShopWifiGW_AuthRecord").empty();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/WifiAuthAction.ashx',
+                data: { option: option + '_Count', gwId: gwId, startDate: startDate },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+
+
+        function refreshWifiAuthList() {
+            var pageselectCallback = function (page_index) {
+                $("#ShopWifiGW_AuthRecord").empty();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/WifiAuthAction.ashx',
+                    data: { option: 'OP_WifiAuthByGWLimit', gwId: gwId, firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $("#ShopWifiGW_AuthRecord").empty();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/WifiAuthAction.ashx',
+                data: { option: 'OP_WifiAuthByGWLimit_Count', gwId: gwId },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+
+        function cancleSearch() {
+            refreshWifiAuthList();
+            $(".inputDate").val("全部");
+        }
+
+        function shop_wifigw() {
+            window.location.href = "/ShopWifiGWRecord.html?SID=" + SID + "&name=" + name;
+        }
+
+        $('document').ready(function () {
+            $(".logo_top_right span").text(decodeURI(account));
+            $(".navigation_left_name").text(decodeURI(name));
+            $(".navigation_left_wifigw").text(decodeURI(gwId));
+
+            refreshWifiAuthList();
+            $(".inputDate").val("全部");
+
+            $('.inputDate').DatePicker({
+                format: 'Y-m-d',
+                date: $('#inputDate').val(),
+                current: $('#inputDate').val(),
+                starts: 1,
+                position: 'right',
+                onBeforeShow: function () {
+                    if ($.trim($('#inputDate').val()) == "全部") {
+                        var myDate = new Date();
+                        $('#inputDate').DatePickerSetDate(myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate(), true);
+                        return;
+                    }
+                    $('#inputDate').DatePickerSetDate($('#inputDate').val(), true);
+                },
+                onChange: function (formated, dates) {
+                    $('#inputDate').val(formated);
+                    $('#inputDate').DatePickerHide();
+                    var startDate = formated;
+                    refreshSearchWifiAuthList('OP_WifiAuthByDayLimit', startDate);
+                },
+                onMonthsChange: function (yearDate, monthsDate) {
+                    $('#inputDate').val(yearDate + '-' + monthsDate);
+                    $('#inputDate').DatePickerHide();
+                    var startDate = yearDate + '-' + monthsDate + '-01';
+                    refreshSearchWifiAuthList('OP_WifiAuthByMonthLimit', startDate);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/top-logo-shop.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>用户名</span></div>
+                <div onclick="user_exit();" style="cursor:pointer"><img src="/res/images/quit.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"></div>
+            <div class="right_tab_dish" onclick="right_tab_dish();"></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"></div>
+            <div class="right_tab_auth" onclick="right_tab_auth();"></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle"  onclick="right_tab_shop();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;">
+                    <span class="navigation_left_name"></span></div>
+                <div class="navigation_left_center"></div>
+            </div>
+            <div class="navigation_left">
+                <div class="navigation_left_middle"  style="font:14px/18px '宋体',arial,sans-serif;"><div class='logo_wifigw'></div><span class="navigation_left_wifigw"></span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+            <div class="navigation_center">
+                <input name="search" class="inputDate" id='inputDate' readonly />
+                <div class="navigation_center_search_cancle" onclick="cancleSearch();"></div>
+            </div>
+        </div>
+
+        <div class="wifiauthlist">
+            <div class="wifiauthlist_th">
+                <div class="wifiauthlist_th_2">认证MAC</div>
+                <div class="wifiauthlist_th_3">认证token</div>
+                <div class="wifiauthlist_th_4">认证IP</div>
+                <div class="wifiauthlist_th_4">认证时间</div>
+            </div>
+            <div id="ShopWifiGW_AuthRecord"></div>
+        </div>
+
+        <div class="pagination">
+            <div id="Pagination">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

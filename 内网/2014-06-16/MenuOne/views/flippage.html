@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>商家首页</title>
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>-->
+    <link rel="stylesheet" type="text/css" href="css/shop.css" />
+    <script type="text/javascript" src="js/modernizr.custom.08464.js"></script>
+
+    <script id="pageTmpl" type="text/x-jquery-tmpl">
+        <div class="${theClass}" style="${theStyle}">
+            <div class="front">
+                <div class="outer">
+                    <div class="content" style="${theContentStyleFront}">
+                        <div class="inner">{{html theContentFront}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div class="outer">
+                    <div class="content" style="${theContentStyleBack}">
+                        <div class="inner">{{html theContentBack}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <style type="text/css">
+        .bottombar ul{
+            padding: 0;
+            width: 100%;
+            color: #ffffff;
+            float: left;
+            list-style: none;
+        }
+        .bottombar ul li{
+            cursor: pointer;
+            padding: 0 20px 0 ;
+            font-size:30px;
+        }
+    </style>
+</head>
+<body>
+
+<!--<header class="main-title">-->
+    <!--<h1>Experimental Page Layout <strong>Inspired by Flipboard</strong></h1>-->
+<!--</header>-->
+<div class="topbar" style="width: 100%">
+    <img src="images/top.jpg" style="width: 100%">
+</div>
+
+<div id="flip" class="container">
+    <div class="f-page f-cover">
+        <div class="f-cover-flip">&lt; Flip</div>
+    </div>
+    <div class="f-page ">
+        <div class="img-cont img-1"></div>
+    </div>
+    <div class="f-page">
+        <div class="img-cont img-2"></div>
+    </div>
+    <div class="f-page">
+        <div class="img-cont img-3"></div>
+    </div>
+    <div class="f-page">
+        <div class="img-cont img-4"></div>
+    </div>
+    <div class="f-page">
+        <div class="img-cont img-5"></div>
+    </div>
+
+    <div class="f-page f-cover-back">
+        <div id="codrops-ad-wrapper"></div>
+    </div>
+</div>
+
+<div class="bottombar" style="width: 100%;height: 75px;background: #974039;padding: 0;margin: 5px 0 0;">
+    <ul style="float: left;list-style: none;">
+        <li style="float: left">团购券</li>
+        <li style="float: right">开始点菜</li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+    var $container 	= $( '#flip' ),
+            $pages	    = $container.children().hide();
+
+    Modernizr.load({
+        test: Modernizr.csstransforms3d && Modernizr.csstransitions,
+        yep : [
+            'js/jquery.tmpl.min.js',
+            'js/jquery.history.js',
+            'js/core.string.js',
+            'js/jquery.touchSwipe-1.2.5.js',
+            'js/shop.flips.js'
+        ],
+        nope: 'css/fallback.css',
+        callback : function( url, result, key ) {
+            if( url === '../public/css/fallback.css' ) {
+                $pages.show();
+            }
+            else if( url === 'js/shop.flips.js' ) {
+                $container.flips();
+            }
+        }
+    });
+</script>
+</body>
+</html>

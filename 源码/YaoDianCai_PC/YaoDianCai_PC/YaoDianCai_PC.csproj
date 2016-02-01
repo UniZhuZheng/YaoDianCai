@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{47798222-62C2-441D-BF78-171B177285D3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YaoDianCai_PC</RootNamespace>
+    <AssemblyName>YaoDianCai_PC</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin">
+      <HintPath>..\Dll\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmBillEntityPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBillEntityPrint.Designer.cs">
+      <DependentUpon>FrmBillEntityPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDishEntityInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDishEntityInfo.Designer.cs">
+      <DependentUpon>FrmDishEntityInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDishEntityInfoEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDishEntityInfoEdit.Designer.cs">
+      <DependentUpon>FrmDishEntityInfoEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDishEntityManger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDishEntityManger.Designer.cs">
+      <DependentUpon>FrmDishEntityManger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBillNotifier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBillNotifier.Designer.cs">
+      <DependentUpon>FrmBillNotifier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPassway.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPassway.Designer.cs">
+      <DependentUpon>FrmPassway.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrintSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrintSet.Designer.cs">
+      <DependentUpon>FrmPrintSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTime.Designer.cs">
+      <DependentUpon>FrmTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTuanEntity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTuanEntity.Designer.cs">
+      <DependentUpon>FrmTuanEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTuanNotifier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTuanNotifier.Designer.cs">
+      <DependentUpon>FrmTuanNotifier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBillEntityPrint.resx">
+      <DependentUpon>FrmBillEntityPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDishEntityInfo.resx">
+      <DependentUpon>FrmDishEntityInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDishEntityInfoEdit.resx">
+      <DependentUpon>FrmDishEntityInfoEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDishEntityManger.resx">
+      <DependentUpon>FrmDishEntityManger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBillNotifier.resx">
+      <DependentUpon>FrmBillNotifier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPassway.resx">
+      <DependentUpon>FrmPassway.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrintSet.resx">
+      <DependentUpon>FrmPrintSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTime.resx">
+      <DependentUpon>FrmTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTuanEntity.resx">
+      <DependentUpon>FrmTuanEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTuanNotifier.resx">
+      <DependentUpon>FrmTuanNotifier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AIO_SetBtn_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackPalace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_close_disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_close_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_close_highlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_max_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_max_highlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_mini_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_mini_highlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_restore_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_restore_highlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\detial_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login_bg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_manage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_msg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\order_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\time.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_max_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_mini_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_restore_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniDllPCClient\UniDllPCClient.csproj">
+      <Project>{D0C68623-C83E-450C-AB45-E896BC44CCBB}</Project>
+      <Name>UniDllPCClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YDCControl\YDCControl.csproj">
+      <Project>{F132EE50-D9F2-4052-9050-F6DBEB2AB060}</Project>
+      <Name>YDCControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopimg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dian.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dian1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\商家.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

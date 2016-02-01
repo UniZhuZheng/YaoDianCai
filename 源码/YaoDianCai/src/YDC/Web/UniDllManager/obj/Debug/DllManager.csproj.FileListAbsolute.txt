@@ -1,0 +1,12 @@
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\bin\Debug\Uni.YDC.Web.Manager.dll
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\bin\Debug\Uni.YDC.Web.Manager.pdb
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\bin\Debug\Uni.Core.Common.dll
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\bin\Debug\Uni.Core.Database.dll
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\bin\Debug\HtmlSanitizationLibrary.dll
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\bin\Debug\log4net.dll
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\bin\Debug\Uni.Core.Common.pdb
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\bin\Debug\Uni.Core.Database.pdb
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\obj\Debug\Uni.YDC.Web.Manager.dll
+C:\Users\Administrator\Desktop\YaoDianCai\src\YDC\Web\DllManager\obj\Debug\Uni.YDC.Web.Manager.pdb

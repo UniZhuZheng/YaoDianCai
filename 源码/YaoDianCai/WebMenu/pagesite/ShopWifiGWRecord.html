@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>商家热点界面</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link href="/res/css/pagesite.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/res/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/res/js/shopsitetop.js"></script>
+    <script type="text/javascript">
+        var maxResult = 20;
+        function appendList(data) {
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += '<div class="shopswifilist_td">' +
+                    '<div class="shopswifilist_td_1">' + data[i].gwId + '</div>' +
+                    '<div class="shopswifilist_td_2">' + data[i].gwAddress + '</div>' +
+                    '<div class="shopswifilist_td_3">' + data[i].gwPort + '</div>' +
+                    '<div class="shopswifilist_td_4">' + data[i].count + '</div>' +
+                    '<div class="shopswifilist_td_4">' + DateTimeConvertYMD(data[i].createDate) + '</div>' +
+                    '<div class="shopswifilist_td_5" onclick="window.location.href=\'/ShopWifiAuthRecord.html?SID=' +
+                        SID + '&gwId=' + data[i].gwId + '&name=' + name + '\';" style="border-right: 0 none;"></div>' +
+                '</div>';
+            }
+            $("#Shop_WifiGW").append(html);
+        }
+
+        function refreshShopWifiGWRecord() {
+            var pageselectCallback = function (page_index) {
+                $("#Shop_WifiGW").empty();
+                $.ajax({
+                    type: 'post',
+                    url: '/action/WifiGWAction.ashx',
+                    data: { option: 'OP_WifiGWByShopLimit', SID: SID, firstResult: page_index * maxResult, maxResult: maxResult },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (msg.ok) {
+                            appendList(msg.lists);
+                        } else {
+                            $("#Shop_WifiGW").empty();
+                        }
+                    }
+                });
+                return true;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: '/action/WifiGWAction.ashx',
+                data: { option: 'OP_WifiGWByShopLimit_Count', SID: SID },
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.ok) {
+                        $("#Pagination").pagination(msg.count, {
+                            num_edge_entries: 1,
+                            items_per_page: maxResult,
+                            prev_text: "&nbsp;",
+                            next_text: "&nbsp;",
+                            ellipse_text: "&nbsp;",
+                            callback: pageselectCallback
+                        });
+                    }
+                }
+            });
+        }
+
+        $('document').ready(function () {
+            $(".logo_top_right span").text(decodeURI(account));
+            $(".navigation_left_name").text(decodeURI(name));
+
+            refreshShopWifiGWRecord();
+        });
+
+    </script>
+</head>
+<body>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left"><img src="/res/images/top-logo-shop.png" width="100%" height="100%" alt="" /></div>
+            <div class="logo_top_right">
+                <div><span>用户名</span></div>
+                <div onclick="user_exit();" style="cursor:pointer"><img src="/res/images/quit.png" width="100%" height="100%" alt="" /></div>
+            </div>
+        </div>
+        <div class="right_tab">
+            <div class="right_tab_shop" onclick="right_tab_shop();"></div>
+            <div class="right_tab_dish" onclick="right_tab_dish();"></div>
+            <div class="right_tab_menu" onclick="right_tab_menu();"></div>
+            <div class="right_tab_tuan" onclick="right_tab_tuan();"></div>
+            <div class="right_tab_auth" onclick="right_tab_auth();"></div>
+        </div>
+        <div class="navigation">
+            <div class="navigation_left">
+                <div class="navigation_left_head"></div>
+                <div class="navigation_left_middle"  onclick="right_tab_shop();" style="cursor:pointer;font:14px/18px '宋体',arial,sans-serif;">
+                    <div class='logo_wifigw'></div><span class="navigation_left_name"></span></div>
+                <div class="navigation_left_end"></div>
+            </div>
+        </div>
+
+        <div class="shopswifilist">
+            <div class="shopswifilist_th">
+                <div class="shopswifilist_th_1">热点编号</div>
+                <div class="shopswifilist_th_2">认证IP</div>
+                <div class="shopswifilist_th_3">端口号</div>
+                <div class="shopswifilist_th_4">认证次数</div>
+                <div class="shopswifilist_th_4">创建时间</div>
+            </div>
+            <div id="Shop_WifiGW"></div>
+        </div>
+
+        <div class="pagination">
+            <div id="Pagination">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

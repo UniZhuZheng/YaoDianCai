@@ -1,0 +1,150 @@
+/*头部样式开始*/
+*{ margin:0 auto; padding: 0;}
+#header {
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 0 1px 2px rgba(174, 174, 174, 0.6);
+    height: 50px;
+    position: relative;
+    width: 100%;
+    z-index: 950;
+}
+#header .headerCon {
+	width: 980px;
+	margin: 0 auto;
+	text-align: center;
+}
+#header .headerCon div {
+	display: inline-block;
+}
+#header .headerCon .logo {
+	float: left;
+}
+#header .headerCon .nav {
+	font-size: 16px;
+	color: #595757;
+	font-weight: bold;
+	float: left;
+	padding: 0px 100px;
+}
+#header .headerCon .nav .navUl {
+	height: 50px;
+}
+#header .headerCon .nav .navUl .lis {
+	float: left;
+	position: relative;
+	width:100px;
+}
+#header .headerCon .nav .navUl .lis a {
+	line-height: 50px;
+	width: 100px;
+	text-decoration: none;
+	display: block;
+	color: #595757;
+	position: relative;
+}
+#header .headerCon .nav .navUl .lis ul {
+	background: rgba(245,245,244,0.6);
+	background:#EDEDED\9; filter:Alpha(opacity=80)\9;
+	*background:#EDEDED; filter:Alpha(opacity=80);
+	left: 0px;
+	box-shadow: 1px 1px 2px #333333;
+	display: none;
+	position: absolute;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	z-index: 9999;
+}
+
+#header .headerCon .nav .navUl .lis ul li a {
+	line-height: 40px;
+	font-size: 14px;
+}
+#header .headerCon .nav .navUl .lis ul li a:hover {
+	color: #EA8915;
+}
+
+#header .headerCon div.tel {
+	float: left;
+	height: 50px;
+	line-height: 50px;
+	background: url(../dyd_new/news/tel.png) no-repeat left;
+	text-align: right;
+	font-size: 20px;
+	width: 170px;
+}
+/*头部样式结束*/
+
+
+
+/*尾部样式开始*/
+a{text-decoration:none}
+.width{width:980px;height:auto;margin:0 auto; }
+.footer{width:100%;background:#333333;border-top:1px solid #bdbdbd; margin-top:0px}
+.foot_menu{width:auto; padding: 30px 0px;}
+.foot_menu li{ float:left; text-align:center; font-size:12px; display:inline; padding: 0px 25px;}
+.foot_menu h3 a{ font-size:16px; font-family:"微软雅黑"; color:#f18d38; font-weight:bold;cursor:default}
+.foot_menu p{ margin-top:8px;}
+.foot_menu p a{ line-height:20px;font-size:12px;  overflow:hidden; display:block; color: #fff}
+.foot_menu p a:hover{ color:#EA8915}
+.foot_menu .f_about{ width:100px;}
+.foot_menu .f_cotant{ text-align: center;width: 170px;}
+.foot_menu .f_cotant ul{ padding: 5px 0px; width: 170px;}
+.foot_menu .f_cotant ul li{ text-align: center; padding:5px;}
+.foot_menu .f_cotant ul li a{ color: #fff;}
+.foot_menu .f_cotant ul li a:hover{color:#EA8915;}
+.foot_menu .f_cotant ul li.liLine{ border-right: 1px solid #ECA048;}
+.foot_menu .f_join{ width:100px; }
+.foot_menu .f_news{ width:100px;}
+.foot_menu .f_management{ width:120px;}
+.foot_menu .f_manag{width:120px;}
+.foot_menu .f_manag ul{ width:120px; background: red;}
+.foot_menu .f_code{  border: 1px solid #f8f8f8; height: 100px; position: relative; float:right; padding:4px; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px; background: #fff; text-align:right;}
+.foot_menu .f_code div{ position: absolute; top:-36px; left: -7px; z-index: 1}
+.foot_menu .f_code div img{ width: 120px;}
+.foot_menu font{color:#dd5300;font-size:16px;font-family:"微软雅黑"}
+.footTxt{font-size:12px; padding: 5px 0px; color:#fff; background: #33b5e5;  line-height:25px; text-align:center;}
+.footTxt a{ color:#fff; margin:0px 2px}
+.footTxt a:hover{ text-decoration:underline}
+.sjxy{ background: url(../dyd_new/news/m.png) no-repeat left; height: 45px; line-height:45px; margin-top: 20px;}
+.sjxy span{ cursor: pointer; background: url(../dyd_new/news/l.png) repeat-x; color: #fff; box-shadow: 1px 1px 2px #000000; border-radius: 4px; padding: 5px 10px; margin-left: 40px;}
+.sjxy span:hover{color:#EA8915;}
+.sjxy span a{ color:#fff;}
+.sjxy span a:hover{ color:#EA8915;}
+
+.add{
+	text-align:left; font-size:12px;  overflow:hidden; display:block; color: #fff;
+}
+
+
+
+/*尾部样式结束*/
+
+/*表单自定义样式开始*/
+
+input[type=text],textarea,select{ border: none; background: #f5f5f5; box-shadow: inset 1px 1px 2px #2E2E2E; padding: 5px;}
+
+.inputTxt200{ width: 200px;}
+.textarea{ width: 100%; min-height: 150px;}
+.btn{ background: url(../dyd_new/news/btn01.png) repeat-x; border: none; color: #fff; border-radius: 4px; height: 30px; width: 110px; color: #EA8915; cursor: pointer;}
+
+/*表单自定义样式结束*/
+
+.footer_logo {
+	float:left;
+	padding-top: 30px;
+	padding-bottom: 20px;
+
+}
+.contact{float:left;
+	padding-left: 20px;
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+.contact p{
+text-align:left; font-size:16px;  
+padding-bottom: 10px;
+overflow:hidden; display:block; color: #fff;}
+
+.clear{clear:both;}
+
+

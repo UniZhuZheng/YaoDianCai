@@ -1,0 +1,5 @@
+C:\Users\Administrator\Desktop\MenuMsgSystem\YDCControl\bin\Release\YDCControl.dll
+C:\Users\Administrator\Desktop\MenuMsgSystem\YDCControl\bin\Release\YDCControl.pdb
+C:\Users\Administrator\Desktop\MenuMsgSystem\YDCControl\bin\Release\CSkin.dll
+C:\Users\Administrator\Desktop\MenuMsgSystem\YDCControl\obj\Release\YDCControl.dll
+C:\Users\Administrator\Desktop\MenuMsgSystem\YDCControl\obj\Release\YDCControl.pdb

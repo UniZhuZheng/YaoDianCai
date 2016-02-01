@@ -1,0 +1,364 @@
+*{font-family:Georgia,Î¢ÈíÑÅºÚ, Arial, ËÎÌå; -webkit-text-size-adjust:none;}
+.bottombar
+{
+    background: none repeat scroll 0 0 #824234;
+    bottom: 5px;
+    height: 30px;
+    filter:alpha(opacity=90);
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 99;
+}
+   
+.bottombar ul
+{
+    float: left;
+    list-style: none;
+    font-size:30px;
+    padding: 0; width: 100%;
+}
+.bottombar ul li
+{
+    float: left;
+    cursor: pointer;
+    padding: 0px 20px ;
+    font-size:16px;
+    color: #ffffff;
+    margin-top:4px;
+}
+#YDC_menu__frame{position:relative;}
+#YDC_menu__frame #left_menu_left
+{
+    background: url("../images/left_bg.png") repeat scroll 0 0 #EAF6EC;
+    float: left;
+    overflow: hidden;
+    padding-top: 50px;
+    /*top: 50px;*/
+    width: 96px;
+    text-align: left;
+    background-size: contain;    
+}
+#YDC_menu__frame #left_menu
+{
+    background: url("../images/left_bg.png") repeat scroll 0 0 #EAF6EC;
+    float: left;
+    overflow: auto;
+    padding-top: 40px;
+    position: absolute;
+    /*top: 50px;*/
+    width: 96px;
+    background-size: contain;
+}
+#YDC_menu__frame #left_menu .menu_type_item
+{
+    border-top:solid 1px #eace3f;
+    border-bottom:solid 1px #eace3f;
+    cursor:pointer;
+    height:30px;
+    }
+#YDC_menu__frame #left_menu .menu_type_item .type_name
+
+{
+    padding:6px 0 0 12px;
+    margin: 0;
+    font-size:14px;
+    font-weight: normal;
+}    
+#YDC_menu__frame #left_menu .menu_type_item .type_name_en
+{
+    padding:0 0 6px 12px;
+    margin: 0;
+    font-size:14px;
+    font-weight: normal;    
+}    
+#YDC_menu__frame #right_contents
+{
+    background:#fbf6e6;
+    position:absolute;
+    left:100px;
+    /*top:50px; */
+    overflow-x:hidden;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling:touch;
+}
+
+#YDC_menu__frame #left_menu .left_frame_item_click .type_name,
+#YDC_menu__frame #left_menu .left_frame_item_click .type_name_en
+{
+    background-color:#fbf6e6;
+    color:#4d1406;
+}
+
+
+
+#YDC_header{
+	width:100%; 
+	height:50px; 
+	top:0; 
+	position:fixed; 
+	background-image:url(../images/top.png);
+	background-repeat:repeat-x;
+	background-size: auto 100%;
+	z-index:1000;
+	}
+#desk_select
+{
+    border: 1px solid #4d1406;
+    border-radius: 0.4em;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font-weight: bold;
+    left: 3px;
+    padding: 5.5px 20px;
+    /*width: 80px;*/
+    position: absolute;
+    top: 3px;
+    z-index: 99;
+    background: -webkit-gradient(linear, left top, left bottom, from(#824234 ), to(#4d1406 ), color-stop(50% #4d1406), color-stop(50% #4d1406)) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -webkit-linear-gradient(top, #824234 , #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -ms-linear-gradient(top, #824234 , #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -o-linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+  #desk_select span
+  {
+      font-size:15px;
+      }
+  #person_number
+  {     
+      position:absolute;
+      right:3px;
+      }
+#price_total_left
+{
+    border-radius: 0.4em;
+    color: #FFFFFF;
+    float: left;
+    font-weight: bold;
+    left: 3px;
+    position: absolute;
+    top: 40px;
+    z-index: 99;
+    width:88px;  
+    background-color:#E6C114;
+}
+#price_total_left .price_total_left_font
+{
+        
+}
+#price_total_left .price_total_left_number
+{
+    color: #B82E23;
+    font-size: 16px;
+    margin-top: 3px;
+    text-align: right;  
+}
+#YDC_more
+{
+    cursor:pointer;
+    border :solid 1px #d17560;
+    padding:2px 3px;
+    border-radius:0.2em;
+    color:White;
+    font-weight:bold;
+    position:absolute;
+    right:3px;
+    float:left;
+    top:3px;
+    
+    background: -webkit-gradient(linear, left top, left bottom, from(#824234 ), to(#4d1406 ), color-stop(50% #4d1406), color-stop(50% #4d1406)) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -webkit-linear-gradient(top, #824234 , #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -ms-linear-gradient(top, #824234 , #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -o-linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    }
+ #YDC_more img
+ {
+     width:30px;
+     height:22px;
+     }   
+#popup
+{
+    position:absolute;
+    right:3px;
+    top:35px;
+    border:solid 1px #666;
+    z-index:1;
+    border-radius:0.2em;
+    background: -webkit-gradient(linear, left top, left bottom, from(#824234 ), to(#4d1406 ), color-stop(50% #4d1406), color-stop(50% #4d1406)) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -webkit-linear-gradient(top, #824234 , #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -ms-linear-gradient(top, #824234 , #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: -o-linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    }
+ /*#popup_tuan*/
+ /*{*/
+     /*cursor:pointer;*/
+     /*padding:8px 12px;*/
+     /*border-bottom:solid 1px #666;*/
+     /*color:#4d1406;*/
+     /*font-size:15px;*/
+/*}   */
+    /**/
+#popup_menu_record
+{
+    cursor:pointer;
+     padding:8px 12px;
+     border-bottom:solid 1px #666;
+     color:#4d1406;
+     font-size:15px;
+}         
+
+#popup_call {
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 8px 12px;
+}
+#YDC_products .YDC_products_item
+{
+    border-bottom:1px solid #ddd; position:relative; padding:5px; height:43px; overflow:hidden; margin-left:5px; width:90%; -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+#YDC_products .YDC_products_item .YDC_products_img{position:absolute; z-index:10; width:35px; margin:-5px 0 0 -15px;}
+#YDC_products .YDC_products_item .YDC_products_img img{width:35px;}
+#YDC_products .YDC_products_item .img{width:75px; height:50px; z-index:9; position:absolute;cursor:pointer;}
+#YDC_products .YDC_products_item .img img{width:75px; height:50px;}
+#YDC_products .YDC_products_item .YDC_products_info{float:left; position:absolute;padding-right:10px;width:100%;}
+#YDC_products .YDC_products_item .YDC_products_info .name{font-size:14px; margin-bottom:1px;color: #4d1406;height:20px;overflow:hidden;}
+#YDC_products .YDC_products_item .YDC_products_info .name_en{font-size:14px; margin-bottom:1px;color: #4d1406;height:0px;overflow:hidden;}
+#YDC_products .YDC_products_item .YDC_products_price{float:left; position:absolute;bottom: 5px;right:100px;padding-right:10px;}
+#YDC_products .YDC_products_item .YDC_products_price .price_font{font-size:14px; color:#ff0000;float:left;color: #4d1406}
+#YDC_products .YDC_products_item .YDC_products_price .price{font-size:14px; color:#ff0000;float:left;color: #4d1406}
+#YDC_products .YDC_products_item .YDC_products_price .price_yuan{font-size:14px; color:#ff0000;float:left;color: #4d1406}
+#YDC_products .YDC_products_item .YDC_products_select{position:absolute;right:0; bottom: 1px;padding:2px;}
+	
+#YDC_products .YDC_products_item .YDC_products_select .YDC_products_select_subtract
+{
+    float:left;
+	width:24px;
+	height:24px;
+    cursor:pointer;
+	padding:0;
+    background-size:contain;
+    }
+#YDC_products .YDC_products_item .YDC_products_select .YDC_products_select_add{
+	float:left;
+	width:24px;
+	height:24px;
+    cursor:pointer;
+	padding:0;
+	background-size:contain;
+	}
+.add_normal
+{
+     background-image:url(../images/plus_click.png);
+    }
+.add_click
+{
+    background-image:url(../images/plus_click.png);
+}
+.subtract_normal
+{
+   background-image:url(../images/minus_normal.png); 
+} 
+.subtract_click
+{
+    background-image:url(../images/minus_click.png); 
+}   	
+	
+	
+#YDC_products .YDC_products_item .YDC_products_select .YDC_products_select_num{
+	color: #4d1406;
+    float: left;
+    height: 22px;
+    margin: 4px 2px 0;
+    text-align: center;
+    width: 24px;
+}
+
+
+#YDC_products .blank25{height:38px;}
+
+#YDC_footer
+{
+    width:100%; 
+    height:50px;
+    margin:0 auto; 
+    background:url(../images/footer.png);
+    background-repeat:repeat-x;
+	background-size: auto 100%; 
+    line-height:38px; 
+    position:fixed; 
+    bottom:0;
+
+    }
+
+/*#YDC_footer_shopping_cart*/
+/*{*/
+    /*cursor:pointer;*/
+    /*width:70px;*/
+    /*height:30px;*/
+    /*border :solid 1px #d17560;*/
+    /*border-radius:0.2em;*/
+    /*color:White;*/
+	/*float:left;*/
+	/*position:absolute;*/
+	/*bottom:3px;*/
+	/*left:5px;*/
+	/*background: -webkit-gradient(linear, left top, left bottom, from(#824234 ), to(#4d1406 ), color-stop(50% #4d1406), color-stop(50% #4d1406)) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*background: -webkit-linear-gradient(top, #824234 , #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*background: -moz-linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*background: -ms-linear-gradient(top, #824234 , #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*background: -o-linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*background: linear-gradient(top, #824234 ,  #4d1406 ) repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+/*}*/
+/*#YDC_footer_shopping_cart img*/
+/*{*/
+    /*width:27px;*/
+    /*height:22px;*/
+    /*margin-top:4px;*/
+    /*margin-left:2px;*/
+/*}*/
+#menu_select_number{
+    bottom: -4px;
+    font-size: 18px;
+    position: absolute;
+    right: 4px;
+}    
+    
+
+#YDC_footer_menu_total_price{
+	font-size:20px;
+	float:left;
+	color:#4d1406;
+	margin-left:100px;
+	position: absolute;
+	bottom:0;
+}
+
+#YDC_footer_customer_logo{
+	width:113px;
+    height:32px;
+    background:url(../images/logo.png);
+	position:absolute;
+	right:5px;
+	bottom:3px;
+	background-size:contain;
+	background-repeat:no-repeat;
+	}
+.popup_bac
+{
+    background-color: rgba(26, 51, 77, 0.3);
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+}

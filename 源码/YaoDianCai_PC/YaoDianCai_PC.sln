@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YaoDianCai_PC", "YaoDianCai_PC\YaoDianCai_PC.csproj", "{47798222-62C2-441D-BF78-171B177285D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDCControl", "YDCControl\YDCControl.csproj", "{F132EE50-D9F2-4052-9050-F6DBEB2AB060}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniDllPCClient", "UniDllPCClient\UniDllPCClient.csproj", "{D0C68623-C83E-450C-AB45-E896BC44CCBB}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "YDC", "YDC\YDC.vdproj", "{C28525E2-4E78-4DEB-A21F-485981946F9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47798222-62C2-441D-BF78-171B177285D3}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{47798222-62C2-441D-BF78-171B177285D3}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{47798222-62C2-441D-BF78-171B177285D3}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{47798222-62C2-441D-BF78-171B177285D3}.Debug|x86.ActiveCfg = Debug|x86
+		{47798222-62C2-441D-BF78-171B177285D3}.Debug|x86.Build.0 = Debug|x86
+		{47798222-62C2-441D-BF78-171B177285D3}.Release|Any CPU.ActiveCfg = Release|x86
+		{47798222-62C2-441D-BF78-171B177285D3}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{47798222-62C2-441D-BF78-171B177285D3}.Release|Mixed Platforms.Build.0 = Release|x86
+		{47798222-62C2-441D-BF78-171B177285D3}.Release|x86.ActiveCfg = Release|x86
+		{47798222-62C2-441D-BF78-171B177285D3}.Release|x86.Build.0 = Release|x86
+		{F132EE50-D9F2-4052-9050-F6DBEB2AB060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F132EE50-D9F2-4052-9050-F6DBEB2AB060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F132EE50-D9F2-4052-9050-F6DBEB2AB060}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F132EE50-D9F2-4052-9050-F6DBEB2AB060}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F132EE50-D9F2-4052-9050-F6DBEB2AB060}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F132EE50-D9F2-4052-9050-F6DBEB2AB060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F132EE50-D9F2-4052-9050-F6DBEB2AB060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F132EE50-D9F2-4052-9050-F6DBEB2AB060}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F132EE50-D9F2-4052-9050-F6DBEB2AB060}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F132EE50-D9F2-4052-9050-F6DBEB2AB060}.Release|x86.ActiveCfg = Release|Any CPU
+		{D0C68623-C83E-450C-AB45-E896BC44CCBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0C68623-C83E-450C-AB45-E896BC44CCBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0C68623-C83E-450C-AB45-E896BC44CCBB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D0C68623-C83E-450C-AB45-E896BC44CCBB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D0C68623-C83E-450C-AB45-E896BC44CCBB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D0C68623-C83E-450C-AB45-E896BC44CCBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0C68623-C83E-450C-AB45-E896BC44CCBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0C68623-C83E-450C-AB45-E896BC44CCBB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D0C68623-C83E-450C-AB45-E896BC44CCBB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D0C68623-C83E-450C-AB45-E896BC44CCBB}.Release|x86.ActiveCfg = Release|Any CPU
+		{C28525E2-4E78-4DEB-A21F-485981946F9A}.Debug|Any CPU.ActiveCfg = Debug
+		{C28525E2-4E78-4DEB-A21F-485981946F9A}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{C28525E2-4E78-4DEB-A21F-485981946F9A}.Debug|x86.ActiveCfg = Debug
+		{C28525E2-4E78-4DEB-A21F-485981946F9A}.Release|Any CPU.ActiveCfg = Release
+		{C28525E2-4E78-4DEB-A21F-485981946F9A}.Release|Mixed Platforms.ActiveCfg = Release
+		{C28525E2-4E78-4DEB-A21F-485981946F9A}.Release|x86.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

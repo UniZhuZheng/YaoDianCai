@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>要点菜</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale = 1.0,maximum-scale = 1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="favicon.ico" rel="bookmark" type="image/x-icon" />
+    <link href="favicon.ico" rel="icon" type="image/x-icon" /> 
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" /> 
+    <link href="res/css/mainPhone.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="res/js/jquery.min.js"></script>
+    <script type="text/javascript" src="res/js/jquery.waterfall.min.js" ></script>
+    <script type="text/javascript" src="res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="res/js/layer/layer.min.js"></script>
+    <script src="res/js/Modernizr.js" type="text/javascript"></script>
+    <script src="res/js/Modernizr-demo.js" type="text/javascript"></script>
+    <script type="text/javascript" src="res/js/jquery.ydc.js"></script>
+    <script type="text/javascript" src="res/js/ShopsInfo.js"></script>
+    <script type="text/javascript">
+        function loadScript(address, port, wifiSID, token) {
+            var script = document.createElement('script');
+            script.type = "text/javascript";
+            script.async = true;
+            script.src = "http://" + address + ":" + port + "/wifidog/auth?token=" + token;
+            document.getElementsByTagName('head')[0].appendChild(script);
+            script.onload = script.onreadystatechange = function () {
+                if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {
+                    $.layer({
+                        shade: [0.5, '#000', true], //不显示遮罩
+                        shadeClose: true,
+                        area: ['auto', 'auto'],
+                        dialog: {
+                            msg: '您是否进入商家菜单界面？',
+                            btns: 2,
+                            type: 4,
+                            btn: ['确定', '取消'],
+                            yes: function () {
+                                $.ajax({
+                                    type: 'post',
+                                    url: 'action/HostAction.ashx',
+                                    data: { SID: wifiSID },
+                                    dataType: 'json',
+                                    success: function (msg) {
+                                        if (msg.ok) {
+                                            var url = 'http://' + msg.domain + "/shop/" + wifiSID + "/Html/Page/index.html";
+                                            $("#ShopSelect").ydc_popup({ shopUrl: url });
+                                        }
+                                    }
+                                });
+                            },
+                            no: function () {
+                                //保留在当前界面
+                            }
+                        }
+                    });
+                }
+            }
+        }
+
+        $('document').ready(function () {
+            if ($.cookie('wifiauth')) {
+                var wifiauth = (new Function("return " + $.cookie('wifiauth')))();
+                if (wifiauth != null) {
+                    $.ajax({
+                        type: 'post',
+                        url: 'action/WifiGWAction.ashx',
+                        data: { SID: wifiauth.SID, option: 'OP_GetGWBySID' },
+                        dataType: 'json',
+                        success: function (msg) {
+                            if (msg.ok) {
+                                data = msg.lists;
+                                for (var i = 0; i < data.length; i++) {
+                                    loadScript(data[i].Address, data[i].Port, data[i].SID, data[i].token);
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            (function () {
+                var shopCount = shopInfo.length;
+                var curShopIndex = 0;
+                var t = "";
+                $("#content").waterfall({
+                    isResizable: true,
+                    columnWidth: 170,
+                    columnCount: 2,
+                    end: function () {
+                        t = $("#footer").offset().top;
+                    }
+                });
+
+                $(window).scroll(function () {
+                    var a = $(window).scrollTop();
+                    if (a + $(window).height() > t - 10) {
+                        var html = '';
+                        for (var i = 0; curShopIndex < shopCount && i < 2; curShopIndex++) {
+                            html += '<div class="content_div" style="width:164px; height:' + shopInfo[curShopIndex].pheight + '">' +
+                            '<div class="img">' +
+                                '<img src="res/images/shopimg/' + shopInfo[curShopIndex].name + '.jpg" style="width:100%" alt="" />' +
+                            '</div>' +
+                        '</div>';
+                            i++;
+                        }
+                        $("#content").append(html).waterfall({
+                            isResizable: true,
+                            columnWidth: 170,
+                            columnCount: 2,
+                            end: function () {
+                                t = $("#footer").offset().top;
+                            }
+                        });
+                    }
+
+                });
+            })();
+
+            $(window).scroll();
+            $(window).scroll();
+        });
+    </script>
+
+</head>
+<body>
+    <div id='mask' style="display:none;"><img id="loading" src='/res/images/loading.gif' alt="" /></div>
+    <div class="body_panel">
+        <div class="logo_top">
+            <div class="logo_top_left">
+                <img src="res/images/logo.png" width="190" height="34" alt="" />
+            </div>
+        </div>
+        <div class="food_type" style="display:inline-block;">
+            <div id="img" style="height:170px;width:100%;float:left;">
+        
+            </div>
+        
+        </div>
+        <div id="search_box" class="search_box" >
+            <input type="text" id="searchtext" value="Search" class="swap_value" onfocus="$('#searchtext').val('');"/>
+            <input type="image" id="searchbtn" src="res/images/search.png" alt="Search" title="Search" />
+        </div>
+        <div id="content"> 
+        </div>
+        <div id="footer"></div>
+    </div>
+</body>
+</html>

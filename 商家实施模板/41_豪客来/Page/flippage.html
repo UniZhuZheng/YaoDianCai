@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>商家首页</title>
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>-->
+    <link rel="stylesheet" type="text/css" href="./res/css/shop.css" />
+    <script type="text/javascript" src="./res/js/modernizr.custom.08464.js"></script>
+
+    <script id="pageTmpl" type="text/x-jquery-tmpl">
+        <div class="${theClass}" style="${theStyle}">
+            <div class="front">
+                <div class="outer">
+                    <div class="content" style="${theContentStyleFront}">
+                        <div class="inner">{{html theContentFront}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div class="outer">
+                    <div class="content" style="${theContentStyleBack}">
+                        <div class="inner">{{html theContentBack}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <style type="text/css">
+        .bottombar
+        {
+            background: none repeat scroll 0 0 #824234;
+            font-family: Georgia,微软雅黑,Arial,宋体;
+            height: 75px;
+            opacity: 0.9;
+            padding: 0;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            z-index: 99;
+            bottom:5px;
+        }
+        .bottombar div
+        {
+            color: #ffffff;
+            cursor: pointer;
+            float: left;
+            font-size: 20px;
+            margin: 4px auto 8px;
+            padding: 0;
+            width: 33%;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="topbar" style="width: 100%">
+    <img src="res/images/top.png" style="width: 100%;">
+</div>
+
+<div id="flip" class="container">
+    <div class="f-page f-cover">
+        <!--<div class="f-cover-flip">&lt; Flip</div>-->
+    </div>
+    <div class="f-page ">
+        <div class="img-cont img-1"></div>
+    </div>
+    <div class="f-page">
+        <div class="img-cont img-2"></div>
+    </div>
+    <div class="f-page">
+        <div class="img-cont img-3"></div>
+    </div>
+    <div class="f-page">
+        <div class="img-cont img-4"></div>
+    </div>
+    <div class="f-page">
+        <div class="img-cont img-5"></div>
+    </div>
+
+    <div class="f-page f-cover-back">
+        <div id="codrops-ad-wrapper"></div>
+    </div>
+</div>
+
+<div class="bottombar">
+    <div id="OrderMenu">自助点菜</div><div id="CallClerk">呼叫店员</div><div id="TuanAuth">团购验证</div>
+    <div id="VideoBrowse">视频点播</div><div id="MusicBrowse">音乐欣赏</div><div id="ShopImpress">商家印象</div>
+</div>
+
+<script type="text/javascript" src="./res/js/jquery.min.js"></script>
+<script type="text/javascript">
+    
+    var $container 	= $( '#flip' ),
+            $pages	    = $container.children().hide();
+
+    Modernizr.load({
+        test: Modernizr.csstransforms3d && Modernizr.csstransitions,
+        yep : [
+            './res/js/jquery.tmpl.min.js',
+            './res/js/jquery.history.js',
+            './res/js/core.string.js',
+            './res/js/jquery.touchSwipe-1.2.5.js',
+            './res/js/shop.flips.js'
+        ],
+        nope: '../public/css/fallback.css',
+        callback : function( url, result, key ) {
+            if( url === './res/css/fallback.css' ) {
+                $pages.show();
+            }
+            else if( url === './res/js/shop.flips.js' ) {
+                $container.flips();
+            }
+        }
+    });
+    $(document).ready(function () {
+        var Uni_TableNum = JSON.parse(window.localStorage.getItem('Uni_TableNum'));
+        var TableNum = Uni_TableNum.TableNum; //桌号
+        var DisableTableMode = Uni_TableNum.DisableTableMode; //桌号是否可选，false可选，true不可选
+        var CustomerNum = Uni_TableNum.CustomerNum; //用餐人数
+
+        var ToPage = "";
+        $('#OrderMenu').click(function () {
+            if (TableNum == '餐桌号') {
+                alert("请先选择桌号。");
+                location.href = "table.html";
+                ToPage = "main.html";
+                window.localStorage.setItem('ToPage', ToPage);
+                return;
+            }
+            
+            window.location.href = "main.html";
+        });
+        $('#CallClerk').click(function () {
+            if (TableNum == '餐桌号') {
+                alert("请先选择桌号。");
+                location.href = "table.html";
+                ToPage = "call.html";
+                window.localStorage.setItem('ToPage', ToPage);
+                return;
+            }
+            
+            window.location.href = "call.html";
+        });
+        $('#TuanAuth').click(function () {
+            if (TableNum == '餐桌号') {
+                alert("请先选择桌号。");
+                location.href = "table.html";
+                ToPage = "tuan.html";
+                window.localStorage.setItem('ToPage', ToPage);
+                return;
+            }
+            
+            window.location.href = "tuan.html";
+        });
+        $('#VideoBrowse').click(function () {
+            window.location.href = "video.html";
+        });
+        $('#MusicBrowse').click(function () {
+            window.location.href = "music.html";
+        });
+        $('#ShopImpress').click(function () {
+            window.location.href = "impressTab.html";
+        });
+    });
+</script>
+</body>
+</html>

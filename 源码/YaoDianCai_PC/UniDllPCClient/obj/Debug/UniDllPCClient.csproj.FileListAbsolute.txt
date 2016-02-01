@@ -1,0 +1,4 @@
+C:\Users\Administrator\Desktop\YDC\YaoDianCai_PC\UniDllPCClient\bin\Debug\UniDllPCClient.dll
+C:\Users\Administrator\Desktop\YDC\YaoDianCai_PC\UniDllPCClient\bin\Debug\UniDllPCClient.pdb
+C:\Users\Administrator\Desktop\YDC\YaoDianCai_PC\UniDllPCClient\obj\Debug\UniDllPCClient.dll
+C:\Users\Administrator\Desktop\YDC\YaoDianCai_PC\UniDllPCClient\obj\Debug\UniDllPCClient.pdb
